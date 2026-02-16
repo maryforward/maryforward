@@ -116,7 +116,7 @@ export default async function ReportViewPage({
           <div>
             <dt className="text-sm text-slate-400">Prepared By</dt>
             <dd className="mt-1 text-slate-200">
-              {report.author.name || report.author.email}
+              {report.author?.name || report.author?.email || "Unknown"}
             </dd>
           </div>
           <div>
