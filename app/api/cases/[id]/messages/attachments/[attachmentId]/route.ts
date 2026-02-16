@@ -86,7 +86,7 @@ export async function GET(
     }).catch(() => {}); // Fire and forget
 
     // Return the file with appropriate headers
-    const response = new NextResponse(fileBuffer);
+    const response = new NextResponse(new Uint8Array(fileBuffer));
     response.headers.set("Content-Type", attachment.fileType);
     response.headers.set(
       "Content-Disposition",
