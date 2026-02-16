@@ -102,7 +102,7 @@ export function LoginForm({ role }: LoginFormProps) {
   };
 
   const handleGoogleSignIn = () => {
-    signIn("google", { callbackUrl });
+    signIn("google", { callbackUrl: callbackUrl ?? undefined });
   };
 
   return (
