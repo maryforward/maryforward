@@ -5,3 +5,6 @@ node_modules
 
 /app/generated/prisma
 nul
+
+tmpclaude-*
+tsconfig.tsbuildinfo
