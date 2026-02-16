@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Persian/Arabic font - Vazirmatn from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap');
+
+html, body { height: 100%; }
+body { @apply text-slate-50 antialiased bg-slate-950; }
+a { @apply text-inherit no-underline; }
+
+/* Persian font class */
+.font-persian {
+  font-family: 'Vazirmatn', Tahoma, Arial, sans-serif;
+}
+
+/* Soft "glass" feel */
+.glass {
+  @apply bg-slate-900/60 border border-white/10 backdrop-blur-xl shadow-2xl rounded-2xl;
+}
+.muted { @apply text-slate-300; }
+.kicker { @apply text-sky-300 font-semibold tracking-[0.18em] uppercase text-xs; }
+.btn {
+  @apply inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-sm hover:bg-white/10 transition;
+}
+.btn-secondary {
+  @apply inline-flex items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-4 py-2 text-sm hover:bg-white/10 transition text-slate-200;
+}
+.btnPrimary {
+  @apply border-sky-300/40 bg-gradient-to-br from-sky-300/20 to-violet-300/20 hover:from-sky-300/25 hover:to-violet-300/25;
+}
+.pill { @apply inline-flex items-center rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-slate-300; }
+.card { @apply glass p-5; }
+.h1 { @apply text-4xl md:text-5xl font-semibold leading-[1.06]; }
+.h2 { @apply text-2xl font-semibold; }
+.containerX { @apply mx-auto max-w-6xl px-5; }
+
+/* RTL Support - Using logical properties */
+/* These ensure proper flipping in RTL mode */
+[dir="rtl"] .text-left { text-align: right; }
+[dir="rtl"] .text-right { text-align: left; }
+
+/* RTL margin/padding overrides for non-logical properties */
+[dir="rtl"] .ml-auto { margin-left: 0; margin-right: auto; }
+[dir="rtl"] .mr-auto { margin-right: 0; margin-left: auto; }
+
+/* RTL border adjustments */
+[dir="rtl"] .border-r { border-right: none; border-left-width: 1px; }
+[dir="rtl"] .border-l { border-left: none; border-right-width: 1px; }
+
+/* RTL arrow/chevron flip */
+[dir="rtl"] .rotate-arrow { transform: scaleX(-1); }

@@ -1,0 +1,1104 @@
+{
+  "common": {
+    "login": "Login",
+    "signup": "Get Started",
+    "logout": "Sign out",
+    "dashboard": "Dashboard",
+    "profile": "Profile",
+    "settings": "Settings",
+    "save": "Save",
+    "cancel": "Cancel",
+    "submit": "Submit",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "close": "Close",
+    "edit": "Edit",
+    "delete": "Delete",
+    "view": "View",
+    "search": "Search",
+    "filter": "Filter",
+    "all": "All",
+    "none": "None",
+    "yes": "Yes",
+    "no": "No",
+    "or": "or",
+    "and": "and"
+  },
+  "nav": {
+    "learn": "Learn",
+    "allAboutConditions": "All About Conditions",
+    "oncology": "Oncology",
+    "infectiousDisease": "Infectious Disease",
+    "ngsAndMolecular": "NGS & Molecular Data",
+    "webinarsAndBriefings": "Webinars & Briefings",
+    "whatWeDo": "What We Do",
+    "forPatients": "For Patients",
+    "forClinicians": "For Clinicians / Clinics",
+    "forSponsors": "For Sponsors & Partners",
+    "trialsNavigator": "Clinical Trials Navigator",
+    "company": "Company",
+    "ourStory": "Our Story",
+    "compliance": "Safety, Privacy & Compliance",
+    "pricing": "Pricing",
+    "contact": "Contact",
+    "resources": "Resources"
+  },
+  "userMenu": {
+    "myCases": "My Cases",
+    "savedTrials": "Saved Trials",
+    "profileSettings": "Profile Settings"
+  },
+  "home": {
+    "kicker": "Expert-in-the-loop • Evidence • Compassion",
+    "headline": "Guidance forward for complex medical decisions.",
+    "subheadline": "MaryForward helps patients and families move from uncertainty to a plan—by translating trusted medical sources into clear options, questions to ask, and next steps, with expert review for safety.",
+    "startCase": "Start a case",
+    "howItWorks": "See how it works",
+    "forClinicians": "For clinicians",
+    "pillCitations": "Transparent citations",
+    "pillGuideline": "Differential + guideline concordance",
+    "pillTrials": "Clinical trials navigator",
+    "pillNGS": "NGS & molecular data mapping",
+    "inHonorOfMary": "In honor of Mary.",
+    "maryDescription": "Built to bring clarity and momentum to families navigating oncology and infectious disease.",
+    "safetyWorkflows": "Safety-first workflows",
+    "flagsUrgent": "Flags urgent symptoms & contraindications",
+    "expertReview": "Expert review before sharing",
+    "shareableReport": "Shareable patient + clinician report",
+    "whatYouGet": "What you get",
+    "benefit1": "Structured intake tailored to oncology and infectious disease.",
+    "benefit2": "Evidence synthesis from vetted sources (guidelines, peer-reviewed literature, trials registries).",
+    "benefit3": "Expert annotation and a next-step checklist for your appointment.",
+    "benefit4": "Follow-up tracking: outcomes, side effects, trial status, reminders.",
+    "important": "Important:",
+    "disclaimer": "MaryForward is decision support and navigation—not emergency care. If you have urgent symptoms, call 911 or go to the nearest emergency department.",
+    "forPatientsTitle": "For Patients",
+    "forPatientsDesc": "Clarity, options, and questions to ask—delivered in plain language and backed by citations.",
+    "tellMeMore": "Tell me more",
+    "forCliniciansTitle": "For Clinicians / Clinics",
+    "forCliniciansDesc": "Structured summaries with citations and collaboration workflows—designed to save time.",
+    "learnMore": "Learn more",
+    "forSponsorsTitle": "For Sponsors & Partners",
+    "forSponsorsDesc": "Educational partnerships and listings designed to avoid referral contingency.",
+    "collaborate": "Collaborate",
+    "howItWorksTitle": "How MaryForward works",
+    "step1Title": "1) Intake",
+    "step1Desc": "Secure account creation, guided questionnaires, document upload, and (when available) EHR import.",
+    "step2Title": "2) AI synthesis",
+    "step2Desc": "LLM + retrieval over vetted sources to surface a differential, treatments, safety flags, and unanswered questions.",
+    "step3Title": "3) Expert review",
+    "step3Desc": "Specialists review, validate, and annotate drafts before sharing for safety and clarity.",
+    "step4Title": "4) Reports",
+    "step4Desc": "Plain-language + clinician-level reports designed to support productive conversations with your care team.",
+    "ngsTitle": "NGS & molecular data integration",
+    "ngsDesc": "Upload genomic profiling or infectious-disease mNGS reports. We map variants/organisms to actionability with citations and cautionary notes.",
+    "exploreNGS": "Explore NGS workflows",
+    "trialsTitle": "Clinical trials navigator",
+    "trialsDesc": "Eligibility extraction, geo-filtering, and concierge templates to accelerate trial discovery and outreach.",
+    "findTrials": "Find trials"
+  },
+  "footer": {
+    "tagline": "Guidance forward for complex medical decisions — expert-reviewed decision support for oncology and infectious disease.",
+    "inHonorOfMary": "In honor of Mary.",
+    "honourDescription": "Built to help families move from uncertainty to a plan — with clarity, compassion, and evidence.",
+    "allRightsReserved": "All rights reserved.",
+    "product": "Product",
+    "company": "Company",
+    "forPatients": "For Patients",
+    "forClinicians": "For Clinicians",
+    "trialsNavigator": "Trials Navigator",
+    "ngsIntegration": "NGS Integration",
+    "ourStory": "Our Story",
+    "privacyCompliance": "Privacy & Compliance",
+    "pricing": "Pricing",
+    "contact": "Contact",
+    "subscribe": "Subscribe",
+    "subscribeDescription": "Monthly product notes & expert briefings."
+  },
+  "auth": {
+    "login": {
+      "passwordPlaceholder": "Enter your password",
+      "rememberMe": "Remember me",
+      "forgotPassword": "Forgot password?",
+      "signIn": "Sign in",
+      "orContinueWith": "Or continue with",
+      "continueWithGoogle": "Continue with Google",
+      "noAccount": "Don't have an account?",
+      "signUp": "Sign up",
+      "captchaRequired": "Please complete the CAPTCHA verification",
+      "captchaFailed": "CAPTCHA verification failed. Please try again.",
+      "invalidCredentials": "Invalid email or password",
+      "generalError": "An error occurred. Please try again."
+    },
+    "signup": {
+      "iAmA": "I am a...",
+      "rolePatient": "Patient or Family Member",
+      "rolePatientDescription": "Get personalized decision support for complex medical decisions",
+      "roleClinician": "Healthcare Provider",
+      "roleClinicianDescription": "Review cases and provide expert decision support to patients",
+      "alreadyHaveAccount": "Already have an account?",
+      "signIn": "Sign in",
+      "changeAccountType": "Change account type",
+      "registeringAs": "Registering as:",
+      "clinicianApprovalNotice": "Healthcare provider accounts require admin approval before access is granted.",
+      "specialty": "Specialty",
+      "specialtyPlaceholder": "e.g., Oncology, Infectious Disease",
+      "licenseNumber": "License Number",
+      "licenseNumberPlaceholder": "Medical license #",
+      "institution": "Institution",
+      "institutionPlaceholder": "Hospital/Clinic",
+      "confirmPassword": "Confirm password",
+      "createPasswordPlaceholder": "Create a password",
+      "confirmPasswordPlaceholder": "Confirm your password",
+      "agreeToTerms": "I agree to the",
+      "termsOfService": "Terms of Service",
+      "and": "and",
+      "privacyPolicy": "Privacy Policy",
+      "createAccount": "Create account",
+      "submitForApproval": "Submit for Approval",
+      "orContinueWith": "Or continue with",
+      "continueWithGoogle": "Continue with Google",
+      "captchaRequired": "Please complete the CAPTCHA verification",
+      "captchaFailed": "CAPTCHA verification failed. Please try again.",
+      "emailExists": "This email is already registered",
+      "generalError": "An error occurred. Please try again.",
+      "accountCreatedSignInFailed": "Account created but failed to sign in. Please try logging in.",
+      "pendingApprovalTitle": "Account Pending Approval",
+      "pendingApprovalDescription": "Thank you for registering as a healthcare provider. Your account is pending admin approval. We'll notify you by email once your account has been verified.",
+      "goToLogin": "Go to Login"
+    },
+    "forgotPassword": {
+      "kicker": "Account",
+      "title": "Reset password",
+      "description": "Enter your email and we'll send you a link to reset your password.",
+      "sendResetLink": "Send reset link",
+      "backToLogin": "Back to login",
+      "successMessage": "If an account with that email exists, we've sent you a password reset link.",
+      "rememberPassword": "Remember your password?",
+      "signIn": "Sign in",
+      "sendError": "Failed to send reset email. Please try again."
+    },
+    "resetPassword": {
+      "title": "Reset password",
+      "description": "Enter your new password below",
+      "newPassword": "New password",
+      "confirmPassword": "Confirm password",
+      "resetButton": "Reset password",
+      "success": "Your password has been reset successfully"
+    },
+    "pendingApproval": {
+      "title": "Account Pending Approval",
+      "greeting": "Thank you, {name}!",
+      "defaultName": "Doctor",
+      "description": "Your clinician account is pending verification. This typically takes 1-2 business days. We'll email you once approved.",
+      "whatHappensNext": "What happens next?",
+      "step1": "Our team will verify your credentials.",
+      "step2": "You'll receive an email when your account is approved.",
+      "step3": "You can then access the clinician portal and begin reviewing cases.",
+      "returnToHomepage": "Return to homepage",
+      "signOut": "Sign out",
+      "questions": "Questions? Contact us at support@maryforward.com"
+    }
+  },
+  "portal": {
+    "sidebar": {
+      "dashboard": "Dashboard",
+      "myCases": "My Cases",
+      "savedTrials": "Saved Trials",
+      "profile": "Profile",
+      "newCase": "New Case"
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "welcome": "Welcome back, {name}. Here's an overview of your cases.",
+      "totalCases": "Total Cases",
+      "activeCases": "Active Cases",
+      "completedCases": "Completed",
+      "savedTrials": "Saved Trials",
+      "recentCases": "Recent Cases",
+      "viewAll": "View all",
+      "noCasesTitle": "No cases yet",
+      "noCasesDescription": "Start by creating your first case to get personalized decision support.",
+      "createFirstCase": "Create your first case",
+      "readyToStart": "Ready to start a new case?",
+      "intakeDescription": "Our structured intake helps you gather the information needed for comprehensive decision support.",
+      "startNewCase": "Start new case"
+    },
+    "caseCard": {
+      "oncology": "Oncology",
+      "infectiousDisease": "Infectious Disease",
+      "other": "Other",
+      "untitledCase": "Untitled Case",
+      "patient": "Patient",
+      "created": "Created",
+      "updated": "Updated"
+    },
+    "cases": {
+      "title": "My Cases",
+      "newCase": "New Case",
+      "noCases": "You haven't created any cases yet",
+      "startFirst": "Start your first case to get expert medical guidance",
+      "caseNumber": "Case #",
+      "status": "Status",
+      "created": "Created",
+      "updated": "Updated",
+      "viewCase": "View Case",
+      "editCase": "Edit Case",
+      "deleteCase": "Delete Case",
+      "submitForReview": "Submit for Review",
+      "confirmSubmit": "Are you sure you want to submit this case for review?",
+      "submitWarning": "Once submitted, you won't be able to edit the case details.",
+      "yesSubmit": "Yes, Submit for Review"
+    },
+    "caseStatus": {
+      "draft": "Draft",
+      "submitted": "Submitted",
+      "underReview": "Under Review",
+      "expertReview": "Expert Review",
+      "completed": "Completed",
+      "cancelled": "Cancelled",
+      "archived": "Archived"
+    },
+    "intake": {
+      "title": "New Case",
+      "editTitle": "Edit Case",
+      "step1": "Case Type",
+      "step2": "Personal Info",
+      "step3": "Medical History",
+      "step4": "Symptoms",
+      "step5": "Medications",
+      "step6": "Documents",
+      "step7": "Review",
+      "caseType": "What type of case is this?",
+      "oncologyDesc": "Cancer diagnosis, treatment options, or second opinions",
+      "infectiousDesc": "Infectious disease diagnosis or treatment",
+      "otherDesc": "Other complex medical conditions",
+      "personalInfo": "Personal Information",
+      "dateOfBirth": "Date of Birth",
+      "gender": "Gender",
+      "male": "Male",
+      "female": "Female",
+      "other": "Other",
+      "preferNotToSay": "Prefer not to say",
+      "medicalHistory": "Medical History",
+      "primaryDiagnosis": "Primary Diagnosis",
+      "diagnosisDate": "Date of Diagnosis",
+      "previousTreatments": "Previous Treatments",
+      "currentSymptoms": "Current Symptoms",
+      "symptomsDescription": "Please describe your current symptoms",
+      "currentMedications": "Current Medications",
+      "medicationsDescription": "List all current medications and dosages",
+      "allergies": "Allergies",
+      "allergiesDescription": "List any known allergies",
+      "documents": "Documents",
+      "documentsDescription": "Upload any relevant medical documents (lab results, imaging, pathology reports)",
+      "dragDrop": "Drag and drop files here, or click to browse",
+      "maxFileSize": "Maximum file size: 25MB",
+      "allowedTypes": "Allowed: PDF, images, Word documents",
+      "review": "Review Your Case",
+      "reviewDescription": "Please review your information before submitting",
+      "saveDraft": "Save as Draft",
+      "submitCase": "Submit Case"
+    },
+    "trials": {
+      "title": "Saved Trials",
+      "noTrials": "You haven't saved any clinical trials yet",
+      "browseTrials": "Browse clinical trials",
+      "removeTrial": "Remove from saved",
+      "viewDetails": "View Details",
+      "eligibility": "Eligibility",
+      "location": "Location",
+      "phase": "Phase",
+      "status": "Status"
+    },
+    "profile": {
+      "title": "Profile Settings",
+      "personalInfo": "Personal Information",
+      "accountSettings": "Account Settings",
+      "notifications": "Notifications",
+      "updateProfile": "Update Profile",
+      "changePassword": "Change Password",
+      "currentPassword": "Current Password",
+      "emailNotifications": "Email Notifications",
+      "caseUpdates": "Case status updates",
+      "reportReady": "New reports available",
+      "newsletter": "Newsletter and updates",
+      "savedSuccess": "Profile updated successfully"
+    },
+    "consent": {
+      "title": "Terms & Consent",
+      "welcomeTitle": "Welcome to MaryForward",
+      "welcomeSubtitle": "Before we begin, please review and accept our terms of service and patient consent form.",
+      "mustAcceptBoth": "You must accept both the terms of service and patient consent to continue.",
+      "saveError": "Failed to save consent. Please try again.",
+      "generalError": "An unexpected error occurred. Please try again.",
+      "termsTitle": "Terms of Service",
+      "termsSubtitle": "Please read carefully",
+      "importantInfo": "Important Information",
+      "termsIntro": "MaryForward provides an online platform connecting patients with qualified oncology specialists for second opinion consultations. By using our services, you acknowledge and agree to the following:",
+      "natureOfServiceTitle": "Nature of Service",
+      "natureOfServiceText": "MaryForward facilitates expert medical opinion consultations. These are advisory in nature and do not establish a physician-patient relationship with our reviewing clinicians.",
+      "reviewProcessTitle": "Review Process",
+      "reviewProcessText": "Your case will be reviewed by licensed oncology professionals who will provide their expert assessment based on the medical records and information you submit.",
+      "infoAccuracyTitle": "Information Accuracy",
+      "infoAccuracyText": "The quality of our consultation depends on the accuracy and completeness of the information you provide. You are responsible for ensuring all submitted records are accurate and up-to-date.",
+      "clinicalTrialsInfoTitle": "Clinical Trials Information",
+      "clinicalTrialsInfoText": "Information about clinical trials is provided for educational purposes. Eligibility and availability may change. Always verify current status with the trial sponsor.",
+      "noPatientRelationshipTitle": "No Direct Patient Relationship",
+      "noPatientRelationshipText": "Our service provides second opinions only. We do not replace your primary oncologist or healthcare team. All treatment decisions should be made in consultation with your treating physicians.",
+      "emergencyTitle": "Emergency Situations",
+      "emergencyText": "MaryForward is not an emergency service. If you are experiencing a medical emergency, please contact your local emergency services or go to the nearest emergency room immediately.",
+      "liabilityTitle": "Limitation of Liability",
+      "liabilityText": "MaryForward and its affiliated clinicians provide opinions based on available information. We are not liable for treatment decisions made based on our consultations.",
+      "termsCheckbox": "I have read and agree to the Terms of Service and understand that MaryForward provides second opinion consultations only.",
+      "patientConsentTitle": "Patient Consent Form",
+      "patientConsentSubtitle": "Authorization for medical review",
+      "consentHeader": "Consent for Medical Record Review",
+      "purposeTitle": "Purpose",
+      "purposeText": "This consent authorizes MaryForward to collect, store, and share your medical information with qualified oncology specialists for the purpose of providing a second opinion consultation.",
+      "consentToShareTitle": "Consent to Share Information",
+      "consentToShareIntro": "By providing consent, you authorize the sharing of your medical information with:",
+      "shareItem1": "Licensed oncology specialists on our platform",
+      "shareItem2": "Medical professionals involved in your case review",
+      "shareItem3": "Our secure technology systems for record storage",
+      "shareItem4": "Quality assurance personnel (in de-identified form)",
+      "shareItem5": "Research partners (in de-identified form, if applicable)",
+      "consentToShareOutro": "Your information will only be used for the stated purposes and will be protected according to applicable privacy laws.",
+      "privacyTitle": "Privacy & Security",
+      "privacyText": "We employ industry-standard security measures to protect your medical information. Access is limited to authorized personnel only.",
+      "deidentifiedDataTitle": "Use of De-Identified Data",
+      "deidentifiedDataIntro": "We may use de-identified data (information that cannot be traced back to you) for:",
+      "deidentifiedItem1": "Improving our services and platform",
+      "deidentifiedItem2": "Medical research and publications",
+      "deidentifiedItem3": "Statistical analysis and reporting",
+      "deidentifiedItem4": "Training and quality improvement",
+      "limitationsTitle": "Limitations",
+      "limitationsIntro": "Please understand:",
+      "limitationItem1": "Second opinions are advisory and do not replace your primary care",
+      "limitationItem2": "Treatment decisions remain between you and your treating physicians",
+      "limitationItem3": "Response times may vary based on case complexity",
+      "limitationItem4": "We cannot guarantee specific outcomes",
+      "communicationTitle": "Communication",
+      "communicationText": "You consent to receive communications from MaryForward regarding your case, including updates, reports, and service-related notifications.",
+      "voluntaryTitle": "Voluntary Participation",
+      "voluntaryText": "Your participation is voluntary. You may withdraw consent at any time by contacting our support team, though this may affect our ability to provide services.",
+      "questionsTitle": "Questions",
+      "questionsText": "If you have questions about this consent or our privacy practices, please contact our support team before proceeding.",
+      "consentCheckbox": "I consent to the collection, storage, and sharing of my medical information as described above for the purpose of receiving a second opinion consultation.",
+      "signatureTitle": "Electronic Signature",
+      "signatureSubtitle": "Confirm your agreement",
+      "signatureNotice": "By clicking the button below, you are providing your electronic signature and confirming that you have read, understood, and agree to both the Terms of Service and Patient Consent Form.",
+      "signingAs": "Signing as",
+      "date": "Date",
+      "agreeAndContinue": "I Agree & Continue",
+      "pleaseAcceptBoth": "Please accept both agreements above to continue"
+    },
+    "reports": {
+      "title": "Reports",
+      "noReports": "No reports available yet",
+      "viewReport": "View Report",
+      "printReport": "Print Report",
+      "expertReview": "Expert Review",
+      "aiSynthesis": "AI Synthesis",
+      "patientSummary": "Patient Summary",
+      "finalReport": "Final Report",
+      "preparedBy": "Prepared by",
+      "date": "Date",
+      "executiveSummary": "Executive Summary",
+      "clinicalFindings": "Clinical Findings",
+      "treatmentOptions": "Treatment Options",
+      "clinicalTrials": "Relevant Clinical Trials",
+      "recommendations": "Recommendations",
+      "additionalNotes": "Additional Notes",
+      "disclaimer": "This report is provided for informational purposes only and should not replace consultation with your primary healthcare provider."
+    }
+  },
+  "clinician": {
+    "sidebar": {
+      "clinicianPortal": "Clinician Portal",
+      "dashboard": "Dashboard",
+      "assignedCases": "Assigned Cases",
+      "allCases": "All Cases",
+      "myReports": "My Reports",
+      "profile": "Profile"
+    },
+    "dashboard": {
+      "title": "Clinician Dashboard",
+      "welcome": "Welcome back, {name}. Here's your case overview.",
+      "defaultName": "Doctor",
+      "assignedCases": "Assigned Cases",
+      "pendingReview": "Pending Review",
+      "completedThisMonth": "Completed This Month",
+      "recentCases": "Recent Cases",
+      "stats": {
+        "assignedCases": "Assigned Cases",
+        "activeReviews": "Active Reviews",
+        "completed": "Completed",
+        "reportsWritten": "Reports Written"
+      },
+      "pendingAlert": {
+        "title": "{count} case(s) awaiting assignment",
+        "description": "Unassigned cases are waiting for a clinician to review them.",
+        "viewCases": "View Cases"
+      },
+      "assignedCases": {
+        "title": "Your Assigned Cases",
+        "viewAll": "View all",
+        "empty": {
+          "title": "No assigned cases",
+          "description": "You don't have any cases assigned to you yet.",
+          "browseAll": "Browse All Cases"
+        }
+      },
+      "quickActions": {
+        "title": "Ready to help patients?",
+        "description": "Browse unassigned cases and start reviewing.",
+        "browseAll": "Browse All Cases"
+      }
+    },
+    "cases": {
+      "title": "My Cases",
+      "description": "Cases assigned to you for review.",
+      "assignedToMe": "Assigned to Me",
+      "allCases": "All Cases",
+      "assignToMe": "Assign to Me",
+      "writeReport": "Write Report",
+      "viewCase": "View Case",
+      "patient": "Patient",
+      "diagnosis": "Diagnosis",
+      "assignedTo": "Assigned To",
+      "unassigned": "Unassigned",
+      "browseAll": "Browse All Cases",
+      "activeCases": "Active Cases ({count})",
+      "completedCases": "Completed Cases ({count})",
+      "empty": {
+        "title": "No assigned cases",
+        "description": "You don't have any cases assigned to you yet."
+      }
+    },
+    "allCases": {
+      "title": "All Cases",
+      "description": "Browse and assign cases for review.",
+      "empty": {
+        "title": "No cases available",
+        "description": "There are no submitted cases at this time."
+      },
+      "awaitingAssignment": "Awaiting Assignment",
+      "assignedToYou": "Assigned to You",
+      "assignedToOthers": "Assigned to Others",
+      "anotherClinician": "Another Clinician"
+    },
+    "profile": {
+      "title": "Profile Settings",
+      "description": "Manage your clinician profile and credentials.",
+      "personalInfo": {
+        "title": "Personal Information",
+        "fullName": "Full Name",
+        "email": "Email Address",
+        "emailNote": "Email cannot be changed. Contact support if needed."
+      },
+      "professionalInfo": {
+        "title": "Professional Information",
+        "specialty": "Specialty",
+        "specialtyPlaceholder": "e.g., Oncology, Infectious Disease",
+        "licenseNumber": "License Number",
+        "licenseNote": "Your medical license number is verified and cannot be changed.",
+        "institution": "Institution",
+        "institutionPlaceholder": "Hospital or clinic name"
+      },
+      "accountStatus": {
+        "title": "Account Status",
+        "accountType": "Account Type",
+        "healthcareProvider": "Healthcare Provider",
+        "verificationStatus": "Verification Status",
+        "verified": "Verified"
+      },
+      "saveChanges": "Save Changes",
+      "successMessage": "Profile updated successfully",
+      "errors": {
+        "updateFailed": "Failed to update profile"
+      }
+    },
+    "reports": {
+      "title": "My Reports",
+      "description": "Reports you have authored for patients.",
+      "empty": {
+        "title": "No reports yet",
+        "description": "You haven't written any reports yet.",
+        "viewAssignedCases": "View Assigned Cases"
+      },
+      "untitledCase": "Untitled Case",
+      "patient": "Patient"
+    },
+    "caseDetail": {
+      "cases": "Cases",
+      "untitledCase": "Untitled Case",
+      "writeReport": "Write Report",
+      "assignedToYou": "Assigned to you",
+      "assignedTo": "Assigned to {name}",
+      "unassigned": "Unassigned",
+      "since": "Since {date}",
+      "patientInfo": {
+        "title": "Patient Information",
+        "name": "Patient Name",
+        "email": "Contact Email",
+        "anonymous": "Anonymous",
+        "notProvided": "Not provided"
+      },
+      "caseDetails": {
+        "title": "Case Details",
+        "primaryDiagnosis": "Primary Diagnosis",
+        "caseType": "Case Type",
+        "notSpecified": "Not specified"
+      },
+      "caseTypes": {
+        "oncology": "Oncology",
+        "infectiousDisease": "Infectious Disease",
+        "other": "Other"
+      },
+      "sections": {
+        "symptoms": "Symptoms",
+        "medicalHistory": "Medical History",
+        "currentMedications": "Current Medications",
+        "allergies": "Allergies",
+        "reports": "Reports"
+      },
+      "by": "By {name}",
+      "timeline": {
+        "title": "Timeline",
+        "created": "Created",
+        "submitted": "Submitted",
+        "assigned": "Assigned",
+        "completed": "Completed"
+      },
+      "documents": {
+        "title": "Documents",
+        "noDocuments": "No documents uploaded"
+      }
+    },
+    "report": {
+      "title": "Write Report",
+      "selectType": "Report Type",
+      "summary": "Executive Summary",
+      "summaryPlaceholder": "Provide a concise summary of the case and your key findings...",
+      "findings": "Clinical Findings",
+      "findingsPlaceholder": "Describe the relevant clinical findings from the case review...",
+      "treatment": "Treatment Options",
+      "treatmentPlaceholder": "List and describe potential treatment options with pros/cons...",
+      "trials": "Relevant Clinical Trials",
+      "trialsPlaceholder": "List any relevant clinical trials the patient may be eligible for...",
+      "recommendations": "Recommendations",
+      "recommendationsPlaceholder": "Provide your clinical recommendations and next steps...",
+      "notes": "Additional Notes",
+      "notesPlaceholder": "Any additional information or notes for the patient...",
+      "markCompleted": "Mark case as completed",
+      "markCompletedDescription": "Check this box if this is the final report and the case review is complete.",
+      "submitReport": "Submit Report"
+    }
+  },
+  "admin": {
+    "sidebar": {
+      "adminPortal": "Admin Portal",
+      "dashboard": "Dashboard",
+      "pendingApprovals": "Pending Approvals",
+      "users": "Users",
+      "allCases": "All Cases"
+    },
+    "dashboard": {
+      "title": "Admin Dashboard",
+      "description": "Overview of platform activity and management tasks.",
+      "totalUsers": "Total Users",
+      "pendingApprovals": "Pending Approvals",
+      "activeCases": "Active Cases",
+      "completedCases": "Completed Cases",
+      "pendingAlert": {
+        "count": "{count} clinician(s) awaiting approval",
+        "message": "Review and approve clinician registrations to grant portal access.",
+        "reviewNow": "Review Now"
+      },
+      "stats": {
+        "totalUsers": "Total Users",
+        "patients": "Patients",
+        "verifiedClinicians": "Verified Clinicians",
+        "pendingApprovals": "Pending Approvals",
+        "totalCases": "Total Cases",
+        "activeCases": "Active Cases"
+      },
+      "quickActions": {
+        "reviewApprovals": {
+          "title": "Review Approvals",
+          "description": "Approve or reject pending clinician registrations."
+        },
+        "manageUsers": {
+          "title": "Manage Users",
+          "description": "View and manage all platform users."
+        },
+        "viewCases": {
+          "title": "View All Cases",
+          "description": "Monitor all cases across the platform."
+        }
+      }
+    },
+    "approvals": {
+      "title": "Pending Approvals",
+      "description": "Review and approve clinician registration requests.",
+      "noPending": "No pending approvals",
+      "approve": "Approve",
+      "reject": "Reject",
+      "clinicianName": "Clinician Name",
+      "email": "Email",
+      "registeredAt": "Registered At",
+      "empty": {
+        "title": "No pending approvals",
+        "description": "All clinician registrations have been reviewed."
+      },
+      "status": {
+        "pending": "Pending"
+      },
+      "fields": {
+        "specialty": "Specialty",
+        "licenseNumber": "License Number",
+        "institution": "Institution",
+        "notProvided": "Not provided"
+      },
+      "registered": "Registered on {date}",
+      "thisClinicianFallback": "this clinician",
+      "approveConfirm": "Are you sure you want to approve {name}?",
+      "rejectConfirm": "Are you sure you want to reject {name}?",
+      "approveSuccess": "Clinician approved successfully",
+      "rejectSuccess": "Clinician rejected successfully"
+    },
+    "users": {
+      "title": "Users",
+      "description": "View and manage all platform users.",
+      "searchUsers": "Search users...",
+      "role": "Role",
+      "status": "Status",
+      "actions": "Actions",
+      "patient": "Patient",
+      "clinician": "Clinician",
+      "admin": "Admin",
+      "active": "Active",
+      "pending": "Pending",
+      "suspended": "Suspended",
+      "table": {
+        "name": "Name",
+        "email": "Email",
+        "role": "Role",
+        "joined": "Joined"
+      },
+      "roles": {
+        "admin": "Admin",
+        "clinician": "Clinician",
+        "pendingClinician": "Pending Clinician",
+        "patient": "Patient"
+      }
+    },
+    "cases": {
+      "title": "All Cases",
+      "description": "Monitor all cases across the platform.",
+      "empty": {
+        "title": "No cases yet",
+        "description": "Cases will appear here once patients submit them."
+      },
+      "table": {
+        "caseNumber": "Case #",
+        "title": "Title",
+        "patient": "Patient",
+        "status": "Status",
+        "assignedTo": "Assigned To",
+        "updated": "Updated"
+      },
+      "untitled": "Untitled"
+    }
+  },
+  "trials": {
+    "title": "Clinical Trials Navigator",
+    "subtitle": "Find clinical trials for your condition",
+    "searchPlaceholder": "Search by condition, treatment, or location...",
+    "filters": "Filters",
+    "condition": "Condition",
+    "phase": "Phase",
+    "location": "Location",
+    "status": "Status",
+    "recruiting": "Recruiting",
+    "notRecruiting": "Not Recruiting",
+    "results": "{count} trials found",
+    "noResults": "No trials found matching your criteria",
+    "saveTrial": "Save Trial",
+    "savedTrial": "Saved",
+    "viewDetails": "View Details",
+    "eligibilityExtraction": "Eligibility extraction",
+    "eligibilityExtractionDesc": "Structured criteria parsed from registry entries, annotated by experts where needed.",
+    "geoFiltering": "Geo-filtering",
+    "geoFilteringDesc": "Filter by your city, state/province, or country to find trials near you.",
+    "conciergeTemplates": "Concierge templates",
+    "conciergeTemplatesDesc": "Pre-written outreach emails, clinician talking points, and checklist for first calls.",
+    "marketingPreview": "Interactive search coming soon. In the meantime, we include relevant trials in your comprehensive report."
+  },
+  "learn": {
+    "kicker": "MaryForward",
+    "title": "All About Conditions",
+    "subtitle": "Foundational resources on oncology, infectious disease, and how we synthesize information.",
+    "browse": "Browse",
+    "seeSchedule": "See schedule",
+    "oncology": {
+      "cardTitle": "Oncology",
+      "cardDescription": "Cancer types, staging, biomarkers, treatment pathways.",
+      "title": "Oncology decision support",
+      "description": "MaryForward synthesizes evidence from oncology guidelines, peer-reviewed literature, and trial registries to help patients and families understand their options.",
+      "commonPathways": {
+        "title": "Common pathways by cancer type",
+        "description": "We surface treatment pathways based on NCCN, ESMO, and specialty guidelines—annotated with citations so you can verify."
+      },
+      "genomicsBiomarkers": {
+        "title": "Genomics & biomarkers",
+        "description": "We map CGP reports to actionability using OncoKB, CIViC, and current literature—with explanatory notes for non-specialists."
+      },
+      "questionsForVisit": {
+        "title": "Questions for your visit",
+        "description": "Each report includes a list of questions tailored to your case to help you have a productive conversation with your oncologist."
+      }
+    },
+    "infectious": {
+      "cardTitle": "Infectious Disease",
+      "cardDescription": "Bacterial, viral, fungal, and parasitic infections.",
+      "title": "Infectious disease decision support",
+      "description": "MaryForward helps patients and families navigate complex infectious disease diagnoses—from antimicrobial selection to specialist referrals.",
+      "diagnosticDifferentials": {
+        "title": "Diagnostic differentials",
+        "description": "We synthesize presenting symptoms, labs, imaging, and culture data to surface likely diagnoses and flag uncommon organisms."
+      },
+      "carePathways": {
+        "title": "Care pathways",
+        "description": "Treatment options based on IDSA guidelines, Sanford Guide, and current literature—with citations and expert review."
+      },
+      "safetySafeguards": {
+        "title": "Safety safeguards",
+        "description": "We flag drug interactions, allergies, and contraindications before sharing any report—with expert annotation for edge cases."
+      }
+    },
+    "ngs": {
+      "cardTitle": "NGS & Molecular Data",
+      "cardDescription": "Genomic profiling, mNGS, biomarker mapping.",
+      "title": "NGS & molecular data integration",
+      "description": "Upload your genomic profiling (CGP) or infectious-disease mNGS report. We map variants and organisms to actionability with citations and cautionary notes.",
+      "oncologyCgp": {
+        "title": "Oncology CGP",
+        "biomarkers": "Biomarker → therapy mapping",
+        "resistance": "Resistance mutation interpretation",
+        "trialEligibility": "Trial eligibility extraction"
+      },
+      "idMngs": {
+        "title": "ID mNGS (mcfDNA)",
+        "organismInterpretation": "Organism interpretation",
+        "contaminationCautions": "Contamination cautions",
+        "followUpTesting": "Follow-up testing suggestions"
+      },
+      "important": {
+        "label": "Important:",
+        "text": "We do not interpret raw sequencing data. Please upload a report from an accredited lab."
+      }
+    },
+    "webinars": {
+      "cardTitle": "Webinars & Briefings",
+      "cardDescription": "Live sessions and recorded briefings.",
+      "title": "Webinars & Briefings",
+      "description": "Live sessions and recorded briefings from MaryForward experts and guest clinicians.",
+      "upcoming": {
+        "title": "Upcoming",
+        "item1": "Understanding Your Oncology Report — Jan 2025",
+        "item2": "mNGS for Non-Specialists — Feb 2025",
+        "item3": "Clinical Trials 101 — Mar 2025"
+      },
+      "past": {
+        "title": "Past",
+        "item1": "Introduction to MaryForward — Dec 2024",
+        "item2": "How We Cite — Nov 2024",
+        "item3": "Biomarkers & Targeted Therapy — Oct 2024"
+      }
+    },
+    "contentPromise": {
+      "title": "Our content promise",
+      "vettedSources": {
+        "title": "Vetted sources",
+        "description": "NCCN, ESMO, IDSA, Sanford, OncoKB, CIViC, peer-reviewed literature, trials registries."
+      },
+      "transparentCitations": {
+        "title": "Transparent citations",
+        "description": "Every claim is linked to its source so you can verify and share with your care team."
+      },
+      "clearLimitations": {
+        "title": "Clear limitations",
+        "description": "We state when evidence is weak, conflicting, or unavailable."
+      },
+      "humanReview": {
+        "title": "Human review",
+        "description": "Expert clinicians review every report before it reaches you."
+      }
+    }
+  },
+  "whatWeDo": {
+    "patients": {
+      "kicker": "MaryForward",
+      "title": "For Patients",
+      "description": "MaryForward helps you move from uncertainty to a plan—by translating trusted medical sources into clear options, questions to ask, and next steps.",
+      "journey": {
+        "title": "Patient journey",
+        "step1": "Create a secure account and complete a guided intake questionnaire.",
+        "step2": "Upload relevant documents (labs, imaging, pathology).",
+        "step3": "Our AI synthesizes evidence from vetted sources.",
+        "step4": "Expert clinicians review and annotate the draft for safety and clarity.",
+        "step5": "Receive a shareable report with recommendations and questions for your care team."
+      },
+      "whatWeDontDo": {
+        "title": "What we don't do",
+        "item1": "We do not diagnose or prescribe.",
+        "item2": "We do not replace your primary care team.",
+        "item3": "We do not provide emergency or urgent care.",
+        "urgentCareNote": "If you have urgent symptoms, call 911 or go to the nearest emergency department."
+      }
+    },
+    "clinicians": {
+      "kicker": "MaryForward",
+      "title": "For Clinicians / Clinics",
+      "description": "MaryForward provides structured decision support for oncology and infectious disease—designed to save time and improve patient conversations.",
+      "receive": {
+        "title": "What clinicians receive",
+        "item1": "Structured case summaries with citations.",
+        "item2": "Differential diagnoses with supporting evidence.",
+        "item3": "Treatment options mapped to guidelines.",
+        "item4": "Relevant clinical trials with eligibility summaries."
+      },
+      "deployment": {
+        "title": "Deployment options",
+        "item1": "Patient-initiated: Patients create cases and share reports with you.",
+        "item2": "Clinician-initiated: You create cases on behalf of patients.",
+        "item3": "EHR integration: Coming soon for select partners."
+      }
+    },
+    "partners": {
+      "kicker": "MaryForward",
+      "title": "For Sponsors & Partners",
+      "description": "MaryForward partners with organizations committed to patient education and clinical decision support—without referral contingencies.",
+      "grants": {
+        "title": "Unrestricted educational grants",
+        "description": "Support the development of condition-specific content, webinars, and patient resources."
+      },
+      "marketplace": {
+        "title": "Diagnostics marketplace listings",
+        "description": "Lab and testing partners can list their services with clear descriptions, pricing, and turnaround times."
+      },
+      "disclaimer": "All partnerships are disclosed. We do not accept referral fees or contingency arrangements."
+    }
+  },
+  "company": {
+    "ourStory": {
+      "kicker": "MaryForward",
+      "title": "Our Story",
+      "description": "MaryForward was founded to help patients and families move from uncertainty to a plan—with clarity, compassion, and evidence.",
+      "mission": {
+        "title": "Our mission",
+        "description": "We believe every patient deserves access to expert-reviewed decision support, regardless of geography, language, or resources.",
+        "honorTitle": "In honor of Mary",
+        "honorDescription": "MaryForward is built in honor of Mary, whose journey through complex medical decisions inspired us to create a better way."
+      },
+      "principles": {
+        "title": "Our principles",
+        "safety": "Safety first: Every report is reviewed by expert clinicians before sharing.",
+        "transparency": "Transparency: We cite our sources and state limitations clearly.",
+        "respect": "Respect: We treat every case with care and confidentiality.",
+        "collaboration": "Collaboration: We work with—not around—your care team."
+      }
+    },
+    "compliance": {
+      "kicker": "MaryForward",
+      "title": "Safety, Privacy & Compliance",
+      "description": "MaryForward is built with clinical safety, data privacy, and regulatory compliance at its core.",
+      "clinicalSafety": {
+        "title": "Clinical safety",
+        "redFlag": "Red-flag symptoms and contraindications are surfaced automatically.",
+        "secondReview": "Expert clinicians review every report before sharing.",
+        "monitoring": "We monitor for adverse event signals and update guidance accordingly."
+      },
+      "hipaa": {
+        "title": "HIPAA & data privacy",
+        "roleBasedAccess": "Role-based access controls for all user types.",
+        "encryption": "Encryption at rest and in transit (AES-256, TLS 1.3).",
+        "auditLogging": "Audit logging for all data access and modifications."
+      },
+      "commercial": {
+        "title": "Commercial independence",
+        "noReferral": "We do not accept referral fees or contingency arrangements.",
+        "firewalls": "Educational grants are firewalled from clinical content.",
+        "disclosures": "All partnerships and funding sources are disclosed."
+      },
+      "limitations": {
+        "title": "Limitations",
+        "description": "MaryForward is decision support—not diagnosis, prescription, or emergency care. Always consult your primary care team for medical decisions."
+      },
+      "disclaimer": "If you have urgent symptoms, call 911 or go to the nearest emergency department."
+    },
+    "pricing": {
+      "kicker": "MaryForward",
+      "title": "Pricing",
+      "description": "Transparent pricing for comprehensive decision support.",
+      "comprehensive": {
+        "title": "Comprehensive case review",
+        "price": "$299",
+        "perCase": "per case",
+        "intake": "Structured intake",
+        "synthesis": "AI synthesis + expert review",
+        "expertReview": "Expert annotation",
+        "report": "Patient + clinician report"
+      },
+      "longitudinal": {
+        "title": "Longitudinal tracking",
+        "price": "$49",
+        "perMonth": "per month",
+        "outcomeTracking": "Outcome tracking",
+        "sideEffects": "Side-effect monitoring",
+        "trialReminders": "Trial status reminders"
+      },
+      "expedite": {
+        "title": "Add-ons",
+        "expeditePrice": "+$99",
+        "expediteLabel": "Expedite (24h turnaround)",
+        "conciergePrice": "+$149",
+        "conciergeLabel": "Concierge (care coordination)",
+        "fasterTurnaround": "Faster turnaround for urgent cases.",
+        "careCoordination": "Scheduling, records requests, and follow-up support.",
+        "trialOutreach": "Trial outreach on your behalf."
+      },
+      "disclaimer": "Prices are subject to change. Financial assistance may be available for qualifying patients."
+    }
+  },
+  "resources": {
+    "title": "Resources",
+    "description": "MaryForward synthesizes information from vetted primary sources. Here's where we look.",
+    "primarySourcesTitle": "Primary source categories",
+    "source1": "Clinical practice guidelines (NCCN, ESMO, IDSA, etc.)",
+    "source2": "Peer-reviewed literature (PubMed-indexed journals)",
+    "source3": "Clinical trial registries (ClinicalTrials.gov, WHO ICTRP)",
+    "source4": "Genomic knowledge bases (OncoKB, CIViC, ClinVar)",
+    "source5": "Pharmacology references (Sanford Guide, UpToDate, Lexicomp)",
+    "howWeCiteTitle": "How we cite",
+    "howWeCiteDescription": "Every claim in a MaryForward report is linked to its source. We include publication date, author, and DOI where available."
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Have questions? We'd love to hear from you.",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "email": "Email",
+    "category": "I am a...",
+    "categoryPatient": "Patient or Family Member",
+    "categoryClinician": "Clinician or Healthcare Provider",
+    "categorySponsor": "Sponsor or Partner",
+    "categoryOther": "Other",
+    "message": "How can we help you?",
+    "messagePlaceholder": "Tell us how we can help...",
+    "submit": "Send message",
+    "success": "Thank you for reaching out! We'll get back to you within 1-2 business days.",
+    "sendAnother": "Send another message"
+  },
+  "forms": {
+    "required": "Required",
+    "optional": "Optional",
+    "charactersRemaining": "{count} characters remaining",
+    "common": {
+      "firstName": "First name",
+      "firstNamePlaceholder": "John",
+      "lastName": "Last name",
+      "lastNamePlaceholder": "Doe",
+      "email": "Email",
+      "emailPlaceholder": "you@example.com",
+      "password": "Password"
+    },
+    "newsletter": {
+      "placeholder": "you@example.com",
+      "subscribe": "Subscribe",
+      "successMessage": "Thanks for subscribing!",
+      "alreadySubscribed": "You're already subscribed!",
+      "errorMessage": "Something went wrong. Please try again."
+    },
+    "contact": {
+      "iAmA": "I am a...",
+      "categoryPatient": "Patient or Family Member",
+      "categoryClinician": "Clinician or Healthcare Provider",
+      "categoryPartner": "Sponsor or Partner",
+      "categoryOther": "Other",
+      "message": "Message",
+      "messagePlaceholder": "How can we help you?",
+      "sendMessage": "Send message",
+      "successMessage": "Thank you for reaching out! We'll get back to you within 1-2 business days.",
+      "successToast": "Message sent successfully!",
+      "submitError": "Failed to submit form",
+      "sendAnother": "Send another message"
+    }
+  },
+  "validation": {
+    "required": "This field is required",
+    "invalidEmail": "Please enter a valid email address",
+    "passwordMinLength": "Password must be at least 8 characters",
+    "passwordMismatch": "Passwords do not match",
+    "passwordRequirements": "Password must be at least 8 characters with uppercase, lowercase, and a number.",
+    "invalidDate": "Please enter a valid date",
+    "fileTooLarge": "File is too large. Maximum size is {size}MB",
+    "invalidFileType": "Invalid file type"
+  },
+  "pages": {
+    "login": {
+      "kicker": "Account",
+      "title": "Welcome back",
+      "loggingInAs": "Logging in as:",
+      "patientDescription": "Sign in to access your dashboard and reports.",
+      "clinicianDescription": "Sign in to access your clinician dashboard and case reviews."
+    },
+    "signup": {
+      "kicker": "Account",
+      "title": "Get Started",
+      "signingUpAs": "Signing up as:",
+      "patientDescription": "Create an account to begin your secure intake process.",
+      "clinicianDescription": "Create an account to review cases and provide decision support."
+    },
+    "contact": {
+      "kicker": "Contact",
+      "title": "Let's talk",
+      "subtitle": "Request a demo, discuss pilots, or ask about clinical operations and compliance."
+    }
+  },
+  "errors": {
+    "notFound": "Page not found",
+    "notFoundDescription": "The page you're looking for doesn't exist.",
+    "serverError": "Something went wrong",
+    "serverErrorDescription": "We're having trouble loading this page. Please try again.",
+    "unauthorized": "Unauthorized",
+    "unauthorizedDescription": "You don't have permission to access this page.",
+    "goHome": "Go home",
+    "tryAgain": "Try again"
+  },
+  "inbox": {
+    "title": "Messages",
+    "noMessages": "No messages yet",
+    "startConversation": "Start the conversation by sending a message below.",
+    "placeholder": "Type your message...",
+    "send": "Send",
+    "attachFile": "Attach file",
+    "attachments": "Attachments",
+    "unread": "unread",
+    "markAsRead": "Mark all as read",
+    "you": "You",
+    "patient": "Patient",
+    "clinician": "Clinician",
+    "newMessage": "New message",
+    "fileTooBig": "File is too large. Maximum size is 25MB.",
+    "invalidFileType": "Invalid file type. Please upload an image, PDF, or document.",
+    "messageSent": "Message sent",
+    "errorSending": "Failed to send message. Please try again."
+  }
+}
