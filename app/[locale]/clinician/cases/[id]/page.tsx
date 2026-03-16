@@ -5,6 +5,8 @@ import { prisma } from "@/lib/prisma";
 import { CaseStatusBadge } from "@/components/portal/CaseStatusBadge";
 import { formatDate, formatDateTime } from "@/lib/utils";
 import { AssignCaseButton } from "@/components/clinician/AssignCaseButton";
+import { ResearchPapersButton } from "@/components/clinician/ResearchPapersButton";
+import { OtherResearchButton } from "@/components/clinician/OtherResearchButton";
 import type { CaseStatus, CaseType } from "@/types";
 
 const caseTypeLabels: Record<CaseType, string> = {
@@ -102,6 +104,12 @@ export default async function ClinicianCaseDetailPage({
               </svg>
               Messages
             </Link>
+          )}
+          {isAssignedToMe && (
+            <>
+              <ResearchPapersButton caseId={id} />
+              <OtherResearchButton caseId={id} />
+            </>
           )}
           {canWriteReport && (
             <Link
