@@ -7,6 +7,8 @@ import { formatDate, formatDateTime } from "@/lib/utils";
 import { AssignCaseButton } from "@/components/clinician/AssignCaseButton";
 import { ResearchPapersButton } from "@/components/clinician/ResearchPapersButton";
 import { OtherResearchButton } from "@/components/clinician/OtherResearchButton";
+import { MedicalBooksButton } from "@/components/clinician/MedicalBooksButton";
+import { EditCaseForm } from "@/components/clinician/EditCaseForm";
 import type { CaseStatus, CaseType } from "@/types";
 
 const caseTypeLabels: Record<CaseType, string> = {
@@ -109,6 +111,7 @@ export default async function ClinicianCaseDetailPage({
             <>
               <ResearchPapersButton caseId={id} />
               <OtherResearchButton caseId={id} />
+              <MedicalBooksButton caseId={id} />
             </>
           )}
           {canWriteReport && (
@@ -172,6 +175,21 @@ export default async function ClinicianCaseDetailPage({
           </div>
         </div>
       </div>
+
+      {isAssignedToMe && caseData.status !== "COMPLETED" && (
+        <EditCaseForm
+          caseId={id}
+          initialData={{
+            title: caseData.title || "",
+            caseType: caseData.caseType,
+            primaryDiagnosis: caseData.primaryDiagnosis || "",
+            symptoms: caseData.symptoms || "",
+            currentMedications: caseData.currentMedications || "",
+            allergies: caseData.allergies || "",
+            medicalHistory: caseData.medicalHistory || "",
+          }}
+        />
+      )}
 
       <div className="grid gap-6 lg:grid-cols-3">
         <div className="lg:col-span-2 space-y-6">

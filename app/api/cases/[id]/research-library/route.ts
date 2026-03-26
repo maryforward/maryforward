@@ -41,6 +41,86 @@ function extractTitle(filename: string, text: string): string {
   return filename.replace(/\.pdf$/i, "").replace(/[-_]/g, " ");
 }
 
+/**
+ * Extract the meaningful body text from a research paper PDF, skipping
+ * front-matter (editors, dates, author affiliations, copyright notices).
+ *
+ * Strategy:
+ * 1. Look for a labelled abstract section and start there.
+ * 2. If no explicit label, skip lines that look like metadata and take
+ *    the remaining text.
+ */
+function extractBodyText(fullText: string): string {
+  // 1. Try to find an explicit "Abstract" section
+  const abstractMatch = fullText.match(
+    /\b(Abstract|ABSTRACT|Summary|SUMMARY)\s*[:\-—]?\s*/
+  );
+  if (abstractMatch && abstractMatch.index !== undefined) {
+    return fullText.substring(abstractMatch.index).trim();
+  }
+
+  // 2. Try to find "Introduction" or "Background" section
+  const introMatch = fullText.match(
+    /\b(1\.\s*Introduction|INTRODUCTION|Background|BACKGROUND)\b/
+  );
+  if (introMatch && introMatch.index !== undefined) {
+    return fullText.substring(introMatch.index).trim();
+  }
+
+  // 3. Fallback: skip metadata-heavy lines at the top.
+  //    Metadata lines are typically short, contain emails, affiliations, dates.
+  const lines = fullText.split("\n");
+  const metadataRe = /^(Academic Editor|Received:|Revised:|Accepted:|Published:|Citation:|Copyright:|Licensee|Correspondence:|Tel\.:|https?:\/\/|@|MDPI|doi\.org)/i;
+  const affiliationRe = /^(Department of|Division of|University of|College of|Hospital|Centre|Center|School of)/i;
+
+  let startIdx = 0;
+  for (let i = 0; i < Math.min(lines.length, 80); i++) {
+    const line = lines[i].trim();
+    if (!line) continue;
+    // Keep skipping while lines are short metadata or match metadata patterns
+    if (
+      line.length < 15 ||
+      metadataRe.test(line) ||
+      (line.length < 120 && affiliationRe.test(line)) ||
+      /^\d+$/.test(line) ||        // page numbers
+      /^[*\d,]+$/.test(line)        // footnote markers
+    ) {
+      startIdx = i + 1;
+      continue;
+    }
+    // Once we hit a long substantive line, stop skipping
+    if (line.length > 150) break;
+  }
+
+  return lines.slice(startIdx).join("\n").trim();
+}
+
+/**
+ * Extract clean sentences from paper body text, filtering out junk
+ * (short fragments, emails, references, page numbers).
+ */
+function extractSentences(text: string): string[] {
+  return text
+    .replace(/\n+/g, " ")
+    .replace(/\s+/g, " ")
+    // Remove common section headings used as inline labels
+    .replace(
+      /\b(BACKGROUND|OBJECTIVE|METHODS|RESULTS|CONCLUSIONS?|PURPOSE|AIMS?|INTRODUCTION|DESIGN|SETTING|PARTICIPANTS|MEASUREMENTS|MAIN OUTCOME MEASURES?|SIGNIFICANCE|CONTEXT|IMPORTANCE|OBSERVATIONS?)\s*:\s*/gi,
+      ""
+    )
+    .split(/(?<=[.!?])\s+/)
+    .map((s) => s.trim())
+    .filter((s) => s.length > 40 && s.length < 600);
+}
+
+/**
+ * Pick the most relevant sentences for a given keyword regex.
+ */
+function pickRelevantSentences(sentences: string[], keyword: RegExp, max: number): string[] {
+  const matching = sentences.filter((s) => keyword.test(s));
+  return matching.length > 0 ? matching.slice(0, max) : sentences.slice(0, 1);
+}
+
 function categorizePapers(papers: ParsedPaper[], diseaseName: string) {
   const sections = {
     diseaseName,
@@ -62,46 +142,55 @@ function categorizePapers(papers: ParsedPaper[], diseaseName: string) {
   }[] = [];
 
   for (const paper of papers) {
-    const text = paper.text;
-    // Use a meaningful portion of the document for summary and display
-    const abstract = text.substring(0, 5000).trim();
-    if (!abstract) continue;
+    // Extract the meaningful body text, skipping front-matter
+    const bodyText = extractBodyText(paper.text);
+    if (!bodyText) continue;
 
-    const displaySnippet = abstract.substring(0, 500) + (abstract.length > 500 ? "..." : "");
-    const categorySnippet = abstract.substring(0, 300) + (abstract.length > 300 ? "..." : "");
+    // Use a generous portion for the article abstract sent to the client
+    const abstract = bodyText.substring(0, 8000).trim();
+    const sentences = extractSentences(abstract);
 
-    // Add to summary with full snippet
-    sections.summary.push(`**${paper.title}** - ${displaySnippet}`);
+    if (sentences.length === 0) continue;
 
-    // Categorize — include a summary snippet in each category, not just the title
+    // Summary: first 3 meaningful sentences from the paper
+    const summarySnippet = sentences.slice(0, 3).join(" ");
+    sections.summary.push(`**${paper.title}** — ${summarySnippet}`);
+
+    // Categorize using the full body text for keyword matching,
+    // but pull actual relevant sentences for each category
+    const fullText = paper.text;
     let categorized = false;
-    if (preventionKeywords.test(text)) {
-      sections.generalPrevention.push(`**${paper.title}** - ${categorySnippet}`);
+
+    if (preventionKeywords.test(fullText)) {
+      const picked = pickRelevantSentences(sentences, preventionKeywords, 3);
+      sections.generalPrevention.push(`**${paper.title}** — ${picked.join(" ")}`);
       categorized = true;
     }
-    if (diagnosisKeywords.test(text)) {
-      sections.diagnosis.push(`**${paper.title}** - ${categorySnippet}`);
+    if (diagnosisKeywords.test(fullText)) {
+      const picked = pickRelevantSentences(sentences, diagnosisKeywords, 3);
+      sections.diagnosis.push(`**${paper.title}** — ${picked.join(" ")}`);
       categorized = true;
     }
-    if (treatmentKeywords.test(text)) {
-      sections.treatment.push(`**${paper.title}** - ${categorySnippet}`);
+    if (treatmentKeywords.test(fullText)) {
+      const picked = pickRelevantSentences(sentences, treatmentKeywords, 3);
+      sections.treatment.push(`**${paper.title}** — ${picked.join(" ")}`);
       categorized = true;
     }
-    if (additionalTherapyKeywords.test(text)) {
-      sections.additionalTherapy.push(`**${paper.title}** - ${categorySnippet}`);
+    if (additionalTherapyKeywords.test(fullText)) {
+      const picked = pickRelevantSentences(sentences, additionalTherapyKeywords, 3);
+      sections.additionalTherapy.push(`**${paper.title}** — ${picked.join(" ")}`);
       categorized = true;
     }
     if (!categorized) {
-      sections.treatment.push(`**${paper.title}** - ${categorySnippet}`);
+      sections.treatment.push(`**${paper.title}** — ${sentences.slice(0, 3).join(" ")}`);
     }
 
-    // Build article object for Simple Report
-    // Include categories so the client doesn't need to re-categorize with limited text
+    // Build article object for report generation on the client side
     const categories: string[] = [];
-    if (preventionKeywords.test(text)) categories.push("prevention");
-    if (diagnosisKeywords.test(text)) categories.push("diagnosis");
-    if (treatmentKeywords.test(text)) categories.push("treatment");
-    if (additionalTherapyKeywords.test(text)) categories.push("additionalTherapy");
+    if (preventionKeywords.test(fullText)) categories.push("prevention");
+    if (diagnosisKeywords.test(fullText)) categories.push("diagnosis");
+    if (treatmentKeywords.test(fullText)) categories.push("treatment");
+    if (additionalTherapyKeywords.test(fullText)) categories.push("additionalTherapy");
     if (categories.length === 0) categories.push("treatment");
 
     articles.push({

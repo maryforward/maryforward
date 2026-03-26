@@ -56,22 +56,34 @@ export async function PATCH(
 
     const { id } = await params;
 
-    // Check case exists and belongs to user
+    // Check if user is the case owner (patient) or the assigned clinician
     const existingCase = await prisma.case.findFirst({
-      where: {
-        id,
-        userId: session.user.id,
-      },
+      where: { id },
     });
 
     if (!existingCase) {
       return NextResponse.json({ error: "Case not found" }, { status: 404 });
     }
 
-    // Only allow editing draft cases
-    if (existingCase.status !== "DRAFT") {
+    const isOwner = existingCase.userId === session.user.id;
+    const isAssignedClinician = existingCase.assignedClinicianId === session.user.id;
+
+    if (!isOwner && !isAssignedClinician) {
+      return NextResponse.json({ error: "Case not found" }, { status: 404 });
+    }
+
+    // Patients can only edit draft cases
+    if (isOwner && !isAssignedClinician && existingCase.status !== "DRAFT") {
       return NextResponse.json(
         { error: "Only draft cases can be edited" },
+        { status: 400 }
+      );
+    }
+
+    // Clinicians cannot edit completed/archived cases
+    if (isAssignedClinician && ["COMPLETED", "ARCHIVED"].includes(existingCase.status)) {
+      return NextResponse.json(
+        { error: "Completed cases cannot be edited" },
         { status: 400 }
       );
     }

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import { simplifyMedicalText, SIMPLE_REPORT_STYLES } from "@/lib/medical-simplify";
 
 interface ResearchSection {
   diseaseName: string;
@@ -100,118 +101,151 @@ function deduplicateArticles(articles: LibraryArticle[]): LibraryArticle[] {
 // Report builders — synthesized narrative with superscript citations
 // ---------------------------------------------------------------------------
 
-interface CategorizedData {
-  prevention: { articleIdx: number; sentences: string[] }[];
-  diagnosis: { articleIdx: number; sentences: string[] }[];
-  treatment: { articleIdx: number; sentences: string[] }[];
-  additionalTherapy: { articleIdx: number; sentences: string[] }[];
+interface TaggedSentence {
+  text: string;
+  sourceIdx: number;
 }
 
-function categorizeWithSentences(articles: LibraryArticle[]): CategorizedData {
-  const result: CategorizedData = {
+interface CategorizedSentences {
+  prevention: TaggedSentence[];
+  diagnosis: TaggedSentence[];
+  treatment: TaggedSentence[];
+  additionalTherapy: TaggedSentence[];
+}
+
+/**
+ * Collect relevant sentences from all articles for each category.
+ * Each sentence is tagged with its source article index.
+ */
+function collectCategorySentences(articles: LibraryArticle[]): CategorizedSentences {
+  const result: CategorizedSentences = {
     prevention: [],
     diagnosis: [],
     treatment: [],
     additionalTherapy: [],
   };
 
-  for (let i = 0; i < articles.length; i++) {
-    const article = articles[i];
-    if (!article.abstract || !article.abstract.trim()) continue;
+  // Two passes: first pass adds 1 best sentence per article per category to
+  // ensure every paper is represented. Second pass adds up to 2 more.
+  for (let pass = 0; pass < 2; pass++) {
+    for (let i = 0; i < articles.length; i++) {
+      const article = articles[i];
+      if (!article.abstract || !article.abstract.trim()) continue;
 
-    const sentences = extractSentences(article.abstract);
-    const cats = article.categories;
+      const sentences = extractSentences(article.abstract);
+      const cats = article.categories;
 
-    const belongs = (cat: string) =>
-      cats && cats.length > 0
-        ? cats.includes(cat)
-        : CATEGORY_KEYWORDS[cat]?.test(`${article.title} ${article.abstract}`);
+      const belongs = (cat: string) =>
+        cats && cats.length > 0
+          ? cats.includes(cat)
+          : CATEGORY_KEYWORDS[cat]?.test(`${article.title} ${article.abstract}`);
 
-    if (belongs("prevention")) {
-      result.prevention.push({
-        articleIdx: i,
-        sentences: pickRelevantSentences(sentences, CATEGORY_KEYWORDS.prevention, 2),
-      });
-    }
-    if (belongs("diagnosis")) {
-      result.diagnosis.push({
-        articleIdx: i,
-        sentences: pickRelevantSentences(sentences, CATEGORY_KEYWORDS.diagnosis, 2),
-      });
-    }
-    if (belongs("treatment")) {
-      result.treatment.push({
-        articleIdx: i,
-        sentences: pickRelevantSentences(sentences, CATEGORY_KEYWORDS.treatment, 2),
-      });
-    }
-    if (belongs("additionalTherapy")) {
-      result.additionalTherapy.push({
-        articleIdx: i,
-        sentences: pickRelevantSentences(sentences, CATEGORY_KEYWORDS.additionalTherapy, 2),
-      });
-    }
-
-    // If no category matched at all, put in treatment
-    if (!belongs("prevention") && !belongs("diagnosis") && !belongs("treatment") && !belongs("additionalTherapy")) {
-      result.treatment.push({
-        articleIdx: i,
-        sentences: sentences.slice(0, 2),
-      });
+      if (pass === 0) {
+        // First pass: 1 best sentence per article per category
+        if (belongs("prevention")) {
+          const picked = pickRelevantSentences(sentences, CATEGORY_KEYWORDS.prevention, 1);
+          picked.forEach((s) => result.prevention.push({ text: s, sourceIdx: i }));
+        }
+        if (belongs("diagnosis")) {
+          const picked = pickRelevantSentences(sentences, CATEGORY_KEYWORDS.diagnosis, 1);
+          picked.forEach((s) => result.diagnosis.push({ text: s, sourceIdx: i }));
+        }
+        if (belongs("treatment")) {
+          const picked = pickRelevantSentences(sentences, CATEGORY_KEYWORDS.treatment, 1);
+          picked.forEach((s) => result.treatment.push({ text: s, sourceIdx: i }));
+        }
+        if (belongs("additionalTherapy")) {
+          const picked = pickRelevantSentences(sentences, CATEGORY_KEYWORDS.additionalTherapy, 1);
+          picked.forEach((s) => result.additionalTherapy.push({ text: s, sourceIdx: i }));
+        }
+        if (!belongs("prevention") && !belongs("diagnosis") && !belongs("treatment") && !belongs("additionalTherapy")) {
+          sentences.slice(0, 1).forEach((s) => result.treatment.push({ text: s, sourceIdx: i }));
+        }
+      } else {
+        // Second pass: add 2 more sentences per article for depth
+        if (belongs("prevention")) {
+          const picked = pickRelevantSentences(sentences, CATEGORY_KEYWORDS.prevention, 3).slice(1);
+          picked.forEach((s) => result.prevention.push({ text: s, sourceIdx: i }));
+        }
+        if (belongs("diagnosis")) {
+          const picked = pickRelevantSentences(sentences, CATEGORY_KEYWORDS.diagnosis, 3).slice(1);
+          picked.forEach((s) => result.diagnosis.push({ text: s, sourceIdx: i }));
+        }
+        if (belongs("treatment")) {
+          const picked = pickRelevantSentences(sentences, CATEGORY_KEYWORDS.treatment, 3).slice(1);
+          picked.forEach((s) => result.treatment.push({ text: s, sourceIdx: i }));
+        }
+        if (belongs("additionalTherapy")) {
+          const picked = pickRelevantSentences(sentences, CATEGORY_KEYWORDS.additionalTherapy, 3).slice(1);
+          picked.forEach((s) => result.additionalTherapy.push({ text: s, sourceIdx: i }));
+        }
+      }
     }
   }
 
   return result;
 }
 
-/** Build a flowing paragraph from categorized sentences with superscript citations. */
-function buildNarrativeParagraph(
-  entries: { articleIdx: number; sentences: string[] }[],
-  maxEntries: number
-): string {
-  const parts: string[] = [];
-  const used = entries.slice(0, maxEntries);
+/**
+ * Build flowing paragraphs from a pool of tagged sentences.
+ * Groups ~5 sentences into each paragraph, combining citations at the end.
+ * Returns the HTML and the set of source indices actually used.
+ */
+function buildNarrativeParagraphs(
+  sentences: TaggedSentence[],
+  maxSentences: number = 200,
+  simple: boolean = false
+): { html: string; usedSources: Set<number> } {
+  const capped = sentences.slice(0, maxSentences);
+  const usedSources = new Set<number>();
+  if (capped.length === 0) return { html: "", usedSources };
 
-  for (const entry of used) {
-    const refNum = entry.articleIdx + 1;
-    const combined = entry.sentences.join(" ");
-    parts.push(`${stripHtml(combined)}<sup>[${refNum}]</sup>`);
+  const paragraphs: string[] = [];
+  const sentencesPerParagraph = simple ? 3 : 5;
+
+  for (let i = 0; i < capped.length; i += sentencesPerParagraph) {
+    const group = capped.slice(i, i + sentencesPerParagraph);
+    const text = group
+      .map((s) => {
+        const cleaned = stripHtml(s.text);
+        return simple ? simplifyMedicalText(cleaned) : cleaned;
+      })
+      .join(" ");
+
+    const sourceNums = [...new Set(group.map((s) => s.sourceIdx))].sort((a, b) => a - b);
+    sourceNums.forEach((n) => usedSources.add(n));
+    const citations = sourceNums.map((n) => `${n + 1}`).join(",");
+
+    paragraphs.push(`<p>${text}<sup>[${citations}]</sup></p>`);
   }
 
-  return parts.join(" ");
+  return { html: paragraphs.join("\n"), usedSources };
 }
 
-/** Build the references list HTML. */
-function buildReferencesHtml(articles: LibraryArticle[]): string {
-  return articles
-    .map((a, i) => {
-      const title = stripHtml(a.title);
-      const source = stripHtml(a.journal).replace(/\.pdf$/i, "");
-      return `<li><strong>[${i + 1}]</strong> ${title} <span class="ref-source">(${source})</span></li>`;
-    })
-    .join("\n          ");
-}
+
 
 const REPORT_STYLES = `
     @media print { @page { margin: 0.8in; } body { font-size: 12px; } }
-    body { font-family: 'Segoe UI', -apple-system, Arial, sans-serif; color: #1a1a1a; max-width: 800px; margin: 0 auto; padding: 40px 20px; line-height: 1.7; }
+    body { font-family: 'Segoe UI', -apple-system, Arial, sans-serif; color: #1a1a1a; max-width: 800px; margin: 0 auto; padding: 40px 20px; line-height: 1.8; }
     h1 { font-size: 22px; border-bottom: 3px solid #0ea5e9; padding-bottom: 10px; margin-bottom: 4px; color: #0c4a6e; }
     .subtitle { font-size: 12px; color: #666; margin-bottom: 20px; }
-    h2 { font-size: 16px; color: #0369a1; margin-top: 28px; margin-bottom: 10px; border-bottom: 1px solid #e2e8f0; padding-bottom: 4px; }
-    .section { margin-bottom: 22px; }
-    .section p { font-size: 13px; color: #334155; margin: 0 0 10px 0; text-align: justify; }
+    h2 { font-size: 16px; color: #0369a1; margin-top: 32px; margin-bottom: 14px; border-bottom: 1px solid #e2e8f0; padding-bottom: 6px; }
+    .section { margin-bottom: 28px; }
+    .section p { font-size: 13px; color: #334155; margin: 0 0 16px 0; text-align: justify; line-height: 1.8; }
+    .section p:last-child { margin-bottom: 0; }
     sup { font-size: 9px; color: #0369a1; font-weight: 600; }
     .disease-banner { background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 6px; padding: 12px 16px; margin-bottom: 18px; }
     .disease-banner h3 { margin: 0; font-size: 15px; color: #0c4a6e; }
-    .intro { font-size: 13px; color: #475569; margin-bottom: 20px; line-height: 1.7; }
-    .references { margin-top: 32px; padding-top: 16px; border-top: 2px solid #e2e8f0; }
-    .references h2 { font-size: 15px; color: #334155; border-bottom: none; margin-bottom: 8px; }
+    .intro { font-size: 13px; color: #475569; margin-bottom: 24px; line-height: 1.8; }
+    .references { margin-top: 36px; padding-top: 20px; border-top: 2px solid #e2e8f0; }
+    .references h2 { font-size: 15px; color: #334155; border-bottom: none; margin-bottom: 12px; }
     .references ol { padding-left: 0; list-style: none; }
-    .references li { font-size: 11px; color: #475569; margin-bottom: 6px; line-height: 1.5; }
+    .references li { font-size: 11px; color: #475569; margin-bottom: 8px; line-height: 1.6; padding-bottom: 6px; border-bottom: 1px solid #f8fafc; }
+    .references li:last-child { border-bottom: none; }
     .references li strong { color: #0369a1; }
     .ref-source { color: #94a3b8; }
-    .disclaimer { font-size: 11px; color: #94a3b8; margin-top: 28px; padding-top: 12px; border-top: 1px solid #e2e8f0; }
-    .section-note { font-size: 13px; color: #64748b; font-style: italic; margin-bottom: 12px; }
+    .disclaimer { font-size: 11px; color: #94a3b8; margin-top: 32px; padding-top: 14px; border-top: 1px solid #e2e8f0; }
+    .section-note { font-size: 13px; color: #64748b; font-style: italic; margin-bottom: 16px; line-height: 1.7; }
 `;
 
 function generateReportHtml(articles: LibraryArticle[], diseaseName: string, simple: boolean): string {
@@ -219,17 +253,14 @@ function generateReportHtml(articles: LibraryArticle[], diseaseName: string, sim
 
   // Deduplicate — remove papers with >60% word overlap
   const dedupedArticles = deduplicateArticles(articles);
-  const categorized = categorizeWithSentences(dedupedArticles);
-
-  // No cap — include all unique papers; keep it readable by limiting sentences per paper (2 max)
-  const maxPerSection = Infinity;
+  const categorized = collectCategorySentences(dedupedArticles);
 
   const sectionDefs = simple
     ? [
-        { key: "prevention" as const, title: "Prevention — How to Reduce Risk", note: "Research on ways to lower the chances of getting this condition or stop it from getting worse." },
-        { key: "diagnosis" as const, title: "Diagnosis — How Doctors Identify the Condition", note: "Research on how doctors find and confirm this condition, including tests and imaging." },
-        { key: "treatment" as const, title: "Treatment — How It Can Be Treated", note: "Research on treatments including medications, surgery, and other medical procedures." },
-        { key: "additionalTherapy" as const, title: "Additional Options — Other Therapies Being Explored", note: "Research on newer approaches like immune-based therapies, supportive care, and clinical trials." },
+        { key: "prevention" as const, title: "Prevention — How to Reduce Your Risk", note: "This section summarizes what researchers have found about lowering the chances of getting this condition or stopping it from getting worse." },
+        { key: "diagnosis" as const, title: "Diagnosis — How Doctors Find This Condition", note: "This section covers the tests, scans, and methods researchers have studied for detecting and confirming this condition." },
+        { key: "treatment" as const, title: "Treatment — What Can Be Done About It", note: "This section describes what researchers have found about treatments, including medicines, procedures, and other approaches." },
+        { key: "additionalTherapy" as const, title: "Other Options — Additional Therapies Being Explored", note: "This section covers newer or less common approaches that researchers are studying, such as immune-based treatments, supportive care, and clinical trials." },
       ]
     : [
         { key: "prevention" as const, title: "General Prevention", note: "" },
@@ -238,35 +269,40 @@ function generateReportHtml(articles: LibraryArticle[], diseaseName: string, sim
         { key: "additionalTherapy" as const, title: "Additional Therapy", note: "" },
       ];
 
+  // Track all source indices actually cited in the report
+  const allUsedSources = new Set<number>();
+
   const sectionHtml = sectionDefs
     .filter((s) => categorized[s.key].length > 0)
     .map((s) => {
-      const paragraph = buildNarrativeParagraph(categorized[s.key], maxPerSection);
+      const { html: paragraphs, usedSources } = buildNarrativeParagraphs(categorized[s.key], 200, simple);
+      usedSources.forEach((idx) => allUsedSources.add(idx));
       const noteHtml = s.note ? `<p class="section-note">${s.note}</p>` : "";
       return `
       <div class="section">
         <h2>${s.title}</h2>
         ${noteHtml}
-        <p>${paragraph}</p>
+        ${paragraphs}
       </div>`;
     })
     .join("");
 
-  // Build overview: one sentence per article (first meaningful sentence) — all papers included
-  const overviewParts = dedupedArticles
-    .filter((a) => a.abstract && a.abstract.trim())
-    .map((a, i) => {
-      const sentences = extractSentences(a.abstract);
-      const first = sentences[0] || stripHtml(a.title);
-      return `${stripHtml(first)}<sup>[${i + 1}]</sup>`;
-    });
+  // Build overview: pool first 2 sentences from each article into flowing paragraphs
+  const overviewSentences: TaggedSentence[] = [];
+  dedupedArticles.forEach((a, i) => {
+    if (!a.abstract || !a.abstract.trim()) return;
+    const sentences = extractSentences(a.abstract);
+    sentences.slice(0, 2).forEach((s) => overviewSentences.push({ text: s, sourceIdx: i }));
+  });
+  const { html: overviewParagraphs, usedSources: overviewUsed } = buildNarrativeParagraphs(overviewSentences, 200, simple);
+  overviewUsed.forEach((idx) => allUsedSources.add(idx));
 
-  const overviewHtml = overviewParts.length > 0
+  const overviewHtml = overviewParagraphs
     ? `
       <div class="section">
-        <h2>${simple ? "Overview" : "Summary"}</h2>
-        ${simple ? '<p class="section-note">A brief look at what each study covered.</p>' : ""}
-        <p>${overviewParts.join(" ")}</p>
+        <h2>${simple ? "What Is This Condition?" : "Summary"}</h2>
+        ${simple ? '<p class="section-note">Here is a general overview of this condition based on what researchers have published. This will help you understand the basics before reading the more detailed sections below.</p>' : ""}
+        ${overviewParagraphs}
       </div>`
     : "";
 
@@ -275,24 +311,48 @@ function generateReportHtml(articles: LibraryArticle[], diseaseName: string, sim
     ? ` (${eliminatedCount} duplicate${eliminatedCount > 1 ? "s" : ""} removed)`
     : "";
 
-  const refsHtml = buildReferencesHtml(dedupedArticles);
-  const title = simple ? "Research Report — Easy-to-Read Version" : "Document Library Research Report";
+  // Only include referenced articles in the references section
+  const refsHtml = dedupedArticles
+    .map((a, i) => {
+      if (!allUsedSources.has(i)) return null;
+      const title = stripHtml(a.title);
+      const source = stripHtml(a.journal).replace(/\.pdf$/i, "");
+      return `<li><strong>[${i + 1}]</strong> ${title} <span class="ref-source">(${source})</span></li>`;
+    })
+    .filter(Boolean)
+    .join("\n          ");
+
+  const citedCount = allUsedSources.size;
+  const title = simple
+    ? "Understanding Your Condition — A Plain-Language Research Summary"
+    : "Document Library Research Report";
   const introText = simple
-    ? `This report summarizes <strong>${dedupedArticles.length} research documents</strong>${dedupNote} about <strong>${cleanName}</strong>. It is organized into sections to help you understand what scientists and doctors have studied — including prevention, diagnosis, treatment, and newer therapies. Superscript numbers like <sup>[1]</sup> refer to the source documents listed at the end.`
-    : `This report synthesizes findings from <strong>${dedupedArticles.length} documents</strong>${dedupNote} related to <strong>${cleanName}</strong>. Citations reference the source documents listed in the References section.`;
+    ? `This guide summarizes findings from <strong>${citedCount} research documents</strong>${dedupNote} about <strong>${cleanName}</strong>. Medical terms have been replaced with everyday language wherever possible. Each section is designed to answer a common question you might have. The small numbers <sup>[1]</sup> at the end of paragraphs show where the information came from.`
+    : `This report synthesizes findings from <strong>${citedCount} documents</strong>${dedupNote} related to <strong>${cleanName}</strong>. Citations reference the source documents listed in the References section.`;
+
+  const keyTermsHtml = simple
+    ? `
+      <div class="key-terms">
+        <h3>A note about this guide</h3>
+        <p>Research papers use technical language. We have tried to replace complex terms with simpler words, but some medical names for drugs, tests, or body parts may still appear. If you see a word you don't understand, ask your doctor or nurse to explain it — that is always okay to do.</p>
+      </div>`
+    : "";
+
+  const styles = simple ? SIMPLE_REPORT_STYLES : REPORT_STYLES;
 
   return `<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <title>${title} - ${cleanName}</title>
-  <style>${REPORT_STYLES}</style>
+  <style>${styles}</style>
 </head>
 <body>
   <h1>${title}</h1>
-  <div class="subtitle">Generated on ${new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })} via MaryForward &mdash; Based on ${dedupedArticles.length} source documents${dedupNote}</div>
+  <div class="subtitle">Generated on ${new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })} via MaryForward &mdash; Based on ${citedCount} source documents${dedupNote}</div>
   <div class="disease-banner"><h3>Condition: ${cleanName}</h3></div>
   <p class="intro">${introText}</p>
+  ${keyTermsHtml}
   ${overviewHtml}
   ${sectionHtml}
   <div class="references">
@@ -301,7 +361,10 @@ function generateReportHtml(articles: LibraryArticle[], diseaseName: string, sim
       ${refsHtml}
     </ol>
   </div>
-  <p class="disclaimer">This report is a summary of curated research documents and is intended for informational purposes only. It does not replace professional medical advice. Always consult with your healthcare provider about any medical decisions.</p>
+  <p class="disclaimer">${simple
+    ? "This guide was created from curated research documents to help you learn about your condition. It is not a substitute for talking to your doctor. Always discuss any questions or concerns with your healthcare provider before making decisions about your health."
+    : "This report is a summary of curated research documents and is intended for informational purposes only. It does not replace professional medical advice. Always consult with your healthcare provider about any medical decisions."
+  }</p>
 </body>
 </html>`;
 }
