@@ -1,5 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { ContactForm } from "@/components/forms/ContactForm";
+import { KickerDot } from "@/components/ui/Icon";
 
 export default async function ContactPage() {
   const t = await getTranslations("pages.contact");
@@ -8,7 +9,7 @@ export default async function ContactPage() {
     <section className="py-14">
       <div className="containerX">
         <div className="glass p-7">
-          <div className="kicker">{t("kicker")}</div>
+          <div className="kicker"><KickerDot />{t("kicker")}</div>
           <h1 className="h1 mt-2">{t("title")}</h1>
           <p className="muted mt-3 text-base">
             {t("subtitle")}

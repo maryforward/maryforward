@@ -1,0 +1,231 @@
+/* ============================================================
+   Theme D — COMPASSION (LIGHT)
+   Soft ivory / warm-white canvas, deep-teal primary, warm
+   coral/rose accent, soft-sage secondary surfaces, charcoal
+   text. Airy whitespace, soft circular gradients, an abstract
+   "pathway forward", and gentle rounded white cards with soft
+   shadows. Calm, humane, hopeful — built for families making
+   hard medical decisions.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap');
+
+/* ---------- Canvas: ivory → pale sage, soft circular gradients
+   + a faint abstract pathway line drifting across the page ---------- */
+html[data-theme="d"] body {
+  background-color: #FAF7F2 !important;
+  background-image:
+    /* gentle sage wash, top-left */
+    radial-gradient(1100px 760px at 8% 0%, rgba(221, 235, 221, 0.85), transparent 60%),
+    /* soft teal glow, upper-right */
+    radial-gradient(900px 640px at 96% 8%, rgba(15, 118, 110, 0.07), transparent 58%),
+    /* warm coral hush, lower-left */
+    radial-gradient(900px 720px at 4% 96%, rgba(217, 108, 95, 0.06), transparent 60%),
+    /* settle back to ivory at the base */
+    radial-gradient(1000px 700px at 60% 100%, rgba(250, 247, 242, 0.9), transparent 55%),
+    /* abstract pathway — a calm forward-flowing line */
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1440' height='900' viewBox='0 0 1440 900' fill='none'><path d='M-40 720 C 280 560, 460 760, 720 600 S 1180 360, 1500 460' stroke='rgba(15,118,110,0.10)' stroke-width='2' fill='none' stroke-linecap='round'/><path d='M-40 800 C 320 660, 520 840, 780 680 S 1240 460, 1520 540' stroke='rgba(217,108,95,0.08)' stroke-width='2' fill='none' stroke-linecap='round'/></svg>") !important;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat !important;
+  background-position: center top, center top, center bottom, center bottom, center 30% !important;
+  background-attachment: fixed, fixed, fixed, fixed, fixed !important;
+  background-size: auto, auto, auto, auto, cover !important;
+  color: #1F2933 !important;
+}
+
+/* ---------- Slate surfaces → ivory / warm white ---------- */
+html[data-theme="d"] .bg-slate-950 { background-color: #FAF7F2 !important; }
+html[data-theme="d"] .bg-slate-950\/50 { background-color: rgba(250, 247, 242, 0.62) !important; }
+html[data-theme="d"] .bg-slate-950\/70 { background-color: rgba(255, 254, 251, 0.82) !important; backdrop-filter: blur(12px) saturate(140%); -webkit-backdrop-filter: blur(12px) saturate(140%); }
+html[data-theme="d"] .bg-slate-900 { background-color: #ffffff !important; }
+html[data-theme="d"] .bg-slate-900\/50 { background-color: rgba(255, 255, 255, 0.70) !important; }
+html[data-theme="d"] .bg-slate-900\/60 { background-color: rgba(255, 255, 255, 0.78) !important; }
+html[data-theme="d"] .bg-slate-900\/95 { background-color: rgba(255, 254, 251, 0.98) !important; }
+html[data-theme="d"] .bg-slate-800 { background-color: #EEF4EE !important; }
+html[data-theme="d"] .bg-slate-500\/20 { background-color: rgba(31, 41, 51, 0.10) !important; }
+
+/* ---------- White-alpha → soft sage/teal tints on light ---------- */
+html[data-theme="d"] .bg-white\/5 { background-color: rgba(221, 235, 221, 0.45) !important; }
+html[data-theme="d"] .bg-white\/10 { background-color: rgba(221, 235, 221, 0.70) !important; }
+html[data-theme="d"] .bg-white\/20 { background-color: rgba(15, 118, 110, 0.10) !important; }
+html[data-theme="d"] .hover\:bg-white\/5:hover { background-color: rgba(15, 118, 110, 0.06) !important; }
+html[data-theme="d"] .hover\:bg-white\/10:hover { background-color: rgba(15, 118, 110, 0.10) !important; }
+html[data-theme="d"] .hover\:bg-white\/20:hover { background-color: rgba(15, 118, 110, 0.15) !important; }
+
+/* ---------- Borders → soft charcoal hairlines ---------- */
+html[data-theme="d"] .border-white\/5 { border-color: rgba(31, 41, 51, 0.06) !important; }
+html[data-theme="d"] .border-white\/10 { border-color: rgba(31, 41, 51, 0.10) !important; }
+html[data-theme="d"] .border-white\/20 { border-color: rgba(31, 41, 51, 0.18) !important; }
+html[data-theme="d"] .hover\:border-white\/20:hover { border-color: rgba(15, 118, 110, 0.40) !important; }
+
+/* ---------- Text ramp → charcoal on light ---------- */
+html[data-theme="d"] .text-white { color: #14202b !important; }
+html[data-theme="d"] .text-slate-50 { color: #1F2933 !important; }
+html[data-theme="d"] .text-slate-100 { color: #1F2933 !important; }
+html[data-theme="d"] .text-slate-200 { color: #2b3742 !important; }
+html[data-theme="d"] .text-slate-300 { color: #46545f !important; }
+html[data-theme="d"] .text-slate-400 { color: #647079 !important; }
+html[data-theme="d"] .text-slate-500 { color: #828d95 !important; }
+html[data-theme="d"] .text-slate-600 { color: #a3acb2 !important; }
+html[data-theme="d"] .hover\:text-slate-200:hover { color: #1F2933 !important; }
+html[data-theme="d"] .hover\:text-white:hover { color: #0c1620 !important; }
+
+/* ---------- Primary accent: sky → DEEP TEAL ---------- */
+html[data-theme="d"] .text-sky-300 { color: #0F766E !important; }
+html[data-theme="d"] .text-sky-400 { color: #0d6b63 !important; }
+html[data-theme="d"] .text-sky-500 { color: #0b5e57 !important; }
+html[data-theme="d"] .bg-sky-300\/10 { background-color: rgba(15, 118, 110, 0.09) !important; }
+html[data-theme="d"] .bg-sky-500\/10 { background-color: rgba(15, 118, 110, 0.09) !important; }
+html[data-theme="d"] .bg-sky-500\/20 { background-color: rgba(15, 118, 110, 0.16) !important; }
+html[data-theme="d"] .border-sky-300\/30 { border-color: rgba(15, 118, 110, 0.28) !important; }
+html[data-theme="d"] .border-sky-300\/40 { border-color: rgba(15, 118, 110, 0.42) !important; }
+html[data-theme="d"] .border-sky-400 { border-color: #0F766E !important; }
+html[data-theme="d"] .border-sky-400\/30 { border-color: rgba(15, 118, 110, 0.30) !important; }
+html[data-theme="d"] .border-sky-400\/50 { border-color: rgba(15, 118, 110, 0.50) !important; }
+html[data-theme="d"] .border-sky-500\/30 { border-color: rgba(11, 94, 87, 0.36) !important; }
+html[data-theme="d"] .focus\:ring-sky-500:focus { --tw-ring-color: #0F766E !important; box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.22) !important; }
+html[data-theme="d"] .focus\:border-sky-500:focus { border-color: #0F766E !important; }
+html[data-theme="d"] .focus\:border-sky-400\/50:focus { border-color: rgba(15, 118, 110, 0.55) !important; }
+html[data-theme="d"] .hover\:text-sky-300:hover { color: #0d6b63 !important; }
+
+/* ---------- Secondary accent: violet → WARM CORAL / ROSE ---------- */
+html[data-theme="d"] .text-violet-300 { color: #d97a6e !important; }
+html[data-theme="d"] .text-violet-400 { color: #D96C5F !important; }
+html[data-theme="d"] .bg-violet-500\/20 { background-color: rgba(217, 108, 95, 0.16) !important; }
+
+/* ---------- Status colors → tuned for legibility on light ---------- */
+html[data-theme="d"] .text-emerald-400 { color: #0f766e !important; }
+html[data-theme="d"] .text-emerald-300 { color: #0d9488 !important; }
+html[data-theme="d"] .text-amber-400 { color: #b45309 !important; }
+html[data-theme="d"] .text-amber-300 { color: #d97706 !important; }
+html[data-theme="d"] .text-amber-200 { color: #ea9a2e !important; }
+html[data-theme="d"] .text-red-400 { color: #c0473c !important; }
+html[data-theme="d"] .text-red-300 { color: #d4584c !important; }
+html[data-theme="d"] .bg-emerald-500\/20 { background-color: rgba(15, 118, 110, 0.16) !important; }
+html[data-theme="d"] .bg-emerald-500\/10 { background-color: rgba(15, 118, 110, 0.09) !important; }
+html[data-theme="d"] .bg-amber-500\/20 { background-color: rgba(217, 119, 6, 0.18) !important; }
+html[data-theme="d"] .bg-amber-500\/10 { background-color: rgba(217, 119, 6, 0.12) !important; }
+html[data-theme="d"] .bg-red-500\/10 { background-color: rgba(217, 108, 95, 0.12) !important; }
+
+/* status dots used on the hero */
+html[data-theme="d"] .bg-emerald-400 { background-color: #0F766E !important; }
+html[data-theme="d"] .bg-amber-300 { background-color: #D96C5F !important; }
+
+/* ---------- Avatar / gradient strips (teal → coral) ---------- */
+html[data-theme="d"] .from-sky-500 { --tw-gradient-from: #0F766E var(--tw-gradient-from-position) !important; --tw-gradient-to: rgb(15 118 110 / 0) var(--tw-gradient-to-position) !important; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important; }
+html[data-theme="d"] .via-violet-500 { --tw-gradient-to: rgb(217 108 95 / 0) var(--tw-gradient-to-position) !important; --tw-gradient-stops: var(--tw-gradient-from), #D96C5F var(--tw-gradient-via-position), var(--tw-gradient-to) !important; }
+html[data-theme="d"] .to-violet-500 { --tw-gradient-to: #D96C5F var(--tw-gradient-to-position) !important; }
+html[data-theme="d"] .to-sky-500 { --tw-gradient-to: #0F766E var(--tw-gradient-to-position) !important; }
+
+/* ---------- Warm, calm headline typography ---------- */
+html[data-theme="d"] .h1,
+html[data-theme="d"] .h2 {
+  font-family: 'Fraunces', 'Source Serif Pro', Georgia, 'Times New Roman', serif !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  color: #1b2730 !important;
+}
+
+/* ---------- Soft, rounded white cards with gentle shadows ---------- */
+html[data-theme="d"] .glass,
+html[data-theme="d"] .card {
+  position: relative;
+  background-color: #ffffff !important;
+  background-image: none !important;
+  border: 1px solid rgba(31, 41, 51, 0.07) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow:
+    0 1px 2px rgba(31, 41, 51, 0.04),
+    0 12px 28px -10px rgba(31, 41, 51, 0.10),
+    0 32px 60px -32px rgba(15, 118, 110, 0.14) !important;
+  border-radius: 1.5rem !important;
+  transition: box-shadow 0.25s ease, transform 0.25s ease !important;
+}
+html[data-theme="d"] .card:hover {
+  box-shadow:
+    0 2px 4px rgba(31, 41, 51, 0.05),
+    0 18px 36px -12px rgba(31, 41, 51, 0.14),
+    0 40px 70px -34px rgba(15, 118, 110, 0.20) !important;
+  transform: translateY(-2px);
+}
+
+html[data-theme="d"] .muted { color: #5b6770 !important; }
+
+/* ---------- Kicker / hero badge: calm soft-sage pill ---------- */
+html[data-theme="d"] .kicker {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Fraunces', Georgia, serif !important;
+  font-weight: 600;
+  text-transform: none !important;
+  letter-spacing: 0.01em !important;
+  font-size: 0.82rem !important;
+  color: #0F766E !important;
+  background-color: rgba(221, 235, 221, 0.7);
+  border: 1px solid rgba(15, 118, 110, 0.18);
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+}
+
+/* ---------- Buttons ---------- */
+html[data-theme="d"] .btn,
+html[data-theme="d"] .btn-secondary {
+  border: 1px solid rgba(31, 41, 51, 0.14) !important;
+  background-color: #ffffff !important;
+  color: #1F2933 !important;
+  box-shadow: 0 1px 2px rgba(31, 41, 51, 0.05);
+  border-radius: 0.9rem !important;
+}
+html[data-theme="d"] .btn:hover,
+html[data-theme="d"] .btn-secondary:hover {
+  background-color: #F2F7F2 !important;
+  border-color: rgba(15, 118, 110, 0.40) !important;
+  color: #0F766E !important;
+}
+html[data-theme="d"] .btnPrimary {
+  border-color: #0F766E !important;
+  background-image: none !important;
+  background-color: #0F766E !important;
+  color: #FAF7F2 !important;
+  box-shadow: 0 2px 6px rgba(15, 118, 110, 0.22), 0 12px 26px -8px rgba(15, 118, 110, 0.40);
+  border-radius: 0.9rem !important;
+}
+html[data-theme="d"] .btnPrimary:hover {
+  background-color: #0d6b63 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 10px rgba(15, 118, 110, 0.28), 0 16px 32px -8px rgba(15, 118, 110, 0.48);
+}
+
+/* ---------- Pills ---------- */
+html[data-theme="d"] .pill {
+  border: 1px solid rgba(31, 41, 51, 0.12) !important;
+  background-color: #ffffff !important;
+  color: #46545f !important;
+  border-radius: 999px;
+}
+
+/* ---------- Footer: solid, warm sage panel with legible text ----------
+   The shared footer uses dark-mode utility classes (bg-slate-950/60,
+   .muted, text-slate-300) which on a light canvas read as muddy grey on
+   grey. Anchor the page with a solid soft-sage panel, charcoal headings,
+   darker body copy, and clear teal links. */
+html[data-theme="d"] footer {
+  background-color: #EDF3EC !important;
+  border-top: 1px solid rgba(15, 118, 110, 0.20) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+/* Section labels / brand name → strong charcoal */
+html[data-theme="d"] footer .font-semibold,
+html[data-theme="d"] footer .text-white { color: #16212b !important; }
+/* Body + link copy → readable, not washed-out */
+html[data-theme="d"] footer .text-slate-300 { color: #3a464f !important; }
+html[data-theme="d"] footer .muted { color: #495761 !important; }
+/* Navigation links → teal with clear hover affordance */
+html[data-theme="d"] footer a { color: #0F766E !important; }
+html[data-theme="d"] footer a:hover { color: #0b5e57 !important; text-decoration: underline; }
+/* The "In honor of Mary" note → white card so it lifts off the panel */
+html[data-theme="d"] footer .bg-white\/5 {
+  background-color: #ffffff !important;
+  border-color: rgba(31, 41, 51, 0.08) !important;
+}

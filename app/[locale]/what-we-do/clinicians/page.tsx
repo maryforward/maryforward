@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import { CardHeading, IconList, KickerDot } from "@/components/ui/Icon";
 
 export default async function Page() {
   const t = await getTranslations("whatWeDo");
@@ -8,7 +9,7 @@ export default async function Page() {
       <section className="py-14">
         <div className="containerX">
           <div className="glass p-7">
-            <div className="kicker">{t("clinicians.kicker")}</div>
+            <div className="kicker"><KickerDot />{t("clinicians.kicker")}</div>
             <h1 className="h1 mt-2">{t("clinicians.title")}</h1>
             <p className="muted mt-3 text-base">{t("clinicians.description")}</p>
           </div>
@@ -18,21 +19,25 @@ export default async function Page() {
         <div className="containerX">
           <div className="grid gap-4 md:grid-cols-2">
             <div className="card">
-              <h3 className="font-semibold">{t("clinicians.receive.title")}</h3>
-              <ul className="mt-3 list-disc pl-5 text-sm text-slate-300 space-y-2">
-                <li>{t("clinicians.receive.item1")}</li>
-                <li>{t("clinicians.receive.item2")}</li>
-                <li>{t("clinicians.receive.item3")}</li>
-                <li>{t("clinicians.receive.item4")}</li>
-              </ul>
+              <CardHeading icon="report" className="font-semibold">{t("clinicians.receive.title")}</CardHeading>
+              <IconList
+                items={[
+                  t("clinicians.receive.item1"),
+                  t("clinicians.receive.item2"),
+                  t("clinicians.receive.item3"),
+                  t("clinicians.receive.item4"),
+                ]}
+              />
             </div>
             <div className="card">
-              <h3 className="font-semibold">{t("clinicians.deployment.title")}</h3>
-              <ul className="mt-3 list-disc pl-5 text-sm text-slate-300 space-y-2">
-                <li>{t("clinicians.deployment.item1")}</li>
-                <li>{t("clinicians.deployment.item2")}</li>
-                <li>{t("clinicians.deployment.item3")}</li>
-              </ul>
+              <CardHeading icon="gear" className="font-semibold">{t("clinicians.deployment.title")}</CardHeading>
+              <IconList
+                items={[
+                  t("clinicians.deployment.item1"),
+                  t("clinicians.deployment.item2"),
+                  t("clinicians.deployment.item3"),
+                ]}
+              />
             </div>
           </div>
         </div>

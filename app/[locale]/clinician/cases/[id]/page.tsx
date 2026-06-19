@@ -8,6 +8,9 @@ import { AssignCaseButton } from "@/components/clinician/AssignCaseButton";
 import { ResearchPapersButton } from "@/components/clinician/ResearchPapersButton";
 import { OtherResearchButton } from "@/components/clinician/OtherResearchButton";
 import { MedicalBooksButton } from "@/components/clinician/MedicalBooksButton";
+import { ClinicalTrialsButton } from "@/components/clinician/ClinicalTrialsButton";
+import { CombinedSummaryButton } from "@/components/clinician/CombinedSummaryButton";
+import { CrossDiseaseRepurposeButton } from "@/components/clinician/CrossDiseaseRepurposeButton";
 import { EditCaseForm } from "@/components/clinician/EditCaseForm";
 import type { CaseStatus, CaseType } from "@/types";
 
@@ -112,6 +115,9 @@ export default async function ClinicianCaseDetailPage({
               <ResearchPapersButton caseId={id} />
               <OtherResearchButton caseId={id} />
               <MedicalBooksButton caseId={id} />
+              <ClinicalTrialsButton caseId={id} />
+              <CombinedSummaryButton caseId={id} />
+              <CrossDiseaseRepurposeButton caseId={id} />
             </>
           )}
           {canWriteReport && (

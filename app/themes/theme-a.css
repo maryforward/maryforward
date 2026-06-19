@@ -1,0 +1,191 @@
+/* ============================================================
+   Theme A — AURORA
+   Animated mesh gradient background, gradient-text headlines,
+   iridescent glowing glass cards, vivid shifting primary button.
+   Cinematic, premium-SaaS mood.
+   ============================================================ */
+
+@keyframes mf-aurora-drift {
+  0%   { background-position:  0%   0%,  100%  20%,  50%  100%; }
+  50%  { background-position: 20%  30%,   80%  50%,  40%   80%; }
+  100% { background-position:  0%   0%,  100%  20%,  50%  100%; }
+}
+@keyframes mf-btn-shift {
+  0%   { background-position:   0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position:   0% 50%; }
+}
+
+html[data-theme="a"] body {
+  background-color: #05031a !important;
+  background-image:
+    radial-gradient(60vw 60vh at 10% 10%, rgba(34, 211, 238, 0.32), transparent 65%),
+    radial-gradient(70vw 60vh at 90% 25%, rgba(236, 72, 153, 0.28), transparent 60%),
+    radial-gradient(80vw 70vh at 50% 95%, rgba(139, 92, 246, 0.32), transparent 60%) !important;
+  background-size: 150% 150%, 150% 150%, 150% 150% !important;
+  background-repeat: no-repeat !important;
+  animation: mf-aurora-drift 45s ease-in-out infinite;
+  color: #f3eeff !important;
+}
+
+/* ---------- Slate surfaces → violet depths ---------- */
+html[data-theme="a"] .bg-slate-950 { background-color: #05031a !important; }
+html[data-theme="a"] .bg-slate-950\/50 { background-color: rgba(5, 3, 26, 0.55) !important; }
+html[data-theme="a"] .bg-slate-950\/70 { background-color: rgba(5, 3, 26, 0.74) !important; }
+html[data-theme="a"] .bg-slate-900 { background-color: #160a3b !important; }
+html[data-theme="a"] .bg-slate-900\/50 { background-color: rgba(22, 10, 59, 0.55) !important; }
+html[data-theme="a"] .bg-slate-900\/60 { background-color: rgba(22, 10, 59, 0.66) !important; }
+html[data-theme="a"] .bg-slate-900\/95 { background-color: rgba(22, 10, 59, 0.96) !important; }
+html[data-theme="a"] .bg-slate-800 { background-color: #251562 !important; }
+html[data-theme="a"] .bg-slate-500\/20 { background-color: rgba(148, 128, 230, 0.22) !important; }
+
+/* ---------- White-alpha (cyan-tinted) ---------- */
+html[data-theme="a"] .bg-white\/5 { background-color: rgba(34, 211, 238, 0.06) !important; }
+html[data-theme="a"] .bg-white\/10 { background-color: rgba(34, 211, 238, 0.11) !important; }
+html[data-theme="a"] .bg-white\/20 { background-color: rgba(34, 211, 238, 0.20) !important; }
+html[data-theme="a"] .hover\:bg-white\/5:hover { background-color: rgba(236, 72, 153, 0.10) !important; }
+html[data-theme="a"] .hover\:bg-white\/10:hover { background-color: rgba(236, 72, 153, 0.16) !important; }
+html[data-theme="a"] .hover\:bg-white\/20:hover { background-color: rgba(236, 72, 153, 0.24) !important; }
+
+/* ---------- Borders (iridescent cyan/pink ambient) ---------- */
+html[data-theme="a"] .border-white\/5 { border-color: rgba(147, 197, 253, 0.14) !important; }
+html[data-theme="a"] .border-white\/10 { border-color: rgba(167, 139, 250, 0.26) !important; }
+html[data-theme="a"] .border-white\/20 { border-color: rgba(236, 72, 153, 0.36) !important; }
+html[data-theme="a"] .hover\:border-white\/20:hover { border-color: rgba(34, 211, 238, 0.55) !important; }
+
+/* ---------- Text ramp ---------- */
+html[data-theme="a"] .text-white { color: #ffffff !important; }
+html[data-theme="a"] .text-slate-50 { color: #f8f5ff !important; }
+html[data-theme="a"] .text-slate-100 { color: #ece3ff !important; }
+html[data-theme="a"] .text-slate-200 { color: #d8ccf5 !important; }
+html[data-theme="a"] .text-slate-300 { color: #b8a8e5 !important; }
+html[data-theme="a"] .text-slate-400 { color: #8e7fb8 !important; }
+html[data-theme="a"] .text-slate-500 { color: #6b5e93 !important; }
+html[data-theme="a"] .text-slate-600 { color: #4e4370 !important; }
+html[data-theme="a"] .hover\:text-slate-200:hover { color: #d8ccf5 !important; }
+html[data-theme="a"] .hover\:text-white:hover { color: #ffffff !important; }
+
+/* ---------- Primary accent: sky → CYAN ---------- */
+html[data-theme="a"] .text-sky-300 { color: #67e8f9 !important; text-shadow: 0 0 16px rgba(34, 211, 238, 0.45); }
+html[data-theme="a"] .text-sky-400 { color: #22d3ee !important; text-shadow: 0 0 18px rgba(34, 211, 238, 0.55); }
+html[data-theme="a"] .text-sky-500 { color: #06b6d4 !important; }
+html[data-theme="a"] .bg-sky-300\/10 { background-color: rgba(103, 232, 249, 0.14) !important; }
+html[data-theme="a"] .bg-sky-500\/10 { background-color: rgba(34, 211, 238, 0.12) !important; }
+html[data-theme="a"] .bg-sky-500\/20 { background-color: rgba(34, 211, 238, 0.22) !important; }
+html[data-theme="a"] .border-sky-300\/30 { border-color: rgba(103, 232, 249, 0.45) !important; box-shadow: 0 0 24px rgba(34, 211, 238, 0.14); }
+html[data-theme="a"] .border-sky-300\/40 { border-color: rgba(103, 232, 249, 0.55) !important; box-shadow: 0 0 28px rgba(34, 211, 238, 0.20); }
+html[data-theme="a"] .border-sky-400 { border-color: #22d3ee !important; }
+html[data-theme="a"] .border-sky-400\/30 { border-color: rgba(34, 211, 238, 0.45) !important; }
+html[data-theme="a"] .border-sky-400\/50 { border-color: rgba(34, 211, 238, 0.65) !important; }
+html[data-theme="a"] .border-sky-500\/30 { border-color: rgba(6, 182, 212, 0.45) !important; }
+html[data-theme="a"] .focus\:ring-sky-500:focus { --tw-ring-color: #22d3ee !important; box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.30), 0 0 24px rgba(236, 72, 153, 0.25) !important; }
+html[data-theme="a"] .focus\:border-sky-500:focus { border-color: #22d3ee !important; }
+html[data-theme="a"] .focus\:border-sky-400\/50:focus { border-color: rgba(34, 211, 238, 0.65) !important; }
+html[data-theme="a"] .hover\:text-sky-300:hover { color: #67e8f9 !important; text-shadow: 0 0 18px rgba(34, 211, 238, 0.60); }
+
+/* ---------- Secondary accent: violet → HOT PINK ---------- */
+html[data-theme="a"] .text-violet-300 { color: #f9a8d4 !important; }
+html[data-theme="a"] .text-violet-400 { color: #ec4899 !important; text-shadow: 0 0 14px rgba(236, 72, 153, 0.40); }
+html[data-theme="a"] .bg-violet-500\/20 { background-color: rgba(236, 72, 153, 0.24) !important; }
+
+/* ---------- Avatar / gradient strip (cyan → pink) ---------- */
+html[data-theme="a"] .from-sky-500 { --tw-gradient-from: #22d3ee var(--tw-gradient-from-position) !important; --tw-gradient-to: rgb(34 211 238 / 0) var(--tw-gradient-to-position) !important; --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important; }
+html[data-theme="a"] .via-violet-500 { --tw-gradient-to: rgb(236 72 153 / 0) var(--tw-gradient-to-position) !important; --tw-gradient-stops: var(--tw-gradient-from), #ec4899 var(--tw-gradient-via-position), var(--tw-gradient-to) !important; }
+html[data-theme="a"] .to-violet-500 { --tw-gradient-to: #ec4899 var(--tw-gradient-to-position) !important; }
+html[data-theme="a"] .to-sky-500 { --tw-gradient-to: #22d3ee var(--tw-gradient-to-position) !important; }
+
+/* ---------- Headline treatment: GRADIENT TEXT on .h1 / .h2 ---------- */
+html[data-theme="a"] .h1,
+html[data-theme="a"] .h2 {
+  background-image: linear-gradient(135deg, #67e8f9 0%, #a855f7 50%, #ec4899 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent !important;
+  letter-spacing: -0.02em;
+}
+
+/* ---------- DRAMATIC portlets: aurora-radiant cards ---------- */
+html[data-theme="a"] .glass,
+html[data-theme="a"] .card {
+  position: relative;
+  background-color: #120836 !important;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 0% 0%,   rgba(34, 211, 238, 0.45), transparent 55%),
+    radial-gradient(ellipse 80% 60% at 100% 0%, rgba(236,  72, 153, 0.38), transparent 55%),
+    radial-gradient(ellipse 80% 60% at 50% 100%, rgba(168,  85, 247, 0.32), transparent 65%) !important;
+  border: 1px solid rgba(167, 139, 250, 0.40) !important;
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 0 80px rgba(34, 211, 238, 0.06),
+    0 30px 60px -18px rgba(0, 0, 0, 0.70),
+    0 0 80px rgba(168, 85, 247, 0.22);
+  border-radius: 1.25rem !important;
+}
+/* Per-card aurora rotation — every 3rd card shifts the color origin */
+html[data-theme="a"] .glass:nth-child(3n+2),
+html[data-theme="a"] .card:nth-child(3n+2) {
+  background-image:
+    radial-gradient(ellipse 80% 60% at 100% 0%, rgba(236,  72, 153, 0.48), transparent 55%),
+    radial-gradient(ellipse 80% 60% at 0%  100%, rgba(34, 211, 238, 0.40), transparent 55%),
+    radial-gradient(ellipse 60% 60% at 50% 50%, rgba(168,  85, 247, 0.26), transparent 65%) !important;
+  border-color: rgba(236, 72, 153, 0.42) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 0 80px rgba(236, 72, 153, 0.10),
+    0 30px 60px -18px rgba(0, 0, 0, 0.70),
+    0 0 80px rgba(236, 72, 153, 0.28) !important;
+}
+html[data-theme="a"] .glass:nth-child(3n),
+html[data-theme="a"] .card:nth-child(3n) {
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% 0%,   rgba(168,  85, 247, 0.46), transparent 55%),
+    radial-gradient(ellipse 80% 60% at 100% 100%, rgba(34, 211, 238, 0.40), transparent 55%),
+    radial-gradient(ellipse 60% 60% at 0%  100%, rgba(250, 204,  21, 0.26), transparent 65%) !important;
+  border-color: rgba(34, 211, 238, 0.42) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 0 80px rgba(168, 85, 247, 0.12),
+    0 30px 60px -18px rgba(0, 0, 0, 0.70),
+    0 0 80px rgba(34, 211, 238, 0.25) !important;
+}
+html[data-theme="a"] .muted { color: #b8a8e5 !important; }
+html[data-theme="a"] .kicker {
+  color: #67e8f9 !important;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  text-shadow: 0 0 16px rgba(34, 211, 238, 0.45);
+}
+html[data-theme="a"] .btn,
+html[data-theme="a"] .btn-secondary {
+  border: 1px solid rgba(167, 139, 250, 0.30) !important;
+  background-color: rgba(34, 211, 238, 0.05) !important;
+  color: #ece3ff !important;
+  transition: all 0.25s ease;
+}
+html[data-theme="a"] .btn:hover,
+html[data-theme="a"] .btn-secondary:hover {
+  background-color: rgba(34, 211, 238, 0.14) !important;
+  border-color: rgba(34, 211, 238, 0.60) !important;
+  box-shadow: 0 0 24px rgba(34, 211, 238, 0.22);
+}
+html[data-theme="a"] .btnPrimary {
+  border-color: rgba(236, 72, 153, 0.45) !important;
+  background-image: linear-gradient(90deg, #22d3ee 0%, #a855f7 50%, #ec4899 100%) !important;
+  background-size: 200% 100% !important;
+  animation: mf-btn-shift 6s ease-in-out infinite;
+  color: #ffffff !important;
+  box-shadow: 0 0 28px rgba(168, 85, 247, 0.30), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+html[data-theme="a"] .btnPrimary:hover {
+  box-shadow: 0 0 40px rgba(236, 72, 153, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.20);
+}
+html[data-theme="a"] .pill {
+  border: 1px solid rgba(167, 139, 250, 0.30) !important;
+  background-color: rgba(34, 211, 238, 0.08) !important;
+  color: #d8ccf5 !important;
+}

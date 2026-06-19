@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import { CardHeading, IconList, KickerDot } from "@/components/ui/Icon";
 
 export default async function Page() {
   const t = await getTranslations("company");
@@ -8,7 +9,7 @@ export default async function Page() {
       <section className="py-14">
         <div className="containerX">
           <div className="glass p-7">
-            <div className="kicker">{t("compliance.kicker")}</div>
+            <div className="kicker"><KickerDot />{t("compliance.kicker")}</div>
             <h1 className="h1 mt-2">{t("compliance.title")}</h1>
             <p className="muted mt-3 text-base">{t("compliance.description")}</p>
           </div>
@@ -18,31 +19,37 @@ export default async function Page() {
         <div className="containerX">
           <div className="grid gap-4 md:grid-cols-2">
             <div className="card">
-              <h3 className="font-semibold">{t("compliance.clinicalSafety.title")}</h3>
-              <ul className="mt-3 list-disc pl-5 text-sm text-slate-300 space-y-2">
-                <li>{t("compliance.clinicalSafety.redFlag")}</li>
-                <li>{t("compliance.clinicalSafety.secondReview")}</li>
-                <li>{t("compliance.clinicalSafety.monitoring")}</li>
-              </ul>
+              <CardHeading icon="shield" className="font-semibold">{t("compliance.clinicalSafety.title")}</CardHeading>
+              <IconList
+                items={[
+                  t("compliance.clinicalSafety.redFlag"),
+                  t("compliance.clinicalSafety.secondReview"),
+                  t("compliance.clinicalSafety.monitoring"),
+                ]}
+              />
             </div>
             <div className="card">
-              <h3 className="font-semibold">{t("compliance.hipaa.title")}</h3>
-              <ul className="mt-3 list-disc pl-5 text-sm text-slate-300 space-y-2">
-                <li>{t("compliance.hipaa.roleBasedAccess")}</li>
-                <li>{t("compliance.hipaa.encryption")}</li>
-                <li>{t("compliance.hipaa.auditLogging")}</li>
-              </ul>
+              <CardHeading icon="lock" className="font-semibold">{t("compliance.hipaa.title")}</CardHeading>
+              <IconList
+                items={[
+                  t("compliance.hipaa.roleBasedAccess"),
+                  t("compliance.hipaa.encryption"),
+                  t("compliance.hipaa.auditLogging"),
+                ]}
+              />
             </div>
             <div className="card">
-              <h3 className="font-semibold">{t("compliance.commercial.title")}</h3>
-              <ul className="mt-3 list-disc pl-5 text-sm text-slate-300 space-y-2">
-                <li>{t("compliance.commercial.noReferral")}</li>
-                <li>{t("compliance.commercial.firewalls")}</li>
-                <li>{t("compliance.commercial.disclosures")}</li>
-              </ul>
+              <CardHeading icon="scale" className="font-semibold">{t("compliance.commercial.title")}</CardHeading>
+              <IconList
+                items={[
+                  t("compliance.commercial.noReferral"),
+                  t("compliance.commercial.firewalls"),
+                  t("compliance.commercial.disclosures"),
+                ]}
+              />
             </div>
             <div className="card">
-              <h3 className="font-semibold">{t("compliance.limitations.title")}</h3>
+              <CardHeading icon="info" className="font-semibold">{t("compliance.limitations.title")}</CardHeading>
               <p className="muted mt-2 text-sm">{t("compliance.limitations.description")}</p>
             </div>
           </div>

@@ -3,14 +3,106 @@ import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 import { readdir, readFile, stat } from "fs/promises";
 import { join, resolve } from "path";
+import OpenAI from "openai";
+
+// Allow up to 3 minutes for PDF parsing + OpenAI extraction
+export const maxDuration = 180;
 
 const PAPERS_DIR = resolve(process.cwd(), "resources", "papers");
 
-// Same keyword regexes used by the PubMed research route
+// Same keyword regexes used by the PubMed research route (fallback when OpenAI unavailable)
 const preventionKeywords = /\bprevention\b|\bpreventive\b|\bprophyla\w+\b|\bvaccinat\w+\b|\bscreening\b|\brisk\s*reduc\w+\b/i;
 const diagnosisKeywords = /\bdiagnos\w+\b|\bdetect\w+\b|\bbiomarker\b|\bimaging\b|\bpatholog\w+\b|\bbiopsy\b|\bstaging\b|\bprognos\w+\b/i;
 const treatmentKeywords = /\btreat\w+\b|\btherap\w+\b|\bchemotherap\w+\b|\bsurger\w+\b|\bsurgical\b|\bradiat\w+\b|\bdrug\b|\bdosage\b|\bregimen\b|\bfirst.line\b|\bsecond.line\b/i;
 const additionalTherapyKeywords = /\balternativ\w+\b|\bcomplement\w+\b|\bsupport\w+\s*care\b|\bpalliativ\w+\b|\brehabilitat\w+\b|\bimmunotherap\w+\b|\btargeted\s*therap\w+\b|\bgene\s*therap\w+\b|\bclinical\s*trial\b|\bnovel\b|\bemerging\b/i;
+
+// ---------------------------------------------------------------------------
+// OpenAI-powered structured extraction
+// ---------------------------------------------------------------------------
+
+interface AiExtractedPaper {
+  title: string;
+  authors: string;
+  journal: string;
+  year: string;
+  abstract: string;
+  categories: string[];
+}
+
+/**
+ * Send raw PDF text to OpenAI and get back a clean, structured extraction
+ * that mirrors what PubMed provides: title, authors, journal, year, and a
+ * clean abstract with key findings. This replaces the regex-based heuristics.
+ */
+async function extractWithOpenAI(
+  rawText: string,
+  filename: string
+): Promise<AiExtractedPaper | null> {
+  if (!process.env.OPENAI_API_KEY) return null;
+
+  try {
+    const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+
+    // Send first ~12000 chars — enough to cover abstract, intro, results,
+    // and conclusion of most papers while staying within token limits.
+    const truncated = rawText.substring(0, 12000);
+
+    const response = await openai.chat.completions.create({
+      model: "gpt-4o-mini",
+      temperature: 0,
+      max_tokens: 1500,
+      messages: [
+        {
+          role: "system",
+          content: `You are a medical research paper parser. Given raw text extracted from a PDF of a medical research paper, produce a structured JSON extraction. Focus ONLY on the scientific findings — ignore page numbers, headers, footers, figure captions, table data, reference lists, and author affiliations.
+
+Return valid JSON with exactly these fields:
+{
+  "title": "The paper's title",
+  "authors": "First Author et al." or list of authors if available,
+  "journal": "Journal name if identifiable, otherwise empty string",
+  "year": "Publication year if identifiable, otherwise empty string",
+  "abstract": "A clean, well-written 200-400 word summary of the paper's key findings, methods, results, and conclusions. Write this as a coherent abstract even if the original paper's abstract is missing or poorly extracted. Include specific data points, percentages, and outcomes where available. This should read like a PubMed abstract.",
+  "categories": ["Array of applicable categories from: prevention, diagnosis, treatment, additionalTherapy"]
+}
+
+Category definitions:
+- prevention: screening, risk reduction, preventive measures, prophylaxis, vaccination
+- diagnosis: diagnostic methods, biomarkers, imaging, pathology, staging, prognosis, detection
+- treatment: drugs, surgery, radiation, chemotherapy, dosage, regimens, standard therapies
+- additionalTherapy: immunotherapy, targeted therapy, gene therapy, complementary approaches, palliative care, rehabilitation, clinical trials, novel/emerging treatments
+
+A paper can belong to multiple categories. Always include at least one category.`,
+        },
+        {
+          role: "user",
+          content: `Parse this research paper (filename: ${filename}):\n\n${truncated}`,
+        },
+      ],
+    });
+
+    const content = response.choices[0]?.message?.content?.trim();
+    if (!content) return null;
+
+    // Parse JSON — handle possible markdown code fences
+    const jsonStr = content.replace(/^```json?\s*/i, "").replace(/```\s*$/, "").trim();
+    const parsed = JSON.parse(jsonStr) as AiExtractedPaper;
+
+    // Validate required fields
+    if (!parsed.abstract || parsed.abstract.length < 50) return null;
+
+    // Ensure categories is a valid array
+    if (!Array.isArray(parsed.categories) || parsed.categories.length === 0) {
+      parsed.categories = ["treatment"];
+    }
+
+    return parsed;
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    console.error(`OpenAI extraction failed for ${filename}: ${msg}`);
+    return null;
+  }
+}
 
 function folderNameToLabel(name: string): string {
   return name
@@ -121,7 +213,11 @@ function pickRelevantSentences(sentences: string[], keyword: RegExp, max: number
   return matching.length > 0 ? matching.slice(0, max) : sentences.slice(0, 1);
 }
 
-function categorizePapers(papers: ParsedPaper[], diseaseName: string) {
+/**
+ * Process papers using OpenAI for structured extraction, with regex fallback.
+ * OpenAI calls are run concurrently (up to 5 at a time) to keep latency low.
+ */
+async function categorizePapersWithAI(papers: ParsedPaper[], diseaseName: string) {
   const sections = {
     diseaseName,
     summary: [] as string[],
@@ -141,64 +237,97 @@ function categorizePapers(papers: ParsedPaper[], diseaseName: string) {
     categories: string[];
   }[] = [];
 
-  for (const paper of papers) {
-    // Extract the meaningful body text, skipping front-matter
-    const bodyText = extractBodyText(paper.text);
-    if (!bodyText) continue;
+  // Run OpenAI extractions concurrently in batches of 5
+  const CONCURRENCY = 5;
+  const aiResults: (AiExtractedPaper | null)[] = new Array(papers.length).fill(null);
 
-    // Use a generous portion for the article abstract sent to the client
-    const abstract = bodyText.substring(0, 8000).trim();
+  for (let i = 0; i < papers.length; i += CONCURRENCY) {
+    const batch = papers.slice(i, i + CONCURRENCY);
+    const promises = batch.map((paper) =>
+      extractWithOpenAI(paper.text, paper.filename)
+    );
+    const results = await Promise.all(promises);
+    results.forEach((result, j) => {
+      aiResults[i + j] = result;
+    });
+  }
+
+  for (let i = 0; i < papers.length; i++) {
+    const paper = papers[i];
+    const ai = aiResults[i];
+
+    let title: string;
+    let authors: string;
+    let journal: string;
+    let pubDate: string;
+    let abstract: string;
+    let categories: string[];
+
+    if (ai) {
+      // OpenAI succeeded — use clean structured data
+      title = ai.title || paper.title;
+      authors = ai.authors || "";
+      journal = ai.journal || paper.filename;
+      pubDate = ai.year || "";
+      abstract = ai.abstract;
+      categories = ai.categories;
+      console.log(`  AI extraction OK: "${title}" → [${categories.join(", ")}]`);
+    } else {
+      // Fallback: original regex-based extraction
+      const bodyText = extractBodyText(paper.text);
+      if (!bodyText) continue;
+
+      title = paper.title;
+      authors = "";
+      journal = paper.filename;
+      pubDate = "";
+      abstract = bodyText.substring(0, 8000).trim();
+
+      const fullText = paper.text;
+      categories = [];
+      if (preventionKeywords.test(fullText)) categories.push("prevention");
+      if (diagnosisKeywords.test(fullText)) categories.push("diagnosis");
+      if (treatmentKeywords.test(fullText)) categories.push("treatment");
+      if (additionalTherapyKeywords.test(fullText)) categories.push("additionalTherapy");
+      if (categories.length === 0) categories.push("treatment");
+      console.log(`  Regex fallback: "${title}" → [${categories.join(", ")}]`);
+    }
+
+    // Build section entries using the (now clean) abstract text
     const sentences = extractSentences(abstract);
-
     if (sentences.length === 0) continue;
 
-    // Summary: first 3 meaningful sentences from the paper
     const summarySnippet = sentences.slice(0, 3).join(" ");
-    sections.summary.push(`**${paper.title}** — ${summarySnippet}`);
+    sections.summary.push(`**${title}** — ${summarySnippet}`);
 
-    // Categorize using the full body text for keyword matching,
-    // but pull actual relevant sentences for each category
-    const fullText = paper.text;
-    let categorized = false;
-
-    if (preventionKeywords.test(fullText)) {
+    if (categories.includes("prevention")) {
       const picked = pickRelevantSentences(sentences, preventionKeywords, 3);
-      sections.generalPrevention.push(`**${paper.title}** — ${picked.join(" ")}`);
-      categorized = true;
+      sections.generalPrevention.push(`**${title}** — ${picked.join(" ")}`);
     }
-    if (diagnosisKeywords.test(fullText)) {
+    if (categories.includes("diagnosis")) {
       const picked = pickRelevantSentences(sentences, diagnosisKeywords, 3);
-      sections.diagnosis.push(`**${paper.title}** — ${picked.join(" ")}`);
-      categorized = true;
+      sections.diagnosis.push(`**${title}** — ${picked.join(" ")}`);
     }
-    if (treatmentKeywords.test(fullText)) {
+    if (categories.includes("treatment")) {
       const picked = pickRelevantSentences(sentences, treatmentKeywords, 3);
-      sections.treatment.push(`**${paper.title}** — ${picked.join(" ")}`);
-      categorized = true;
+      sections.treatment.push(`**${title}** — ${picked.join(" ")}`);
     }
-    if (additionalTherapyKeywords.test(fullText)) {
+    if (categories.includes("additionalTherapy")) {
       const picked = pickRelevantSentences(sentences, additionalTherapyKeywords, 3);
-      sections.additionalTherapy.push(`**${paper.title}** — ${picked.join(" ")}`);
-      categorized = true;
+      sections.additionalTherapy.push(`**${title}** — ${picked.join(" ")}`);
     }
-    if (!categorized) {
-      sections.treatment.push(`**${paper.title}** — ${sentences.slice(0, 3).join(" ")}`);
+    // If no category matched sentences (rare with AI), add to treatment
+    if (!categories.includes("prevention") && !categories.includes("diagnosis") &&
+        !categories.includes("treatment") && !categories.includes("additionalTherapy")) {
+      sections.treatment.push(`**${title}** — ${sentences.slice(0, 3).join(" ")}`);
     }
-
-    // Build article object for report generation on the client side
-    const categories: string[] = [];
-    if (preventionKeywords.test(fullText)) categories.push("prevention");
-    if (diagnosisKeywords.test(fullText)) categories.push("diagnosis");
-    if (treatmentKeywords.test(fullText)) categories.push("treatment");
-    if (additionalTherapyKeywords.test(fullText)) categories.push("additionalTherapy");
-    if (categories.length === 0) categories.push("treatment");
 
     articles.push({
       pmid: "",
-      title: paper.title,
-      authors: "",
-      journal: paper.filename,
-      pubDate: "",
+      title,
+      authors,
+      journal,
+      pubDate,
       abstract,
       categories,
     });
@@ -403,7 +532,9 @@ export async function POST(
     }
 
     const diseaseName = folderNameToLabel(folder);
-    const { sections, articles } = categorizePapers(papers, diseaseName);
+    console.log(`Research library: starting AI extraction for ${papers.length} papers...`);
+    const { sections, articles } = await categorizePapersWithAI(papers, diseaseName);
+    console.log(`Research library: AI extraction complete. ${articles.length} articles produced.`);
 
     return NextResponse.json({
       totalCount: papers.length,

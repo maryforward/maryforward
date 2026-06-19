@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import { CardHeading, KickerDot } from "@/components/ui/Icon";
 
 export default async function Page() {
   const t = await getTranslations("trials");
@@ -8,7 +9,7 @@ export default async function Page() {
       <section className="py-14">
         <div className="containerX">
           <div className="glass p-7">
-            <div className="kicker">MaryForward</div>
+            <div className="kicker"><KickerDot />MaryForward</div>
             <h1 className="h1 mt-2">{t("title")}</h1>
             <p className="muted mt-3 text-base">{t("subtitle")}</p>
           </div>
@@ -18,15 +19,15 @@ export default async function Page() {
         <div className="containerX">
           <div className="grid gap-4 md:grid-cols-3">
             <div className="card">
-              <h3 className="font-semibold">{t("eligibilityExtraction")}</h3>
+              <CardHeading icon="compass" className="font-semibold">{t("eligibilityExtraction")}</CardHeading>
               <p className="muted mt-2 text-sm">{t("eligibilityExtractionDesc")}</p>
             </div>
             <div className="card">
-              <h3 className="font-semibold">{t("geoFiltering")}</h3>
+              <CardHeading icon="map" className="font-semibold">{t("geoFiltering")}</CardHeading>
               <p className="muted mt-2 text-sm">{t("geoFilteringDesc")}</p>
             </div>
             <div className="card">
-              <h3 className="font-semibold">{t("conciergeTemplates")}</h3>
+              <CardHeading icon="chat" className="font-semibold">{t("conciergeTemplates")}</CardHeading>
               <p className="muted mt-2 text-sm">{t("conciergeTemplatesDesc")}</p>
             </div>
           </div>

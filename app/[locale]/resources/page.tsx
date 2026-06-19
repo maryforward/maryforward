@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import { CardHeading, IconList, KickerDot } from "@/components/ui/Icon";
 
 export default async function Page() {
   const t = await getTranslations("resources");
@@ -8,7 +9,7 @@ export default async function Page() {
       <section className="py-14">
         <div className="containerX">
           <div className="glass p-7">
-            <div className="kicker">MaryForward</div>
+            <div className="kicker"><KickerDot />MaryForward</div>
             <h1 className="h1 mt-2">{t("title")}</h1>
             <p className="muted mt-3 text-base">{t("description")}</p>
           </div>
@@ -18,17 +19,19 @@ export default async function Page() {
         <div className="containerX">
           <div className="grid gap-4 md:grid-cols-2">
             <div className="card">
-              <h3 className="font-semibold">{t("primarySourcesTitle")}</h3>
-              <ul className="mt-3 list-disc pl-5 text-sm text-slate-300 space-y-2">
-                <li>{t("source1")}</li>
-                <li>{t("source2")}</li>
-                <li>{t("source3")}</li>
-                <li>{t("source4")}</li>
-                <li>{t("source5")}</li>
-              </ul>
+              <CardHeading icon="book" className="font-semibold">{t("primarySourcesTitle")}</CardHeading>
+              <IconList
+                items={[
+                  t("source1"),
+                  t("source2"),
+                  t("source3"),
+                  t("source4"),
+                  t("source5"),
+                ]}
+              />
             </div>
             <div className="card">
-              <h3 className="font-semibold">{t("howWeCiteTitle")}</h3>
+              <CardHeading icon="quote" className="font-semibold">{t("howWeCiteTitle")}</CardHeading>
               <p className="muted mt-2 text-sm">
                 {t("howWeCiteDescription")}
               </p>

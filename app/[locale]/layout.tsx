@@ -1,4 +1,8 @@
 import "../globals.css";
+import "../themes/theme-a.css";
+import "../themes/theme-b.css";
+import "../themes/theme-c.css";
+import "../themes/theme-d.css";
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { NextIntlClientProvider } from "next-intl";
@@ -43,9 +47,11 @@ export default async function LocaleLayout({
 
   const direction = localeDirection[locale as Locale];
   const isRTL = direction === "rtl";
+  // "d" (Compassion) is the recommended default look; override with NEXT_PUBLIC_THEME.
+  const theme = process.env.NEXT_PUBLIC_THEME || "d";
 
   return (
-    <html lang={locale} dir={direction}>
+    <html lang={locale} dir={direction} data-theme={theme}>
       <body
         className={`min-h-screen bg-[radial-gradient(900px_600px_at_15%_10%,rgba(167,139,250,.18),transparent_60%),radial-gradient(800px_600px_at_85%_20%,rgba(125,211,252,.16),transparent_55%),radial-gradient(900px_700px_at_50%_90%,rgba(52,211,153,.10),transparent_55%)] ${
           isRTL ? "font-persian" : ""
