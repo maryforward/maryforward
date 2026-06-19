@@ -24,16 +24,12 @@ const BLOB_PREFIX = "resources/";
 
 const useBlob = !!process.env.BLOB_READ_WRITE_TOKEN;
 
-interface BlobMeta {
-  url: string;
-  size: number;
-}
-// Cache pathname -> {url,size} so a folder listing primes the per-file reads
-// and we avoid an extra list() round-trip in readBuffer/fileSize.
-const blobMetaCache = new Map<string, BlobMeta>();
+// Cache pathname -> size so a folder listing primes fileSize() and we avoid an
+// extra round-trip per file. Reads use get() by pathname, so no URL is cached.
+const blobSizeCache = new Map<string, number>();
 
-async function blobList() {
-  return (await import("@vercel/blob")).list;
+async function blobApi() {
+  return import("@vercel/blob");
 }
 
 function toBlobPath(rel: string): string {
@@ -65,7 +61,7 @@ export function assertSafeSegment(name: string): void {
 /** Subdirectory (folder) names directly under relDir, sorted. */
 export async function listFolders(relDir: string): Promise<string[]> {
   if (useBlob) {
-    const list = await blobList();
+    const { list } = await blobApi();
     const prefix = toBlobPath(relDir).replace(/\/?$/, "/");
     const out: string[] = [];
     let cursor: string | undefined;
@@ -87,7 +83,7 @@ export async function listFolders(relDir: string): Promise<string[]> {
 export async function listFiles(relDir: string, ext = ".pdf"): Promise<string[]> {
   const lower = ext.toLowerCase();
   if (useBlob) {
-    const list = await blobList();
+    const { list } = await blobApi();
     const prefix = toBlobPath(relDir).replace(/\/?$/, "/");
     const out: string[] = [];
     let cursor: string | undefined;
@@ -98,7 +94,7 @@ export async function listFiles(relDir: string, ext = ".pdf"): Promise<string[]>
         if (!name || name.includes("/")) continue; // direct children only
         if (name.toLowerCase().endsWith(lower)) {
           out.push(name);
-          blobMetaCache.set(b.pathname, { url: b.url, size: b.size });
+          blobSizeCache.set(b.pathname, b.size);
         }
       }
       cursor = res.hasMore ? res.cursor : undefined;
@@ -109,26 +105,13 @@ export async function listFiles(relDir: string, ext = ".pdf"): Promise<string[]>
   return files.filter((f) => f.toLowerCase().endsWith(lower)).sort();
 }
 
-async function resolveBlob(relPath: string): Promise<BlobMeta> {
-  const key = toBlobPath(relPath);
-  const cached = blobMetaCache.get(key);
-  if (cached) return cached;
-  const list = await blobList();
-  const res = await list({ prefix: key, limit: 1 });
-  const b = res.blobs.find((x) => x.pathname === key) || res.blobs[0];
-  if (!b) throw new Error(`Blob not found: ${key}`);
-  const meta = { url: b.url, size: b.size };
-  blobMetaCache.set(key, meta);
-  return meta;
-}
-
 /** Read a file's bytes. relPath is rooted at resources/ (e.g. "papers/COVID/x.pdf"). */
 export async function readBuffer(relPath: string): Promise<Buffer> {
   if (useBlob) {
-    const { url } = await resolveBlob(relPath);
-    const res = await fetch(url);
-    if (!res.ok) throw new Error(`Blob fetch failed (${res.status}) for ${relPath}`);
-    return Buffer.from(await res.arrayBuffer());
+    const { get } = await blobApi();
+    const result = await get(toBlobPath(relPath), { access: "private" });
+    if (!result) throw new Error(`Blob not found: ${relPath}`);
+    return Buffer.from(await new Response(result.stream).arrayBuffer());
   }
   return readFile(join(LOCAL_ROOT, relPath));
 }
@@ -136,7 +119,13 @@ export async function readBuffer(relPath: string): Promise<Buffer> {
 /** Size in bytes (used for cache invalidation). */
 export async function fileSize(relPath: string): Promise<number> {
   if (useBlob) {
-    return (await resolveBlob(relPath)).size;
+    const key = toBlobPath(relPath);
+    const cached = blobSizeCache.get(key);
+    if (cached !== undefined) return cached;
+    const { head } = await blobApi();
+    const meta = await head(key);
+    blobSizeCache.set(key, meta.size);
+    return meta.size;
   }
   return (await stat(join(LOCAL_ROOT, relPath))).size;
 }

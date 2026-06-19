@@ -76,7 +76,7 @@ async function main() {
     const size = (await stat(file)).size;
     const body = await readFile(file);
     await put(pathname, body, {
-      access: "public",
+      access: "private",
       addRandomSuffix: false,
       allowOverwrite: true,
       multipart: size > 8 * 1024 * 1024, // stream large books/papers
