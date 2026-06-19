@@ -1,0 +1,33 @@
+# Exclude large research PDFs (>5MB) from Vercel deploys to keep the
+# serverless function under the 300MB limit. Files stay in git for local
+# dev. The 5-Minute Clinical Consult book is intentionally kept because
+# lib/research-sources.ts reads it at runtime.
+# TODO: move resources/papers to blob storage (Vercel Blob / S3) so the
+# research library does not bloat the function bundle.
+
+resources/books/Evidence-Based Practice in Nursing & Healthcare 5th Ed -- Bernadette Mazurek Melnyk.pdf
+resources/papers/COVID/Case report_ Treatable immune-mediated severe orthostatic hypotension in SARS-CoV-2 infection.pdf
+resources/papers/COVID/Chordoma Spontaneous Regression After COVID-19.pdf
+resources/papers/COVID/Erector Spinae Muscle to Epicardial Visceral Fat Ratio on Chest CT Predicts the Severity of Coronavirus Disease 2019.pdf
+resources/papers/COVID/FABP4 as a therapeutic host target controllingSARS-CoV-2 infection.pdf
+resources/papers/COVID/Identification of promising SARS-CoV-2 main protease inhibitor through molecular docking, dynamics simulation, and ADMET analysis.pdf
+resources/papers/COVID/Interactomic Analyses and a Reverse Engineering Study Identify.pdf
+resources/papers/COVID/Metabolomic Profiling Reveals Potential Biomarkers and Prominent Features in HIV_AIDS Patients Co-Infected with SARS-CoV-2.pdf
+resources/papers/COVID/Rethinking Optimal Immunogens to Face SARS‐CoV‐2 Evolution Through Vaccination.pdf
+resources/papers/COVID/Safety and immunogenicity of Ad26.COV2.S in adolescents Phase 2 randomized clinical trial.pdf
+resources/papers/COVID/SPR Biosensor Based on Bilayer MoS2 for SARS-CoV-2 Sensing.pdf
+resources/papers/COVID/The impact of remdesivir on SARS-CoV-2 evolution in vivo.pdf
+resources/papers/Invasive Ductal Carcinoma/Cryoablation Therapy for Early-Stage Breast Cancer Evidence and Rationale.pdf
+resources/papers/Invasive Ductal Carcinoma/Estrogen receptor status has no prognostic relevance in metaplastic.pdf
+resources/papers/Invasive Ductal Carcinoma/Genome-wide screen identifies a novel prognostic signature for breast cancer survival.pdf
+resources/papers/Invasive Ductal Carcinoma/Learning to distinguish progressive and non-progressive ductal carcinoma in situ.pdf
+resources/papers/Invasive Ductal Carcinoma/New Frontiers in Breast Cancer Imaging The Rise of AI.pdf
+resources/papers/Invasive Ductal Carcinoma/Novel Therapies for Metastatic Triple-Negative Breast Cancer_ Spotlight on Immunotherapy and Antibody-Drug Conjugates _ CancerNetwork.pdf
+resources/papers/Invasive Ductal Carcinoma/Pathomimetic avatars reveal divergent roles of microenvironment in invasive transition of ductal ca.pdf
+resources/papers/Invasive Ductal Carcinoma/Small Glandular Proliferations of the Breast With Absent or Attenuated Myoepithelial Reactivity by Immunohistochemistry A Revi.pdf
+resources/papers/Invasive Ductal Carcinoma/TheRoleofMRIinBreastCancerandBreastConservation Therapy.pdf
+resources/papers/Invasive Ductal Carcinoma/Translational Aspects in Metaplastic Breast Carcinoma.pdf
+resources/papers/Invasive Ductal Carcinoma/Tumor-associated myoepithelial cells promote the invasive progression of ductal carcinoma in situ t.pdf
+resources/papers/Long COVID/Identification of an immunological signature of long COVID syndrome.pdf
+resources/papers/Long COVID/Proteomic and metabolomic profiling of plasma uncovers immune responses in patients with Long COVID-19.pdf
+resources/papers/Long COVID/Upregulation of olfactory receptors and neuronal-associated genes highlights complex immune and neuronal dysregulation in Long COVID patients.pdf
