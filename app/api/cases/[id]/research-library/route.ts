@@ -1,14 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { readdir, readFile, stat } from "fs/promises";
-import { join, resolve } from "path";
+import {
+  assertSafeSegment,
+  listFiles,
+  listFolders,
+  readBuffer,
+} from "@/lib/research-storage";
 import OpenAI from "openai";
 
 // Allow up to 3 minutes for PDF parsing + OpenAI extraction
 export const maxDuration = 180;
 
-const PAPERS_DIR = resolve(process.cwd(), "resources", "papers");
+// PDFs live under resources/papers (in Vercel Blob in prod, on disk in dev).
+const PAPERS_ROOT = "papers";
 
 // Same keyword regexes used by the PubMed research route (fallback when OpenAI unavailable)
 const preventionKeywords = /\bprevention\b|\bpreventive\b|\bprophyla\w+\b|\bvaccinat\w+\b|\bscreening\b|\brisk\s*reduc\w+\b/i;
@@ -116,9 +121,9 @@ interface ParsedPaper {
   text: string;
 }
 
-async function parsePdf(filePath: string): Promise<string> {
+async function parsePdf(relPath: string): Promise<string> {
   const pdfParse = (await import("pdf-parse")).default;
-  const buffer = await readFile(filePath);
+  const buffer = await readBuffer(relPath);
   const result = await pdfParse(buffer);
   return result.text;
 }
@@ -371,25 +376,22 @@ export async function GET(
       );
     }
 
-    // Read folder names from resources/papers/
+    // Read disease folder names from the papers library
     let entries: string[] = [];
     try {
-      const dirEntries = await readdir(PAPERS_DIR, { withFileTypes: true });
-      entries = dirEntries.filter((e) => e.isDirectory()).map((e) => e.name).sort();
+      entries = await listFolders(PAPERS_ROOT);
     } catch {
-      // Directory may not exist yet
+      // Library may not exist yet
       entries = [];
     }
 
     const folders = await Promise.all(
       entries.map(async (name) => {
-        const folderPath = join(PAPERS_DIR, name);
-        const files = await readdir(folderPath);
-        const pdfCount = files.filter((f) => f.toLowerCase().endsWith(".pdf")).length;
+        const files = await listFiles(`${PAPERS_ROOT}/${name}`);
         return {
           name,
           label: folderNameToLabel(name),
-          fileCount: pdfCount,
+          fileCount: files.length,
         };
       })
     );
@@ -452,33 +454,25 @@ export async function POST(
     }
 
     // Security: prevent directory traversal
-    const folderPath = resolve(PAPERS_DIR, folder);
-    if (!folderPath.startsWith(PAPERS_DIR)) {
+    try {
+      assertSafeSegment(folder);
+    } catch {
       return NextResponse.json(
         { error: "Invalid folder" },
         { status: 400 }
       );
     }
 
-    // Check folder exists
+    // List PDF files in the folder
+    let pdfFiles: string[] = [];
     try {
-      const folderStat = await stat(folderPath);
-      if (!folderStat.isDirectory()) {
-        return NextResponse.json(
-          { error: "Folder not found" },
-          { status: 404 }
-        );
-      }
+      pdfFiles = await listFiles(`${PAPERS_ROOT}/${folder}`);
     } catch {
       return NextResponse.json(
         { error: "Folder not found" },
         { status: 404 }
       );
     }
-
-    // List PDF files in the folder
-    const files = await readdir(folderPath);
-    const pdfFiles = files.filter((f) => f.toLowerCase().endsWith(".pdf"));
 
     if (pdfFiles.length === 0) {
       return NextResponse.json({
@@ -500,8 +494,7 @@ export async function POST(
     const errors: string[] = [];
     for (const file of pdfFiles) {
       try {
-        const filePath = join(folderPath, file);
-        const text = await parsePdf(filePath);
+        const text = await parsePdf(`${PAPERS_ROOT}/${folder}/${file}`);
         const title = extractTitle(file, text);
         papers.push({ filename: file, title, text });
       } catch (err) {

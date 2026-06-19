@@ -7,12 +7,11 @@
  * very similar helpers; this module is used by newer routes (e.g.
  * research-repurpose) without disturbing that working code.
  */
-import { readdir, readFile, stat } from "fs/promises";
-import { resolve, join } from "path";
+import { fileSize, listFiles, readBuffer } from "@/lib/research-storage";
 
 const CT_API_BASE = "https://clinicaltrials.gov/api/v2";
 const EUTILS_BASE = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils";
-const BOOKS_DIR = resolve(process.cwd(), "resources", "books");
+const BOOKS_ROOT = "books";
 
 // ---------------------------------------------------------------------------
 // Source 1: ClinicalTrials.gov
@@ -165,25 +164,24 @@ export interface BookDigest {
 }
 
 // Module-scoped cache so repeated requests (and the two diseases in a
-// repurposing query) skip the ~30s PDF parse. Keyed by absolute file path.
+// repurposing query) skip the ~30s PDF parse. Keyed by relative book path.
 interface CachedBook {
   pages: string[];
   fileSize: number;
 }
 const bookCache = new Map<string, CachedBook>();
 
-async function getBookPages(filePath: string): Promise<string[]> {
-  const cached = bookCache.get(filePath);
+async function getBookPages(relPath: string): Promise<string[]> {
+  const cached = bookCache.get(relPath);
   if (cached) {
     try {
-      const s = await stat(filePath);
-      if (s.size === cached.fileSize) return cached.pages;
+      if ((await fileSize(relPath)) === cached.fileSize) return cached.pages;
     } catch {
-      bookCache.delete(filePath);
+      bookCache.delete(relPath);
     }
   }
   const pdfParse = (await import("pdf-parse")).default;
-  const buffer = await readFile(filePath);
+  const buffer = await readBuffer(relPath);
   const pages: string[] = [];
   await pdfParse(buffer, {
     pagerender: function (pageData: { getTextContent: () => Promise<{ items: { str: string }[] }> }) {
@@ -194,15 +192,14 @@ async function getBookPages(filePath: string): Promise<string[]> {
       });
     },
   });
-  const s = await stat(filePath);
-  bookCache.set(filePath, { pages, fileSize: s.size });
+  bookCache.set(relPath, { pages, fileSize: await fileSize(relPath) });
   return pages;
 }
 
 export async function fetchBookExcerpt(condition: string): Promise<BookDigest | null> {
   let entries: string[] = [];
   try {
-    entries = await readdir(BOOKS_DIR);
+    entries = await listFiles(BOOKS_ROOT);
   } catch {
     return null;
   }
@@ -210,10 +207,10 @@ export async function fetchBookExcerpt(condition: string): Promise<BookDigest | 
   const targetFile = entries.find((f) => /5.?minute/i.test(f) && f.toLowerCase().endsWith(".pdf"));
   if (!targetFile) return null;
 
-  const filePath = join(BOOKS_DIR, targetFile);
+  const relPath = `${BOOKS_ROOT}/${targetFile}`;
   let pages: string[];
   try {
-    pages = await getBookPages(filePath);
+    pages = await getBookPages(relPath);
   } catch (err) {
     console.error(`research-sources: book parse failed: ${err instanceof Error ? err.message : err}`);
     return null;

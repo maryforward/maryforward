@@ -1,10 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
-import { readdir, readFile, stat } from "fs/promises";
-import { join, resolve } from "path";
+import {
+  assertSafeSegment,
+  fileSize,
+  listFiles,
+  readBuffer,
+} from "@/lib/research-storage";
 
-const BOOKS_DIR = resolve(process.cwd(), "resources", "books");
+// Reference books live under resources/books (Vercel Blob in prod, disk in dev).
+const BOOKS_ROOT = "books";
 
 const preventionKeywords = /\bprevention\b|\bpreventive\b|\bprophyla\w+\b|\bvaccinat\w+\b|\bscreening\b|\brisk\s*reduc\w+\b/i;
 const diagnosisKeywords = /\bdiagnos\w+\b|\bdetect\w+\b|\bbiomarker\b|\bimaging\b|\bpatholog\w+\b|\bbiopsy\b|\bstaging\b|\bprognos\w+\b/i;
@@ -22,27 +27,27 @@ interface CachedBook {
 
 const bookCache = new Map<string, CachedBook>();
 
-async function getBookPages(filePath: string): Promise<{ text: string }[]> {
+async function getBookPages(relPath: string): Promise<{ text: string }[]> {
   // Check cache
-  const cached = bookCache.get(filePath);
+  const cached = bookCache.get(relPath);
   if (cached) {
     // Verify file hasn't changed by checking size
     try {
-      const fileStat = await stat(filePath);
-      if (fileStat.size === cached.fileSize) {
-        console.log(`Research books: using cached parse for "${filePath}"`);
+      const size = await fileSize(relPath);
+      if (size === cached.fileSize) {
+        console.log(`Research books: using cached parse for "${relPath}"`);
         return cached.pages;
       }
     } catch {
-      // File may have been deleted, clear cache
-      bookCache.delete(filePath);
+      // File may have been removed, clear cache
+      bookCache.delete(relPath);
     }
   }
 
   // Parse fresh
-  console.log(`Research books: parsing "${filePath}" (not cached)...`);
+  console.log(`Research books: parsing "${relPath}" (not cached)...`);
   const pdfParse = (await import("pdf-parse")).default;
-  const buffer = await readFile(filePath);
+  const buffer = await readBuffer(relPath);
   const pages: { text: string }[] = [];
 
   await pdfParse(buffer, {
@@ -120,14 +125,13 @@ async function getBookPages(filePath: string): Promise<{ text: string }[]> {
   });
 
   // Store in cache
-  const fileStat = await stat(filePath);
-  bookCache.set(filePath, {
+  bookCache.set(relPath, {
     pages,
     parsedAt: Date.now(),
-    fileSize: fileStat.size,
+    fileSize: await fileSize(relPath),
   });
 
-  console.log(`Research books: cached ${pages.length} pages for "${filePath}"`);
+  console.log(`Research books: cached ${pages.length} pages for "${relPath}"`);
   return pages;
 }
 
@@ -530,8 +534,7 @@ export async function GET(
 
     let files: string[] = [];
     try {
-      const dirEntries = await readdir(BOOKS_DIR);
-      files = dirEntries.filter((f) => f.toLowerCase().endsWith(".pdf")).sort();
+      files = await listFiles(BOOKS_ROOT);
     } catch {
       files = [];
     }
@@ -598,13 +601,15 @@ export async function POST(
     }
 
     // Security: prevent directory traversal
-    const filePath = resolve(BOOKS_DIR, book);
-    if (!filePath.startsWith(BOOKS_DIR)) {
+    try {
+      assertSafeSegment(book);
+    } catch {
       return NextResponse.json(
         { error: "Invalid book" },
         { status: 400 }
       );
     }
+    const relPath = `${BOOKS_ROOT}/${book}`;
 
     const diagnosis = caseData.primaryDiagnosis || "";
     if (!diagnosis) {
@@ -617,7 +622,7 @@ export async function POST(
     // Get pages (cached after first parse)
     let pages: { text: string }[];
     try {
-      pages = await getBookPages(filePath);
+      pages = await getBookPages(relPath);
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);
       console.error(`Failed to parse book "${book}":`, msg);
