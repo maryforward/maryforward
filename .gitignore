@@ -8,3 +8,4 @@ nul
 
 tmpclaude-*
 tsconfig.tsbuildinfo
+.claude/settings.local.json
