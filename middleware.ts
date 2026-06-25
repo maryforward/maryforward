@@ -38,7 +38,7 @@ const authMiddleware = auth((req) => {
   const user = req.auth?.user;
 
   // Get locale from URL for redirects
-  const localeMatch = req.nextUrl.pathname.match(/^\/(en|fa)/);
+  const localeMatch = req.nextUrl.pathname.match(/^\/(en|fa|es|ar)/);
   const locale = localeMatch ? localeMatch[1] : defaultLocale;
 
   const isPortalRoute = pathname.startsWith("/portal");
