@@ -163,6 +163,7 @@ export default function Nav() {
     isOpen: false,
     mode: "login",
   });
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   // Build menus with translations
   const menus: Menu[] = [
@@ -234,7 +235,8 @@ export default function Nav() {
 
           <div className="flex-1" />
 
-          <div className="flex items-center gap-2">
+          {/* Desktop actions */}
+          <div className="hidden md:flex items-center gap-2">
             <LanguageSwitcher />
 
             {isLoading ? (
@@ -257,7 +259,105 @@ export default function Nav() {
               </>
             )}
           </div>
+
+          {/* Mobile actions: keep the signed-in avatar handy, plus a menu toggle */}
+          <div className="flex items-center gap-2 md:hidden">
+            {!isLoading && session ? <UserMenu /> : null}
+            <button
+              type="button"
+              onClick={() => setMobileOpen((v) => !v)}
+              aria-label="Menu"
+              aria-haspopup="true"
+              aria-expanded={mobileOpen}
+              className="rounded-2xl p-2 text-slate-200 hover:bg-white/5 transition"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+                {mobileOpen ? (
+                  <>
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                  </>
+                ) : (
+                  <>
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <line x1="3" y1="12" x2="21" y2="12" />
+                    <line x1="3" y1="18" x2="21" y2="18" />
+                  </>
+                )}
+              </svg>
+            </button>
+          </div>
         </div>
+
+        {/* Mobile menu panel */}
+        {mobileOpen ? (
+          <div className="md:hidden border-t border-white/10 bg-slate-900/95 backdrop-blur-xl">
+            <div className="containerX py-4 space-y-4 max-h-[calc(100vh-4rem)] overflow-y-auto">
+              {menus.map((m) => (
+                <div key={m.label}>
+                  <p className="px-1 text-xs font-semibold uppercase tracking-wider text-slate-400">{m.label}</p>
+                  <div className="mt-1">
+                    {m.items.map((it) => (
+                      <Link
+                        key={it.href}
+                        href={it.href}
+                        onClick={() => setMobileOpen(false)}
+                        className="block rounded-xl px-3 py-2 text-slate-200 hover:bg-white/10 transition"
+                      >
+                        {it.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              ))}
+
+              <Link
+                href="/resources"
+                onClick={() => setMobileOpen(false)}
+                className="block rounded-xl px-3 py-2 text-slate-200 hover:bg-white/10 transition"
+              >
+                {t("nav.resources")}
+              </Link>
+
+              <div className="border-t border-white/10 pt-4">
+                <LanguageSwitcher />
+              </div>
+
+              <div className="border-t border-white/10 pt-4 flex flex-col gap-2">
+                {isLoading ? null : session ? (
+                  <Link
+                    href="/portal/dashboard"
+                    onClick={() => setMobileOpen(false)}
+                    className="btn w-full justify-center"
+                  >
+                    {t("common.dashboard")}
+                  </Link>
+                ) : (
+                  <>
+                    <button
+                      className="btn w-full justify-center"
+                      onClick={() => {
+                        setMobileOpen(false);
+                        openLoginModal();
+                      }}
+                    >
+                      {t("common.login")}
+                    </button>
+                    <button
+                      className="btn btnPrimary w-full justify-center"
+                      onClick={() => {
+                        setMobileOpen(false);
+                        openSignupModal();
+                      }}
+                    >
+                      {t("common.signup")}
+                    </button>
+                  </>
+                )}
+              </div>
+            </div>
+          </div>
+        ) : null}
       </header>
 
       <RoleSelectionModal
