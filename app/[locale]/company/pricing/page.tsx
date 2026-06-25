@@ -35,7 +35,7 @@ export default async function Page() {
             <div className="card">
               <CardHeading icon="calendar" className="font-semibold">{t("pricing.longitudinal.title")}</CardHeading>
               <p className="muted mt-2 text-sm">
-                <span className="text-white font-semibold">{t("pricing.longitudinal.price")}</span>{t("pricing.longitudinal.perMonth")}
+                <span className="text-white font-semibold">{t("pricing.longitudinal.price")}</span> {t("pricing.longitudinal.perMonth")}
               </p>
               <IconList
                 items={[

@@ -2,4 +2,6 @@
 # (see lib/research-storage.ts), so it never needs to ship with the app.
 # Excluding it keeps deploy uploads small. The files stay in git for local dev,
 # where reads fall back to the filesystem when BLOB_READ_WRITE_TOKEN is unset.
-resources/
+# Leading slash anchors this to the ROOT dir only — a bare `resources/` would
+# also match app/[locale]/resources/ and strip the Resources page route.
+/resources/
