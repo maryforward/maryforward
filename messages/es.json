@@ -1,0 +1,1136 @@
+{
+  "common": {
+    "login": "Iniciar sesión",
+    "signup": "Comenzar",
+    "logout": "Cerrar sesión",
+    "dashboard": "Panel",
+    "profile": "Perfil",
+    "settings": "Configuración",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "submit": "Enviar",
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "previous": "Anterior",
+    "close": "Cerrar",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "view": "Ver",
+    "search": "Buscar",
+    "filter": "Filtrar",
+    "all": "Todos",
+    "none": "Ninguno",
+    "yes": "Sí",
+    "no": "No",
+    "or": "o",
+    "and": "y"
+  },
+  "nav": {
+    "learn": "Aprender",
+    "allAboutConditions": "Todo sobre las afecciones",
+    "oncology": "Oncología",
+    "infectiousDisease": "Enfermedades infecciosas",
+    "ngsAndMolecular": "NGS y datos moleculares",
+    "webinarsAndBriefings": "Seminarios web e informes",
+    "whatWeDo": "Qué hacemos",
+    "forPatients": "Para pacientes",
+    "forClinicians": "Para médicos / clínicas",
+    "forSponsors": "Para patrocinadores y socios",
+    "trialsNavigator": "Navegador de ensayos clínicos",
+    "company": "Empresa",
+    "ourStory": "Nuestra historia",
+    "compliance": "Seguridad, privacidad y cumplimiento",
+    "pricing": "Precios",
+    "contact": "Contacto",
+    "resources": "Recursos"
+  },
+  "userMenu": {
+    "myCases": "Mis casos",
+    "savedTrials": "Ensayos guardados",
+    "profileSettings": "Configuración del perfil"
+  },
+  "home": {
+    "kicker": "Revisado por expertos • Basado en evidencia • Compasivo",
+    "headline": "Orientación hacia adelante cuando las decisiones médicas parecen abrumadoras.",
+    "subheadline": "MaryForward ayuda a pacientes y familias a convertir información médica compleja en opciones claras, mejores preguntas y próximos pasos, revisados por expertos y respaldados por evidencia confiable.",
+    "startCase": "Iniciar un caso",
+    "howItWorks": "Ver cómo funciona",
+    "forClinicians": "Para médicos",
+    "pillCitations": "Citas transparentes",
+    "pillGuideline": "Diferencial + concordancia con guías",
+    "pillTrials": "Navegador de ensayos clínicos",
+    "pillNGS": "Mapeo de NGS y datos moleculares",
+    "inHonorOfMary": "En honor a Mary.",
+    "maryDescription": "Creado para brindar claridad e impulso a las familias que enfrentan oncología y enfermedades infecciosas.",
+    "safetyWorkflows": "Flujos de trabajo que priorizan la seguridad",
+    "flagsUrgent": "Señala síntomas urgentes y contraindicaciones",
+    "expertReview": "Revisión por expertos antes de compartir",
+    "shareableReport": "Informe compartible para paciente y médico",
+    "whatYouGet": "Lo que obtienes",
+    "benefit1": "Admisión estructurada adaptada a oncología y enfermedades infecciosas.",
+    "benefit2": "Síntesis de evidencia a partir de fuentes verificadas (guías, literatura revisada por pares, registros de ensayos).",
+    "benefit3": "Anotaciones de expertos y una lista de verificación de próximos pasos para tu cita.",
+    "benefit4": "Seguimiento posterior: resultados, efectos secundarios, estado de ensayos, recordatorios.",
+    "important": "Importante:",
+    "disclaimer": "MaryForward es apoyo para la toma de decisiones y orientación, no atención de emergencia. Si tienes síntomas urgentes, llama al 911 o acude al servicio de urgencias más cercano.",
+    "forPatientsTitle": "Para pacientes",
+    "forPatientsDesc": "Claridad, opciones y preguntas que hacer, expresadas en lenguaje sencillo y respaldadas por citas.",
+    "tellMeMore": "Cuéntame más",
+    "forCliniciansTitle": "Para médicos / clínicas",
+    "forCliniciansDesc": "Resúmenes estructurados con citas y flujos de trabajo colaborativos, diseñados para ahorrar tiempo.",
+    "learnMore": "Saber más",
+    "forSponsorsTitle": "Para patrocinadores y socios",
+    "forSponsorsDesc": "Alianzas educativas y listados diseñados para evitar la contingencia por derivación.",
+    "collaborate": "Colaborar",
+    "howItWorksTitle": "Cómo funciona MaryForward",
+    "step1Title": "1) Admisión",
+    "step1Desc": "Creación segura de cuenta, cuestionarios guiados, carga de documentos y (cuando esté disponible) importación desde el expediente médico electrónico.",
+    "step2Title": "2) Síntesis con IA",
+    "step2Desc": "LLM + recuperación sobre fuentes verificadas para mostrar un diferencial, tratamientos, alertas de seguridad y preguntas sin responder.",
+    "step3Title": "3) Revisión por expertos",
+    "step3Desc": "Especialistas revisan, validan y anotan los borradores antes de compartirlos, por seguridad y claridad.",
+    "step4Title": "4) Informes",
+    "step4Desc": "Informes en lenguaje sencillo y a nivel clínico diseñados para apoyar conversaciones productivas con tu equipo de atención.",
+    "ngsTitle": "Integración de NGS y datos moleculares",
+    "ngsDesc": "Carga informes de perfilado genómico o de mNGS para enfermedades infecciosas. Mapeamos variantes/organismos hacia su accionabilidad con citas y notas de advertencia.",
+    "exploreNGS": "Explorar flujos de trabajo de NGS",
+    "trialsTitle": "Navegador de ensayos clínicos",
+    "trialsDesc": "Extracción de criterios de elegibilidad, filtrado geográfico y plantillas de conserjería para acelerar el descubrimiento y la gestión de ensayos.",
+    "findTrials": "Encontrar ensayos"
+  },
+  "footer": {
+    "tagline": "Orientación hacia adelante para decisiones médicas complejas: apoyo para la toma de decisiones revisado por expertos en oncología y enfermedades infecciosas.",
+    "inHonorOfMary": "En honor a Mary.",
+    "honourDescription": "Creado para ayudar a las familias a pasar de la incertidumbre a un plan, con claridad, compasión y evidencia.",
+    "allRightsReserved": "Todos los derechos reservados.",
+    "product": "Producto",
+    "company": "Empresa",
+    "forPatients": "Para pacientes",
+    "forClinicians": "Para médicos",
+    "trialsNavigator": "Navegador de ensayos",
+    "ngsIntegration": "Integración de NGS",
+    "ourStory": "Nuestra historia",
+    "privacyCompliance": "Privacidad y cumplimiento",
+    "pricing": "Precios",
+    "contact": "Contacto",
+    "subscribe": "Suscribirse",
+    "subscribeDescription": "Notas mensuales del producto e informes de expertos."
+  },
+  "auth": {
+    "login": {
+      "passwordPlaceholder": "Ingresa tu contraseña",
+      "rememberMe": "Recuérdame",
+      "forgotPassword": "¿Olvidaste tu contraseña?",
+      "signIn": "Iniciar sesión",
+      "orContinueWith": "O continúa con",
+      "continueWithGoogle": "Continuar con Google",
+      "noAccount": "¿No tienes una cuenta?",
+      "signUp": "Regístrate",
+      "captchaRequired": "Por favor, completa la verificación CAPTCHA",
+      "captchaFailed": "La verificación CAPTCHA falló. Inténtalo de nuevo.",
+      "invalidCredentials": "Correo electrónico o contraseña no válidos",
+      "generalError": "Ocurrió un error. Inténtalo de nuevo."
+    },
+    "signup": {
+      "iAmA": "Soy un...",
+      "rolePatient": "Paciente o familiar",
+      "rolePatientDescription": "Obtén apoyo personalizado para decisiones médicas complejas",
+      "roleClinician": "Profesional de la salud",
+      "roleClinicianDescription": "Revisa casos y brinda apoyo experto en la toma de decisiones a los pacientes",
+      "alreadyHaveAccount": "¿Ya tienes una cuenta?",
+      "signIn": "Iniciar sesión",
+      "changeAccountType": "Cambiar tipo de cuenta",
+      "registeringAs": "Registrándose como:",
+      "clinicianApprovalNotice": "Las cuentas de profesionales de la salud requieren la aprobación de un administrador antes de otorgar acceso.",
+      "specialty": "Especialidad",
+      "specialtyPlaceholder": "p. ej., Oncología, Enfermedades infecciosas",
+      "licenseNumber": "Número de licencia",
+      "licenseNumberPlaceholder": "N.º de licencia médica",
+      "institution": "Institución",
+      "institutionPlaceholder": "Hospital/Clínica",
+      "confirmPassword": "Confirmar contraseña",
+      "createPasswordPlaceholder": "Crea una contraseña",
+      "confirmPasswordPlaceholder": "Confirma tu contraseña",
+      "agreeToTerms": "Acepto los",
+      "termsOfService": "Términos del servicio",
+      "and": "y",
+      "privacyPolicy": "Política de privacidad",
+      "createAccount": "Crear cuenta",
+      "submitForApproval": "Enviar para aprobación",
+      "orContinueWith": "O continúa con",
+      "continueWithGoogle": "Continuar con Google",
+      "captchaRequired": "Por favor, completa la verificación CAPTCHA",
+      "captchaFailed": "La verificación CAPTCHA falló. Inténtalo de nuevo.",
+      "emailExists": "Este correo electrónico ya está registrado",
+      "generalError": "Ocurrió un error. Inténtalo de nuevo.",
+      "accountCreatedSignInFailed": "Cuenta creada, pero no se pudo iniciar sesión. Por favor, intenta iniciar sesión.",
+      "pendingApprovalTitle": "Cuenta pendiente de aprobación",
+      "pendingApprovalDescription": "Gracias por registrarte como profesional de la salud. Tu cuenta está pendiente de aprobación por un administrador. Te notificaremos por correo electrónico una vez que tu cuenta haya sido verificada.",
+      "goToLogin": "Ir a iniciar sesión"
+    },
+    "forgotPassword": {
+      "kicker": "Cuenta",
+      "title": "Restablecer contraseña",
+      "description": "Ingresa tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.",
+      "sendResetLink": "Enviar enlace de restablecimiento",
+      "backToLogin": "Volver a iniciar sesión",
+      "successMessage": "Si existe una cuenta con ese correo electrónico, te hemos enviado un enlace para restablecer la contraseña.",
+      "rememberPassword": "¿Recuerdas tu contraseña?",
+      "signIn": "Iniciar sesión",
+      "sendError": "No se pudo enviar el correo de restablecimiento. Inténtalo de nuevo."
+    },
+    "resetPassword": {
+      "title": "Restablecer contraseña",
+      "description": "Ingresa tu nueva contraseña a continuación",
+      "newPassword": "Nueva contraseña",
+      "confirmPassword": "Confirmar contraseña",
+      "resetButton": "Restablecer contraseña",
+      "success": "Tu contraseña se ha restablecido correctamente"
+    },
+    "pendingApproval": {
+      "title": "Cuenta pendiente de aprobación",
+      "greeting": "¡Gracias, {name}!",
+      "defaultName": "Doctor/a",
+      "description": "Tu cuenta de médico está pendiente de verificación. Esto suele tardar de 1 a 2 días hábiles. Te enviaremos un correo electrónico una vez aprobada.",
+      "whatHappensNext": "¿Qué sigue?",
+      "step1": "Nuestro equipo verificará tus credenciales.",
+      "step2": "Recibirás un correo electrónico cuando tu cuenta sea aprobada.",
+      "step3": "Luego podrás acceder al portal de médicos y comenzar a revisar casos.",
+      "returnToHomepage": "Volver a la página de inicio",
+      "signOut": "Cerrar sesión",
+      "questions": "¿Preguntas? Contáctanos en support@maryforward.com"
+    }
+  },
+  "portal": {
+    "sidebar": {
+      "dashboard": "Panel",
+      "myCases": "Mis casos",
+      "savedTrials": "Ensayos guardados",
+      "profile": "Perfil",
+      "newCase": "Nuevo caso"
+    },
+    "dashboard": {
+      "title": "Panel",
+      "welcome": "Bienvenido/a de nuevo, {name}. Aquí tienes un resumen de tus casos.",
+      "totalCases": "Casos totales",
+      "activeCases": "Casos activos",
+      "completedCases": "Completados",
+      "savedTrials": "Ensayos guardados",
+      "recentCases": "Casos recientes",
+      "viewAll": "Ver todos",
+      "noCasesTitle": "Aún no hay casos",
+      "noCasesDescription": "Comienza creando tu primer caso para obtener apoyo personalizado en la toma de decisiones.",
+      "createFirstCase": "Crea tu primer caso",
+      "readyToStart": "¿Listo/a para iniciar un nuevo caso?",
+      "intakeDescription": "Nuestra admisión estructurada te ayuda a reunir la información necesaria para un apoyo integral en la toma de decisiones.",
+      "startNewCase": "Iniciar nuevo caso"
+    },
+    "caseCard": {
+      "oncology": "Oncología",
+      "infectiousDisease": "Enfermedades infecciosas",
+      "other": "Otro",
+      "untitledCase": "Caso sin título",
+      "patient": "Paciente",
+      "created": "Creado",
+      "updated": "Actualizado"
+    },
+    "cases": {
+      "title": "Mis casos",
+      "newCase": "Nuevo caso",
+      "noCases": "Aún no has creado ningún caso",
+      "startFirst": "Inicia tu primer caso para recibir orientación médica experta",
+      "caseNumber": "Caso n.º",
+      "status": "Estado",
+      "created": "Creado",
+      "updated": "Actualizado",
+      "viewCase": "Ver caso",
+      "editCase": "Editar caso",
+      "deleteCase": "Eliminar caso",
+      "submitForReview": "Enviar para revisión",
+      "confirmSubmit": "¿Estás seguro/a de que deseas enviar este caso para revisión?",
+      "submitWarning": "Una vez enviado, no podrás editar los detalles del caso.",
+      "yesSubmit": "Sí, enviar para revisión"
+    },
+    "caseStatus": {
+      "draft": "Borrador",
+      "submitted": "Enviado",
+      "underReview": "En revisión",
+      "expertReview": "Revisión por experto",
+      "completed": "Completado",
+      "cancelled": "Cancelado",
+      "archived": "Archivado"
+    },
+    "intake": {
+      "title": "Nuevo caso",
+      "editTitle": "Editar caso",
+      "step1": "Tipo de caso",
+      "step2": "Información personal",
+      "step3": "Historial médico",
+      "step4": "Síntomas",
+      "step5": "Medicamentos",
+      "step6": "Documentos",
+      "step7": "Revisión",
+      "caseType": "¿Qué tipo de caso es este?",
+      "oncologyDesc": "Diagnóstico de cáncer, opciones de tratamiento o segundas opiniones",
+      "infectiousDesc": "Diagnóstico o tratamiento de enfermedades infecciosas",
+      "otherDesc": "Otras afecciones médicas complejas",
+      "personalInfo": "Información personal",
+      "dateOfBirth": "Fecha de nacimiento",
+      "gender": "Género",
+      "male": "Masculino",
+      "female": "Femenino",
+      "other": "Otro",
+      "preferNotToSay": "Prefiero no decirlo",
+      "medicalHistory": "Historial médico",
+      "primaryDiagnosis": "Diagnóstico principal",
+      "diagnosisDate": "Fecha del diagnóstico",
+      "previousTreatments": "Tratamientos previos",
+      "currentSymptoms": "Síntomas actuales",
+      "symptomsDescription": "Describe tus síntomas actuales",
+      "currentMedications": "Medicamentos actuales",
+      "medicationsDescription": "Enumera todos los medicamentos y dosis actuales",
+      "allergies": "Alergias",
+      "allergiesDescription": "Enumera cualquier alergia conocida",
+      "documents": "Documentos",
+      "documentsDescription": "Carga cualquier documento médico relevante (resultados de laboratorio, imágenes, informes de patología)",
+      "dragDrop": "Arrastra y suelta los archivos aquí, o haz clic para explorar",
+      "maxFileSize": "Tamaño máximo de archivo: 25 MB",
+      "allowedTypes": "Permitidos: PDF, imágenes, documentos de Word",
+      "review": "Revisa tu caso",
+      "reviewDescription": "Revisa tu información antes de enviarla",
+      "saveDraft": "Guardar como borrador",
+      "submitCase": "Enviar caso"
+    },
+    "trials": {
+      "title": "Ensayos guardados",
+      "noTrials": "Aún no has guardado ningún ensayo clínico",
+      "browseTrials": "Explorar ensayos clínicos",
+      "removeTrial": "Quitar de guardados",
+      "viewDetails": "Ver detalles",
+      "eligibility": "Elegibilidad",
+      "location": "Ubicación",
+      "phase": "Fase",
+      "status": "Estado"
+    },
+    "onboarding": {
+      "title": "Completa tu perfil",
+      "subtitle": "Ayúdanos a personalizar tu experiencia completando tus datos.",
+      "personalInfo": "Información personal",
+      "firstName": "Nombre",
+      "firstNamePlaceholder": "Ingresa tu nombre",
+      "lastName": "Apellido",
+      "lastNamePlaceholder": "Ingresa tu apellido",
+      "email": "Correo electrónico",
+      "emailCannotChange": "La dirección de correo electrónico no se puede cambiar.",
+      "phoneOptional": "Teléfono (opcional)",
+      "phonePlaceholder": "Ingresa tu número de teléfono",
+      "addressOptional": "Dirección (opcional)",
+      "streetAddress": "Dirección",
+      "streetAddressPlaceholder": "Ingresa tu dirección",
+      "city": "Ciudad",
+      "cityPlaceholder": "Ciudad",
+      "state": "Estado/Provincia",
+      "statePlaceholder": "Estado/Provincia",
+      "zipCode": "Código postal",
+      "zipCodePlaceholder": "Código postal",
+      "skipForNow": "Omitir por ahora",
+      "completeSetup": "Completar configuración",
+      "whatHappensNext": "¿Qué sigue?",
+      "nextStep1": "La información de tu perfil ayuda a nuestros médicos a brindar una mejor orientación.",
+      "nextStep2": "Puedes crear un nuevo caso y enviarlo para revisión por expertos.",
+      "nextStep3": "Un especialista calificado revisará tu caso y proporcionará un informe detallado.",
+      "nextStep4": "Puedes enviar mensajes directamente a tu médico asignado a través del portal.",
+      "updateError": "No se pudo actualizar el perfil. Inténtalo de nuevo.",
+      "setupError": "Algo salió mal. Inténtalo de nuevo.",
+      "welcomeToast": "¡Bienvenido/a a MaryForward! Tu perfil está configurado."
+    },
+    "profile": {
+      "title": "Configuración del perfil",
+      "personalInfo": "Información personal",
+      "accountSettings": "Configuración de la cuenta",
+      "notifications": "Notificaciones",
+      "updateProfile": "Actualizar perfil",
+      "changePassword": "Cambiar contraseña",
+      "currentPassword": "Contraseña actual",
+      "emailNotifications": "Notificaciones por correo electrónico",
+      "caseUpdates": "Actualizaciones del estado del caso",
+      "reportReady": "Nuevos informes disponibles",
+      "newsletter": "Boletín y novedades",
+      "savedSuccess": "Perfil actualizado correctamente"
+    },
+    "consent": {
+      "title": "Términos y consentimiento",
+      "welcomeTitle": "Bienvenido/a a MaryForward",
+      "welcomeSubtitle": "Antes de comenzar, revisa y acepta nuestros términos del servicio y el formulario de consentimiento del paciente.",
+      "mustAcceptBoth": "Debes aceptar tanto los términos del servicio como el consentimiento del paciente para continuar.",
+      "saveError": "No se pudo guardar el consentimiento. Inténtalo de nuevo.",
+      "generalError": "Ocurrió un error inesperado. Inténtalo de nuevo.",
+      "termsTitle": "Términos del servicio",
+      "termsSubtitle": "Por favor, lee con atención",
+      "importantInfo": "Información importante",
+      "termsIntro": "MaryForward ofrece una plataforma en línea que conecta a los pacientes con especialistas en oncología calificados para consultas de segunda opinión. Al usar nuestros servicios, reconoces y aceptas lo siguiente:",
+      "natureOfServiceTitle": "Naturaleza del servicio",
+      "natureOfServiceText": "MaryForward facilita consultas de opinión médica experta. Estas son de carácter consultivo y no establecen una relación médico-paciente con nuestros médicos revisores.",
+      "reviewProcessTitle": "Proceso de revisión",
+      "reviewProcessText": "Tu caso será revisado por profesionales de oncología con licencia que brindarán su evaluación experta con base en los registros médicos y la información que envíes.",
+      "infoAccuracyTitle": "Exactitud de la información",
+      "infoAccuracyText": "La calidad de nuestra consulta depende de la exactitud e integridad de la información que proporciones. Eres responsable de asegurar que todos los registros enviados sean precisos y estén actualizados.",
+      "clinicalTrialsInfoTitle": "Información sobre ensayos clínicos",
+      "clinicalTrialsInfoText": "La información sobre ensayos clínicos se proporciona con fines educativos. La elegibilidad y la disponibilidad pueden cambiar. Verifica siempre el estado actual con el patrocinador del ensayo.",
+      "noPatientRelationshipTitle": "Sin relación directa con el paciente",
+      "noPatientRelationshipText": "Nuestro servicio brinda únicamente segundas opiniones. No reemplazamos a tu oncólogo principal ni a tu equipo de atención médica. Todas las decisiones de tratamiento deben tomarse en consulta con tus médicos tratantes.",
+      "emergencyTitle": "Situaciones de emergencia",
+      "emergencyText": "MaryForward no es un servicio de emergencia. Si estás experimentando una emergencia médica, comunícate con los servicios de emergencia locales o acude de inmediato a la sala de urgencias más cercana.",
+      "liabilityTitle": "Limitación de responsabilidad",
+      "liabilityText": "MaryForward y sus médicos afiliados brindan opiniones con base en la información disponible. No somos responsables de las decisiones de tratamiento tomadas a partir de nuestras consultas.",
+      "termsCheckbox": "He leído y acepto los Términos del servicio y entiendo que MaryForward brinda únicamente consultas de segunda opinión.",
+      "patientConsentTitle": "Formulario de consentimiento del paciente",
+      "patientConsentSubtitle": "Autorización para la revisión médica",
+      "consentHeader": "Consentimiento para la revisión de registros médicos",
+      "purposeTitle": "Propósito",
+      "purposeText": "Este consentimiento autoriza a MaryForward a recopilar, almacenar y compartir tu información médica con especialistas en oncología calificados con el fin de brindar una consulta de segunda opinión.",
+      "consentToShareTitle": "Consentimiento para compartir información",
+      "consentToShareIntro": "Al otorgar tu consentimiento, autorizas que se comparta tu información médica con:",
+      "shareItem1": "Especialistas en oncología con licencia en nuestra plataforma",
+      "shareItem2": "Profesionales médicos involucrados en la revisión de tu caso",
+      "shareItem3": "Nuestros sistemas tecnológicos seguros para el almacenamiento de registros",
+      "shareItem4": "Personal de control de calidad (de forma anonimizada)",
+      "shareItem5": "Socios de investigación (de forma anonimizada, si corresponde)",
+      "consentToShareOutro": "Tu información solo se utilizará para los fines indicados y estará protegida conforme a las leyes de privacidad aplicables.",
+      "privacyTitle": "Privacidad y seguridad",
+      "privacyText": "Empleamos medidas de seguridad estándar de la industria para proteger tu información médica. El acceso está limitado únicamente al personal autorizado.",
+      "deidentifiedDataTitle": "Uso de datos anonimizados",
+      "deidentifiedDataIntro": "Podemos usar datos anonimizados (información que no puede rastrearse hasta ti) para:",
+      "deidentifiedItem1": "Mejorar nuestros servicios y plataforma",
+      "deidentifiedItem2": "Investigación médica y publicaciones",
+      "deidentifiedItem3": "Análisis estadístico e informes",
+      "deidentifiedItem4": "Capacitación y mejora de la calidad",
+      "limitationsTitle": "Limitaciones",
+      "limitationsIntro": "Por favor, ten en cuenta:",
+      "limitationItem1": "Las segundas opiniones son consultivas y no reemplazan tu atención primaria",
+      "limitationItem2": "Las decisiones de tratamiento permanecen entre tú y tus médicos tratantes",
+      "limitationItem3": "Los tiempos de respuesta pueden variar según la complejidad del caso",
+      "limitationItem4": "No podemos garantizar resultados específicos",
+      "communicationTitle": "Comunicación",
+      "communicationText": "Aceptas recibir comunicaciones de MaryForward sobre tu caso, incluidas actualizaciones, informes y notificaciones relacionadas con el servicio.",
+      "voluntaryTitle": "Participación voluntaria",
+      "voluntaryText": "Tu participación es voluntaria. Puedes retirar tu consentimiento en cualquier momento comunicándote con nuestro equipo de soporte, aunque esto puede afectar nuestra capacidad de brindar servicios.",
+      "questionsTitle": "Preguntas",
+      "questionsText": "Si tienes preguntas sobre este consentimiento o nuestras prácticas de privacidad, comunícate con nuestro equipo de soporte antes de continuar.",
+      "consentCheckbox": "Consiento la recopilación, el almacenamiento y el intercambio de mi información médica como se describe anteriormente con el fin de recibir una consulta de segunda opinión.",
+      "signatureTitle": "Firma electrónica",
+      "signatureSubtitle": "Confirma tu acuerdo",
+      "signatureNotice": "Al hacer clic en el botón a continuación, estás proporcionando tu firma electrónica y confirmando que has leído, comprendido y aceptado tanto los Términos del servicio como el Formulario de consentimiento del paciente.",
+      "signingAs": "Firmando como",
+      "date": "Fecha",
+      "agreeAndContinue": "Acepto y continúo",
+      "pleaseAcceptBoth": "Por favor, acepta ambos acuerdos anteriores para continuar"
+    },
+    "reports": {
+      "title": "Informes",
+      "noReports": "Aún no hay informes disponibles",
+      "viewReport": "Ver informe",
+      "printReport": "Imprimir informe",
+      "expertReview": "Revisión por experto",
+      "aiSynthesis": "Síntesis con IA",
+      "patientSummary": "Resumen para el paciente",
+      "finalReport": "Informe final",
+      "preparedBy": "Preparado por",
+      "date": "Fecha",
+      "executiveSummary": "Resumen ejecutivo",
+      "clinicalFindings": "Hallazgos clínicos",
+      "treatmentOptions": "Opciones de tratamiento",
+      "clinicalTrials": "Ensayos clínicos relevantes",
+      "recommendations": "Recomendaciones",
+      "additionalNotes": "Notas adicionales",
+      "disclaimer": "Este informe se proporciona únicamente con fines informativos y no debe reemplazar la consulta con tu proveedor de atención médica principal."
+    }
+  },
+  "clinician": {
+    "sidebar": {
+      "clinicianPortal": "Portal del médico",
+      "dashboard": "Panel",
+      "assignedCases": "Casos asignados",
+      "allCases": "Todos los casos",
+      "myReports": "Mis informes",
+      "profile": "Perfil"
+    },
+    "dashboard": {
+      "title": "Panel del médico",
+      "welcome": "Bienvenido/a de nuevo, {name}. Aquí tienes un resumen de tus casos.",
+      "defaultName": "Doctor/a",
+      "assignedCases": "Casos asignados",
+      "pendingReview": "Pendientes de revisión",
+      "completedThisMonth": "Completados este mes",
+      "recentCases": "Casos recientes",
+      "stats": {
+        "assignedCases": "Casos asignados",
+        "activeReviews": "Revisiones activas",
+        "completed": "Completados",
+        "reportsWritten": "Informes redactados"
+      },
+      "pendingAlert": {
+        "title": "{count} caso(s) en espera de asignación",
+        "description": "Los casos sin asignar están esperando a que un médico los revise.",
+        "viewCases": "Ver casos"
+      },
+      "assignedCases": {
+        "title": "Tus casos asignados",
+        "viewAll": "Ver todos",
+        "empty": {
+          "title": "No hay casos asignados",
+          "description": "Aún no tienes ningún caso asignado.",
+          "browseAll": "Explorar todos los casos"
+        }
+      },
+      "quickActions": {
+        "title": "¿Listo/a para ayudar a los pacientes?",
+        "description": "Explora los casos sin asignar y comienza a revisarlos.",
+        "browseAll": "Explorar todos los casos"
+      }
+    },
+    "cases": {
+      "title": "Mis casos",
+      "description": "Casos asignados a ti para revisión.",
+      "assignedToMe": "Asignados a mí",
+      "allCases": "Todos los casos",
+      "assignToMe": "Asignármelo",
+      "writeReport": "Redactar informe",
+      "viewCase": "Ver caso",
+      "patient": "Paciente",
+      "diagnosis": "Diagnóstico",
+      "assignedTo": "Asignado a",
+      "unassigned": "Sin asignar",
+      "browseAll": "Explorar todos los casos",
+      "activeCases": "Casos activos ({count})",
+      "completedCases": "Casos completados ({count})",
+      "empty": {
+        "title": "No hay casos asignados",
+        "description": "Aún no tienes ningún caso asignado."
+      }
+    },
+    "allCases": {
+      "title": "Todos los casos",
+      "description": "Explora y asigna casos para revisión.",
+      "empty": {
+        "title": "No hay casos disponibles",
+        "description": "No hay casos enviados en este momento."
+      },
+      "awaitingAssignment": "En espera de asignación",
+      "assignedToYou": "Asignados a ti",
+      "assignedToOthers": "Asignados a otros",
+      "anotherClinician": "Otro médico"
+    },
+    "profile": {
+      "title": "Configuración del perfil",
+      "description": "Administra tu perfil y credenciales de médico.",
+      "personalInfo": {
+        "title": "Información personal",
+        "fullName": "Nombre completo",
+        "email": "Dirección de correo electrónico",
+        "emailNote": "El correo electrónico no se puede cambiar. Contacta a soporte si es necesario."
+      },
+      "professionalInfo": {
+        "title": "Información profesional",
+        "specialty": "Especialidad",
+        "specialtyPlaceholder": "p. ej., Oncología, Enfermedades infecciosas",
+        "licenseNumber": "Número de licencia",
+        "licenseNote": "Tu número de licencia médica está verificado y no se puede cambiar.",
+        "institution": "Institución",
+        "institutionPlaceholder": "Nombre del hospital o clínica"
+      },
+      "accountStatus": {
+        "title": "Estado de la cuenta",
+        "accountType": "Tipo de cuenta",
+        "healthcareProvider": "Profesional de la salud",
+        "verificationStatus": "Estado de verificación",
+        "verified": "Verificado"
+      },
+      "saveChanges": "Guardar cambios",
+      "successMessage": "Perfil actualizado correctamente",
+      "errors": {
+        "updateFailed": "No se pudo actualizar el perfil"
+      }
+    },
+    "reports": {
+      "title": "Mis informes",
+      "description": "Informes que has redactado para los pacientes.",
+      "empty": {
+        "title": "Aún no hay informes",
+        "description": "Aún no has redactado ningún informe.",
+        "viewAssignedCases": "Ver casos asignados"
+      },
+      "untitledCase": "Caso sin título",
+      "patient": "Paciente"
+    },
+    "caseDetail": {
+      "cases": "Casos",
+      "untitledCase": "Caso sin título",
+      "writeReport": "Redactar informe",
+      "assignedToYou": "Asignado a ti",
+      "assignedTo": "Asignado a {name}",
+      "unassigned": "Sin asignar",
+      "since": "Desde {date}",
+      "patientInfo": {
+        "title": "Información del paciente",
+        "name": "Nombre del paciente",
+        "email": "Correo electrónico de contacto",
+        "anonymous": "Anónimo",
+        "notProvided": "No proporcionado"
+      },
+      "caseDetails": {
+        "title": "Detalles del caso",
+        "primaryDiagnosis": "Diagnóstico principal",
+        "caseType": "Tipo de caso",
+        "notSpecified": "No especificado"
+      },
+      "caseTypes": {
+        "oncology": "Oncología",
+        "infectiousDisease": "Enfermedades infecciosas",
+        "other": "Otro"
+      },
+      "sections": {
+        "symptoms": "Síntomas",
+        "medicalHistory": "Historial médico",
+        "currentMedications": "Medicamentos actuales",
+        "allergies": "Alergias",
+        "reports": "Informes"
+      },
+      "by": "Por {name}",
+      "timeline": {
+        "title": "Cronología",
+        "created": "Creado",
+        "submitted": "Enviado",
+        "assigned": "Asignado",
+        "completed": "Completado"
+      },
+      "documents": {
+        "title": "Documentos",
+        "noDocuments": "No se cargaron documentos"
+      }
+    },
+    "report": {
+      "title": "Redactar informe",
+      "selectType": "Tipo de informe",
+      "summary": "Resumen ejecutivo",
+      "summaryPlaceholder": "Proporciona un resumen conciso del caso y tus hallazgos principales...",
+      "findings": "Hallazgos clínicos",
+      "findingsPlaceholder": "Describe los hallazgos clínicos relevantes de la revisión del caso...",
+      "treatment": "Opciones de tratamiento",
+      "treatmentPlaceholder": "Enumera y describe posibles opciones de tratamiento con sus ventajas y desventajas...",
+      "trials": "Ensayos clínicos relevantes",
+      "trialsPlaceholder": "Enumera cualquier ensayo clínico relevante para el que el paciente pueda ser elegible...",
+      "recommendations": "Recomendaciones",
+      "recommendationsPlaceholder": "Proporciona tus recomendaciones clínicas y los próximos pasos...",
+      "notes": "Notas adicionales",
+      "notesPlaceholder": "Cualquier información o nota adicional para el paciente...",
+      "markCompleted": "Marcar el caso como completado",
+      "markCompletedDescription": "Marca esta casilla si este es el informe final y la revisión del caso está completa.",
+      "submitReport": "Enviar informe"
+    }
+  },
+  "admin": {
+    "sidebar": {
+      "adminPortal": "Portal de administración",
+      "dashboard": "Panel",
+      "pendingApprovals": "Aprobaciones pendientes",
+      "users": "Usuarios",
+      "allCases": "Todos los casos"
+    },
+    "dashboard": {
+      "title": "Panel de administración",
+      "description": "Resumen de la actividad de la plataforma y las tareas de gestión.",
+      "totalUsers": "Usuarios totales",
+      "pendingApprovals": "Aprobaciones pendientes",
+      "activeCases": "Casos activos",
+      "completedCases": "Casos completados",
+      "pendingAlert": {
+        "count": "{count} médico(s) en espera de aprobación",
+        "message": "Revisa y aprueba los registros de médicos para otorgar acceso al portal.",
+        "reviewNow": "Revisar ahora"
+      },
+      "stats": {
+        "totalUsers": "Usuarios totales",
+        "patients": "Pacientes",
+        "verifiedClinicians": "Médicos verificados",
+        "pendingApprovals": "Aprobaciones pendientes",
+        "totalCases": "Casos totales",
+        "activeCases": "Casos activos"
+      },
+      "quickActions": {
+        "reviewApprovals": {
+          "title": "Revisar aprobaciones",
+          "description": "Aprueba o rechaza los registros de médicos pendientes."
+        },
+        "manageUsers": {
+          "title": "Administrar usuarios",
+          "description": "Ver y administrar todos los usuarios de la plataforma."
+        },
+        "viewCases": {
+          "title": "Ver todos los casos",
+          "description": "Supervisa todos los casos de la plataforma."
+        }
+      }
+    },
+    "approvals": {
+      "title": "Aprobaciones pendientes",
+      "description": "Revisa y aprueba las solicitudes de registro de médicos.",
+      "noPending": "No hay aprobaciones pendientes",
+      "approve": "Aprobar",
+      "reject": "Rechazar",
+      "clinicianName": "Nombre del médico",
+      "email": "Correo electrónico",
+      "registeredAt": "Registrado el",
+      "empty": {
+        "title": "No hay aprobaciones pendientes",
+        "description": "Todos los registros de médicos han sido revisados."
+      },
+      "status": {
+        "pending": "Pendiente"
+      },
+      "fields": {
+        "specialty": "Especialidad",
+        "licenseNumber": "Número de licencia",
+        "institution": "Institución",
+        "notProvided": "No proporcionado"
+      },
+      "registered": "Registrado el {date}",
+      "thisClinicianFallback": "este médico",
+      "approveConfirm": "¿Estás seguro/a de que deseas aprobar a {name}?",
+      "rejectConfirm": "¿Estás seguro/a de que deseas rechazar a {name}?",
+      "approveSuccess": "Médico aprobado correctamente",
+      "rejectSuccess": "Médico rechazado correctamente"
+    },
+    "users": {
+      "title": "Usuarios",
+      "description": "Ver y administrar todos los usuarios de la plataforma.",
+      "searchUsers": "Buscar usuarios...",
+      "role": "Rol",
+      "status": "Estado",
+      "actions": "Acciones",
+      "patient": "Paciente",
+      "clinician": "Médico",
+      "admin": "Administrador",
+      "active": "Activo",
+      "pending": "Pendiente",
+      "suspended": "Suspendido",
+      "table": {
+        "name": "Nombre",
+        "email": "Correo electrónico",
+        "role": "Rol",
+        "joined": "Se unió"
+      },
+      "roles": {
+        "admin": "Administrador",
+        "clinician": "Médico",
+        "pendingClinician": "Médico pendiente",
+        "patient": "Paciente"
+      }
+    },
+    "cases": {
+      "title": "Todos los casos",
+      "description": "Supervisa todos los casos de la plataforma.",
+      "empty": {
+        "title": "Aún no hay casos",
+        "description": "Los casos aparecerán aquí una vez que los pacientes los envíen."
+      },
+      "table": {
+        "caseNumber": "Caso n.º",
+        "title": "Título",
+        "patient": "Paciente",
+        "status": "Estado",
+        "assignedTo": "Asignado a",
+        "updated": "Actualizado"
+      },
+      "untitled": "Sin título"
+    }
+  },
+  "trials": {
+    "title": "Navegador de ensayos clínicos",
+    "subtitle": "Encuentra ensayos clínicos para tu afección",
+    "searchPlaceholder": "Buscar por afección, tratamiento o ubicación...",
+    "filters": "Filtros",
+    "condition": "Afección",
+    "phase": "Fase",
+    "location": "Ubicación",
+    "status": "Estado",
+    "recruiting": "Reclutando",
+    "notRecruiting": "No reclutando",
+    "results": "{count} ensayos encontrados",
+    "noResults": "No se encontraron ensayos que coincidan con tus criterios",
+    "saveTrial": "Guardar ensayo",
+    "savedTrial": "Guardado",
+    "viewDetails": "Ver detalles",
+    "eligibilityExtraction": "Extracción de elegibilidad",
+    "eligibilityExtractionDesc": "Criterios estructurados extraídos de los registros, anotados por expertos cuando es necesario.",
+    "geoFiltering": "Filtrado geográfico",
+    "geoFilteringDesc": "Filtra por tu ciudad, estado/provincia o país para encontrar ensayos cerca de ti.",
+    "conciergeTemplates": "Plantillas de conserjería",
+    "conciergeTemplatesDesc": "Correos electrónicos de contacto preescritos, puntos de conversación para médicos y lista de verificación para las primeras llamadas.",
+    "marketingPreview": "La búsqueda interactiva estará disponible pronto. Mientras tanto, incluimos ensayos relevantes en tu informe integral."
+  },
+  "learn": {
+    "kicker": "MaryForward",
+    "title": "Todo sobre las afecciones",
+    "subtitle": "Recursos fundamentales sobre oncología, enfermedades infecciosas y cómo sintetizamos la información.",
+    "browse": "Explorar",
+    "seeSchedule": "Ver calendario",
+    "oncology": {
+      "cardTitle": "Oncología",
+      "cardDescription": "Tipos de cáncer, estadificación, biomarcadores, vías de tratamiento.",
+      "title": "Apoyo para la toma de decisiones en oncología",
+      "description": "MaryForward sintetiza evidencia de guías de oncología, literatura revisada por pares y registros de ensayos para ayudar a pacientes y familias a comprender sus opciones.",
+      "commonPathways": {
+        "title": "Vías comunes por tipo de cáncer",
+        "description": "Mostramos vías de tratamiento basadas en guías de NCCN, ESMO y de especialidad, anotadas con citas para que puedas verificarlas."
+      },
+      "genomicsBiomarkers": {
+        "title": "Genómica y biomarcadores",
+        "description": "Mapeamos los informes de CGP hacia su accionabilidad usando OncoKB, CIViC y la literatura actual, con notas explicativas para quienes no son especialistas."
+      },
+      "questionsForVisit": {
+        "title": "Preguntas para tu consulta",
+        "description": "Cada informe incluye una lista de preguntas adaptadas a tu caso para ayudarte a tener una conversación productiva con tu oncólogo."
+      }
+    },
+    "infectious": {
+      "cardTitle": "Enfermedades infecciosas",
+      "cardDescription": "Infecciones bacterianas, virales, fúngicas y parasitarias.",
+      "title": "Apoyo para la toma de decisiones en enfermedades infecciosas",
+      "description": "MaryForward ayuda a pacientes y familias a navegar diagnósticos complejos de enfermedades infecciosas, desde la selección de antimicrobianos hasta las derivaciones a especialistas.",
+      "diagnosticDifferentials": {
+        "title": "Diferenciales diagnósticos",
+        "description": "Sintetizamos los síntomas de presentación, los análisis de laboratorio, las imágenes y los datos de cultivos para mostrar los diagnósticos probables y señalar organismos poco comunes."
+      },
+      "carePathways": {
+        "title": "Vías de atención",
+        "description": "Opciones de tratamiento basadas en las guías de IDSA, la Guía Sanford y la literatura actual, con citas y revisión por expertos."
+      },
+      "safetySafeguards": {
+        "title": "Salvaguardas de seguridad",
+        "description": "Señalamos interacciones farmacológicas, alergias y contraindicaciones antes de compartir cualquier informe, con anotaciones de expertos para los casos límite."
+      }
+    },
+    "ngs": {
+      "cardTitle": "NGS y datos moleculares",
+      "cardDescription": "Perfilado genómico, mNGS, mapeo de biomarcadores.",
+      "title": "Integración de NGS y datos moleculares",
+      "description": "Carga tu informe de perfilado genómico (CGP) o tu informe de mNGS para enfermedades infecciosas. Mapeamos variantes y organismos hacia su accionabilidad con citas y notas de advertencia.",
+      "oncologyCgp": {
+        "title": "CGP en oncología",
+        "biomarkers": "Mapeo de biomarcador → terapia",
+        "resistance": "Interpretación de mutaciones de resistencia",
+        "trialEligibility": "Extracción de elegibilidad para ensayos"
+      },
+      "idMngs": {
+        "title": "mNGS en EI (mcfDNA)",
+        "organismInterpretation": "Interpretación de organismos",
+        "contaminationCautions": "Advertencias sobre contaminación",
+        "followUpTesting": "Sugerencias de pruebas de seguimiento"
+      },
+      "important": {
+        "label": "Importante:",
+        "text": "No interpretamos datos de secuenciación sin procesar. Por favor, carga un informe de un laboratorio acreditado."
+      }
+    },
+    "webinars": {
+      "cardTitle": "Seminarios web e informes",
+      "cardDescription": "Sesiones en vivo e informes grabados.",
+      "title": "Seminarios web e informes",
+      "description": "Sesiones en vivo e informes grabados de los expertos de MaryForward y médicos invitados.",
+      "upcoming": {
+        "title": "Próximos",
+        "item1": "Cómo entender tu informe de oncología — enero de 2025",
+        "item2": "mNGS para no especialistas — febrero de 2025",
+        "item3": "Ensayos clínicos 101 — marzo de 2025"
+      },
+      "past": {
+        "title": "Anteriores",
+        "item1": "Introducción a MaryForward — diciembre de 2024",
+        "item2": "Cómo citamos — noviembre de 2024",
+        "item3": "Biomarcadores y terapia dirigida — octubre de 2024"
+      }
+    },
+    "contentPromise": {
+      "title": "Nuestra promesa de contenido",
+      "vettedSources": {
+        "title": "Fuentes verificadas",
+        "description": "NCCN, ESMO, IDSA, Sanford, OncoKB, CIViC, literatura revisada por pares, registros de ensayos."
+      },
+      "transparentCitations": {
+        "title": "Citas transparentes",
+        "description": "Cada afirmación está vinculada a su fuente para que puedas verificarla y compartirla con tu equipo de atención."
+      },
+      "clearLimitations": {
+        "title": "Limitaciones claras",
+        "description": "Indicamos cuándo la evidencia es débil, contradictoria o no está disponible."
+      },
+      "humanReview": {
+        "title": "Revisión humana",
+        "description": "Médicos expertos revisan cada informe antes de que llegue a ti."
+      }
+    }
+  },
+  "whatWeDo": {
+    "patients": {
+      "kicker": "MaryForward",
+      "title": "Para pacientes",
+      "description": "MaryForward te ayuda a pasar de la incertidumbre a un plan, traduciendo fuentes médicas confiables en opciones claras, preguntas que hacer y próximos pasos.",
+      "journey": {
+        "title": "El recorrido del paciente",
+        "step1": "Crea una cuenta segura y completa un cuestionario de admisión guiado.",
+        "step2": "Carga documentos relevantes (laboratorios, imágenes, patología).",
+        "step3": "Nuestra IA sintetiza la evidencia de fuentes verificadas.",
+        "step4": "Médicos expertos revisan y anotan el borrador por seguridad y claridad.",
+        "step5": "Recibe un informe compartible con recomendaciones y preguntas para tu equipo de atención."
+      },
+      "whatWeDontDo": {
+        "title": "Lo que no hacemos",
+        "item1": "No diagnosticamos ni recetamos.",
+        "item2": "No reemplazamos a tu equipo de atención primaria.",
+        "item3": "No brindamos atención de emergencia ni urgente.",
+        "urgentCareNote": "Si tienes síntomas urgentes, llama al 911 o acude al servicio de urgencias más cercano."
+      }
+    },
+    "clinicians": {
+      "kicker": "MaryForward",
+      "title": "Para médicos / clínicas",
+      "description": "MaryForward proporciona apoyo estructurado para la toma de decisiones en oncología y enfermedades infecciosas, diseñado para ahorrar tiempo y mejorar las conversaciones con los pacientes.",
+      "receive": {
+        "title": "Lo que reciben los médicos",
+        "item1": "Resúmenes estructurados de casos con citas.",
+        "item2": "Diagnósticos diferenciales con evidencia de respaldo.",
+        "item3": "Opciones de tratamiento asignadas a las guías.",
+        "item4": "Ensayos clínicos relevantes con resúmenes de elegibilidad."
+      },
+      "deployment": {
+        "title": "Opciones de implementación",
+        "item1": "Iniciado por el paciente: los pacientes crean casos y comparten informes contigo.",
+        "item2": "Iniciado por el médico: tú creas casos en nombre de los pacientes.",
+        "item3": "Integración con el expediente médico electrónico: próximamente para socios selectos."
+      }
+    },
+    "partners": {
+      "kicker": "MaryForward",
+      "title": "Para patrocinadores y socios",
+      "description": "MaryForward se asocia con organizaciones comprometidas con la educación del paciente y el apoyo a la toma de decisiones clínicas, sin contingencias por derivación.",
+      "grants": {
+        "title": "Subvenciones educativas sin restricciones",
+        "description": "Apoya el desarrollo de contenido específico por afección, seminarios web y recursos para pacientes."
+      },
+      "marketplace": {
+        "title": "Listados en el mercado de diagnósticos",
+        "description": "Los socios de laboratorio y pruebas pueden listar sus servicios con descripciones claras, precios y tiempos de entrega."
+      },
+      "disclaimer": "Todas las alianzas se divulgan. No aceptamos tarifas por derivación ni acuerdos de contingencia."
+    }
+  },
+  "company": {
+    "ourStory": {
+      "kicker": "MaryForward",
+      "title": "Nuestra historia",
+      "description": "MaryForward se fundó para ayudar a pacientes y familias a pasar de la incertidumbre a un plan, con claridad, compasión y evidencia.",
+      "mission": {
+        "title": "Nuestra misión",
+        "description": "Creemos que cada paciente merece acceso a un apoyo para la toma de decisiones revisado por expertos, sin importar su ubicación geográfica, idioma o recursos.",
+        "honorTitle": "En honor a Mary",
+        "honorDescription": "MaryForward se creó en honor a Mary, cuyo recorrido a través de decisiones médicas complejas nos inspiró a crear una mejor manera."
+      },
+      "principles": {
+        "title": "Nuestros principios",
+        "safety": "La seguridad primero: cada informe es revisado por médicos expertos antes de compartirse.",
+        "transparency": "Transparencia: citamos nuestras fuentes e indicamos las limitaciones con claridad.",
+        "respect": "Respeto: tratamos cada caso con cuidado y confidencialidad.",
+        "collaboration": "Colaboración: trabajamos con tu equipo de atención, no al margen de él."
+      }
+    },
+    "compliance": {
+      "kicker": "MaryForward",
+      "title": "Seguridad, privacidad y cumplimiento",
+      "description": "MaryForward se construye con la seguridad clínica, la privacidad de los datos y el cumplimiento normativo como base.",
+      "clinicalSafety": {
+        "title": "Seguridad clínica",
+        "redFlag": "Los síntomas de alarma y las contraindicaciones se muestran automáticamente.",
+        "secondReview": "Médicos expertos revisan cada informe antes de compartirse.",
+        "monitoring": "Monitoreamos las señales de eventos adversos y actualizamos la orientación en consecuencia."
+      },
+      "hipaa": {
+        "title": "HIPAA y privacidad de los datos",
+        "roleBasedAccess": "Controles de acceso basados en roles para todos los tipos de usuario.",
+        "encryption": "Cifrado en reposo y en tránsito (AES-256, TLS 1.3).",
+        "auditLogging": "Registro de auditoría para todos los accesos y modificaciones de datos."
+      },
+      "commercial": {
+        "title": "Independencia comercial",
+        "noReferral": "No aceptamos tarifas por derivación ni acuerdos de contingencia.",
+        "firewalls": "Las subvenciones educativas están separadas del contenido clínico.",
+        "disclosures": "Todas las alianzas y fuentes de financiamiento se divulgan."
+      },
+      "limitations": {
+        "title": "Limitaciones",
+        "description": "MaryForward es apoyo para la toma de decisiones, no diagnóstico, prescripción ni atención de emergencia. Consulta siempre a tu equipo de atención primaria para las decisiones médicas."
+      },
+      "disclaimer": "Si tienes síntomas urgentes, llama al 911 o acude al servicio de urgencias más cercano."
+    },
+    "pricing": {
+      "kicker": "MaryForward",
+      "title": "Precios",
+      "description": "Precios transparentes para un apoyo integral en la toma de decisiones.",
+      "comprehensive": {
+        "title": "Revisión integral del caso",
+        "price": "$299",
+        "perCase": "por caso",
+        "intake": "Admisión estructurada",
+        "synthesis": "Síntesis con IA + revisión por experto",
+        "expertReview": "Anotación de expertos",
+        "report": "Informe para paciente y médico"
+      },
+      "longitudinal": {
+        "title": "Seguimiento longitudinal",
+        "price": "$49",
+        "perMonth": "por mes",
+        "outcomeTracking": "Seguimiento de resultados",
+        "sideEffects": "Monitoreo de efectos secundarios",
+        "trialReminders": "Recordatorios del estado de los ensayos"
+      },
+      "expedite": {
+        "title": "Complementos",
+        "expeditePrice": "+$99",
+        "expediteLabel": "Agilizar (entrega en 24 h)",
+        "conciergePrice": "+$149",
+        "conciergeLabel": "Conserjería (coordinación de la atención)",
+        "fasterTurnaround": "Entrega más rápida para casos urgentes.",
+        "careCoordination": "Programación, solicitudes de registros y apoyo de seguimiento.",
+        "trialOutreach": "Gestión de ensayos en tu nombre."
+      },
+      "disclaimer": "Los precios están sujetos a cambios. Puede haber asistencia financiera disponible para los pacientes que califiquen."
+    }
+  },
+  "resources": {
+    "title": "Recursos",
+    "description": "MaryForward sintetiza información de fuentes primarias verificadas. Aquí es donde buscamos.",
+    "primarySourcesTitle": "Categorías de fuentes primarias",
+    "source1": "Guías de práctica clínica (NCCN, ESMO, IDSA, etc.)",
+    "source2": "Literatura revisada por pares (revistas indexadas en PubMed)",
+    "source3": "Registros de ensayos clínicos (ClinicalTrials.gov, WHO ICTRP)",
+    "source4": "Bases de conocimiento genómico (OncoKB, CIViC, ClinVar)",
+    "source5": "Referencias de farmacología (Guía Sanford, UpToDate, Lexicomp)",
+    "howWeCiteTitle": "Cómo citamos",
+    "howWeCiteDescription": "Cada afirmación en un informe de MaryForward está vinculada a su fuente. Incluimos la fecha de publicación, el autor y el DOI cuando está disponible."
+  },
+  "contact": {
+    "title": "Contáctanos",
+    "subtitle": "¿Tienes preguntas? Nos encantaría saber de ti.",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "email": "Correo electrónico",
+    "category": "Soy un...",
+    "categoryPatient": "Paciente o familiar",
+    "categoryClinician": "Médico o profesional de la salud",
+    "categorySponsor": "Patrocinador o socio",
+    "categoryOther": "Otro",
+    "message": "¿Cómo podemos ayudarte?",
+    "messagePlaceholder": "Cuéntanos cómo podemos ayudarte...",
+    "submit": "Enviar mensaje",
+    "success": "¡Gracias por comunicarte! Te responderemos en un plazo de 1 a 2 días hábiles.",
+    "sendAnother": "Enviar otro mensaje"
+  },
+  "forms": {
+    "required": "Obligatorio",
+    "optional": "Opcional",
+    "charactersRemaining": "{count} caracteres restantes",
+    "common": {
+      "firstName": "Nombre",
+      "firstNamePlaceholder": "Juan",
+      "lastName": "Apellido",
+      "lastNamePlaceholder": "Pérez",
+      "email": "Correo electrónico",
+      "emailPlaceholder": "tu@ejemplo.com",
+      "password": "Contraseña"
+    },
+    "newsletter": {
+      "placeholder": "tu@ejemplo.com",
+      "subscribe": "Suscribirse",
+      "successMessage": "¡Gracias por suscribirte!",
+      "alreadySubscribed": "¡Ya estás suscrito/a!",
+      "errorMessage": "Algo salió mal. Inténtalo de nuevo."
+    },
+    "contact": {
+      "iAmA": "Soy un...",
+      "categoryPatient": "Paciente o familiar",
+      "categoryClinician": "Médico o profesional de la salud",
+      "categoryPartner": "Patrocinador o socio",
+      "categoryOther": "Otro",
+      "message": "Mensaje",
+      "messagePlaceholder": "¿Cómo podemos ayudarte?",
+      "sendMessage": "Enviar mensaje",
+      "successMessage": "¡Gracias por comunicarte! Te responderemos en un plazo de 1 a 2 días hábiles.",
+      "successToast": "¡Mensaje enviado correctamente!",
+      "submitError": "No se pudo enviar el formulario",
+      "sendAnother": "Enviar otro mensaje"
+    }
+  },
+  "validation": {
+    "required": "Este campo es obligatorio",
+    "invalidEmail": "Por favor, ingresa una dirección de correo electrónico válida",
+    "passwordMinLength": "La contraseña debe tener al menos 8 caracteres",
+    "passwordMismatch": "Las contraseñas no coinciden",
+    "passwordRequirements": "La contraseña debe tener al menos 8 caracteres con mayúsculas, minúsculas y un número.",
+    "invalidDate": "Por favor, ingresa una fecha válida",
+    "fileTooLarge": "El archivo es demasiado grande. El tamaño máximo es {size} MB",
+    "invalidFileType": "Tipo de archivo no válido"
+  },
+  "pages": {
+    "login": {
+      "kicker": "Cuenta",
+      "title": "Bienvenido/a de nuevo",
+      "loggingInAs": "Iniciando sesión como:",
+      "patientDescription": "Inicia sesión para acceder a tu panel e informes.",
+      "clinicianDescription": "Inicia sesión para acceder a tu panel de médico y a las revisiones de casos."
+    },
+    "signup": {
+      "kicker": "Cuenta",
+      "title": "Comenzar",
+      "signingUpAs": "Registrándose como:",
+      "patientDescription": "Crea una cuenta para comenzar tu proceso de admisión seguro.",
+      "clinicianDescription": "Crea una cuenta para revisar casos y brindar apoyo en la toma de decisiones."
+    },
+    "contact": {
+      "kicker": "Contacto",
+      "title": "Hablemos",
+      "subtitle": "Solicita una demostración, analiza proyectos piloto o pregunta sobre operaciones clínicas y cumplimiento."
+    }
+  },
+  "errors": {
+    "notFound": "Página no encontrada",
+    "notFoundDescription": "La página que buscas no existe.",
+    "serverError": "Algo salió mal",
+    "serverErrorDescription": "Tenemos problemas para cargar esta página. Inténtalo de nuevo.",
+    "unauthorized": "No autorizado",
+    "unauthorizedDescription": "No tienes permiso para acceder a esta página.",
+    "goHome": "Ir al inicio",
+    "tryAgain": "Intentar de nuevo"
+  },
+  "inbox": {
+    "title": "Mensajes",
+    "noMessages": "Aún no hay mensajes",
+    "startConversation": "Inicia la conversación enviando un mensaje a continuación.",
+    "placeholder": "Escribe tu mensaje...",
+    "send": "Enviar",
+    "attachFile": "Adjuntar archivo",
+    "attachments": "Adjuntos",
+    "unread": "sin leer",
+    "markAsRead": "Marcar todo como leído",
+    "you": "Tú",
+    "patient": "Paciente",
+    "clinician": "Médico",
+    "newMessage": "Nuevo mensaje",
+    "fileTooBig": "El archivo es demasiado grande. El tamaño máximo es 25 MB.",
+    "invalidFileType": "Tipo de archivo no válido. Por favor, carga una imagen, un PDF o un documento.",
+    "messageSent": "Mensaje enviado",
+    "errorSending": "No se pudo enviar el mensaje. Inténtalo de nuevo."
+  }
+}
