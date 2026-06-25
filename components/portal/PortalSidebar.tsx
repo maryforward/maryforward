@@ -9,6 +9,7 @@ export function PortalSidebar() {
   const pathname = usePathname();
   const t = useTranslations("portal.sidebar");
   const [unreadCount, setUnreadCount] = useState(0);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const fetchUnreadCount = async () => {
@@ -68,40 +69,87 @@ export function PortalSidebar() {
     },
   ];
 
+  const navContent = (
+    <nav className="flex flex-col gap-1 p-4">
+      {navItems.map((item) => {
+        const isActive = pathname === item.href || pathname.startsWith(item.href + "/");
+        return (
+          <Link
+            key={item.href}
+            href={item.href}
+            onClick={() => setMobileOpen(false)}
+            className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors ${
+              isActive
+                ? "bg-sky-500/10 text-sky-400"
+                : "text-slate-400 hover:bg-white/5 hover:text-slate-200"
+            }`}
+          >
+            {item.icon}
+            <span className="flex-1">{item.label}</span>
+            {item.showBadge && <UnreadBadge count={unreadCount} />}
+          </Link>
+        );
+      })}
+
+      <div className="my-4 border-t border-white/10" />
+
+      <Link
+        href="/portal/cases/new"
+        onClick={() => setMobileOpen(false)}
+        className="flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-sky-500 to-violet-500 px-4 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90"
+      >
+        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+        </svg>
+        {t("newCase")}
+      </Link>
+    </nav>
+  );
+
   return (
-    <aside className="hidden w-64 flex-shrink-0 border-e border-white/10 bg-slate-950/50 lg:block">
-      <nav className="flex flex-col gap-1 p-4">
-        {navItems.map((item) => {
-          const isActive = pathname === item.href || pathname.startsWith(item.href + "/");
-          return (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors ${
-                isActive
-                  ? "bg-sky-500/10 text-sky-400"
-                  : "text-slate-400 hover:bg-white/5 hover:text-slate-200"
-              }`}
-            >
-              {item.icon}
-              <span className="flex-1">{item.label}</span>
-              {item.showBadge && <UnreadBadge count={unreadCount} />}
-            </Link>
-          );
-        })}
+    <>
+      {/* Desktop sidebar */}
+      <aside className="hidden w-64 flex-shrink-0 border-e border-white/10 bg-slate-950/50 lg:block">
+        {navContent}
+      </aside>
 
-        <div className="my-4 border-t border-white/10" />
+      {/* Mobile: floating menu button */}
+      <button
+        type="button"
+        onClick={() => setMobileOpen(true)}
+        aria-label="Open menu"
+        aria-expanded={mobileOpen}
+        className="lg:hidden fixed bottom-5 end-5 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-sky-500 to-violet-500 text-white shadow-lg shadow-sky-500/30"
+      >
+        <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
 
-        <Link
-          href="/portal/cases/new"
-          className="flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-sky-500 to-violet-500 px-4 py-2.5 text-sm font-medium text-white transition-opacity hover:opacity-90"
-        >
-          <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
-          </svg>
-          {t("newCase")}
-        </Link>
-      </nav>
-    </aside>
+      {/* Mobile: drawer */}
+      {mobileOpen && (
+        <div className="lg:hidden fixed inset-0 z-[60]">
+          <div
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            onClick={() => setMobileOpen(false)}
+          />
+          <aside className="absolute inset-y-0 start-0 w-72 max-w-[82vw] overflow-y-auto border-e border-white/10 bg-slate-900/95 backdrop-blur-xl shadow-2xl">
+            <div className="flex items-center justify-end p-2">
+              <button
+                type="button"
+                onClick={() => setMobileOpen(false)}
+                aria-label="Close menu"
+                className="rounded-lg p-2 text-slate-300 hover:bg-white/10"
+              >
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" d="M6 6l12 12M18 6L6 18" />
+                </svg>
+              </button>
+            </div>
+            {navContent}
+          </aside>
+        </div>
+      )}
+    </>
   );
 }

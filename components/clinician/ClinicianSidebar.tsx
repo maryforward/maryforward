@@ -9,6 +9,7 @@ export function ClinicianSidebar() {
   const pathname = usePathname();
   const t = useTranslations("clinician.sidebar");
   const [unreadCount, setUnreadCount] = useState(0);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
     const fetchUnreadCount = async () => {
@@ -77,8 +78,8 @@ export function ClinicianSidebar() {
     },
   ];
 
-  return (
-    <aside className="hidden w-64 flex-shrink-0 border-e border-white/10 bg-slate-950/50 lg:block">
+  const sidebarContent = (
+    <>
       <div className="p-4">
         <div className="rounded-lg bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/20 px-3 py-2">
           <p className="text-xs font-medium text-emerald-400">{t("clinicianPortal")}</p>
@@ -91,6 +92,7 @@ export function ClinicianSidebar() {
             <Link
               key={item.href}
               href={item.href}
+              onClick={() => setMobileOpen(false)}
               className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors ${
                 isActive
                   ? "bg-emerald-500/10 text-emerald-400"
@@ -104,6 +106,53 @@ export function ClinicianSidebar() {
           );
         })}
       </nav>
-    </aside>
+    </>
+  );
+
+  return (
+    <>
+      {/* Desktop sidebar */}
+      <aside className="hidden w-64 flex-shrink-0 border-e border-white/10 bg-slate-950/50 lg:block">
+        {sidebarContent}
+      </aside>
+
+      {/* Mobile: floating menu button */}
+      <button
+        type="button"
+        onClick={() => setMobileOpen(true)}
+        aria-label="Open menu"
+        aria-expanded={mobileOpen}
+        className="lg:hidden fixed bottom-5 end-5 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white shadow-lg shadow-emerald-500/30"
+      >
+        <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+
+      {/* Mobile: drawer */}
+      {mobileOpen && (
+        <div className="lg:hidden fixed inset-0 z-[60]">
+          <div
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            onClick={() => setMobileOpen(false)}
+          />
+          <aside className="absolute inset-y-0 start-0 w-72 max-w-[82vw] overflow-y-auto border-e border-white/10 bg-slate-900/95 backdrop-blur-xl shadow-2xl">
+            <div className="flex items-center justify-end p-2">
+              <button
+                type="button"
+                onClick={() => setMobileOpen(false)}
+                aria-label="Close menu"
+                className="rounded-lg p-2 text-slate-300 hover:bg-white/10"
+              >
+                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" d="M6 6l12 12M18 6L6 18" />
+                </svg>
+              </button>
+            </div>
+            {sidebarContent}
+          </aside>
+        </div>
+      )}
+    </>
   );
 }

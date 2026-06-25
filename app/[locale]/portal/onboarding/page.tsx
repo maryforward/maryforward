@@ -125,7 +125,7 @@ export default function OnboardingPage() {
       <div className="glass p-6">
         <h2 className="text-lg font-semibold text-slate-50 mb-4">{t("personalInfo")}</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <Input
               label={t("firstName")}
               name="firstName"
@@ -176,7 +176,7 @@ export default function OnboardingPage() {
               onChange={handleChange}
             />
 
-            <div className="grid grid-cols-6 gap-4 mt-4">
+            <div className="grid grid-cols-1 sm:grid-cols-6 gap-4 mt-4">
               <div className="col-span-3">
                 <Input
                   label={t("city")}

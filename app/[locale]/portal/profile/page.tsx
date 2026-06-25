@@ -122,7 +122,7 @@ export default function ProfilePage() {
           <div className="mt-4 space-y-4">
             {error && <Alert variant="error">{error}</Alert>}
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <Input
                 label={t("firstName")}
                 name="firstName"
@@ -174,7 +174,7 @@ export default function ProfilePage() {
               placeholder={t("streetAddressPlaceholder")}
             />
 
-            <div className="grid grid-cols-6 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-6 gap-4">
               <div className="col-span-3">
                 <Input
                   label={t("city")}

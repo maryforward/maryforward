@@ -67,8 +67,8 @@ export default async function AdminCasesPage() {
           </p>
         </div>
       ) : (
-        <div className="rounded-xl border border-white/10 overflow-hidden">
-          <table className="w-full">
+        <div className="rounded-xl border border-white/10 overflow-x-auto">
+          <table className="w-full min-w-[680px]">
             <thead className="bg-white/5">
               <tr>
                 <th className="text-left px-4 py-3 text-sm font-medium text-slate-400">{t("table.caseNumber")}</th>
