@@ -8,6 +8,9 @@ import { useTranslations } from "next-intl";
 import { RoleSelectionModal } from "@/components/auth/RoleSelectionModal";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
+// External donation page. Replace with the real donation URL (e.g. Donorbox/PayPal/Stripe).
+export const DONATE_URL = "https://example.com/donate";
+
 type Menu = { label: string; items: { label: string; href: string }[] };
 
 function Dropdown({ menu }: { menu: Menu }) {
@@ -191,7 +194,6 @@ export default function Nav() {
       items: [
         { label: t("nav.ourStory"), href: "/company/our-story" },
         { label: t("nav.compliance"), href: "/company/compliance" },
-        { label: t("nav.pricing"), href: "/company/pricing" },
         { label: t("nav.contact"), href: "/contact" },
       ],
     },
@@ -237,6 +239,14 @@ export default function Nav() {
 
           {/* Desktop actions */}
           <div className="hidden md:flex items-center gap-2">
+            <a
+              href={DONATE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btnPrimary"
+            >
+              {t("nav.donate")}
+            </a>
             <LanguageSwitcher />
 
             {isLoading ? (
@@ -318,6 +328,18 @@ export default function Nav() {
               >
                 {t("nav.resources")}
               </Link>
+
+              <div className="border-t border-white/10 pt-4">
+                <a
+                  href={DONATE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => setMobileOpen(false)}
+                  className="btn btnPrimary w-full justify-center"
+                >
+                  {t("nav.donate")}
+                </a>
+              </div>
 
               <div className="border-t border-white/10 pt-4">
                 <LanguageSwitcher />

@@ -43,9 +43,9 @@
     "company": "شرکت",
     "ourStory": "داستان ما",
     "compliance": "ایمنی، حریم خصوصی و انطباق",
-    "pricing": "قیمت‌گذاری",
     "contact": "تماس با ما",
-    "resources": "منابع"
+    "resources": "منابع",
+    "donate": "کمک مالی"
   },
   "userMenu": {
     "myCases": "پرونده‌های من",
@@ -114,8 +114,8 @@
     "ngsIntegration": "یکپارچه‌سازی NGS",
     "ourStory": "داستان ما",
     "privacyCompliance": "حریم خصوصی و انطباق",
-    "pricing": "قیمت‌گذاری",
     "contact": "تماس",
+    "donate": "کمک مالی",
     "subscribe": "اشتراک",
     "subscribeDescription": "یادداشت‌های ماهانه محصول و جلسات متخصص."
   },

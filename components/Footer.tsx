@@ -3,6 +3,7 @@
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
 import { NewsletterForm } from "@/components/forms/NewsletterForm";
+import { DONATE_URL } from "@/components/Nav";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -39,8 +40,8 @@ export default function Footer() {
             <div className="text-sm text-slate-300 space-y-1">
               <div><Link href="/company/our-story">{t("ourStory")}</Link></div>
               <div><Link href="/company/compliance">{t("privacyCompliance")}</Link></div>
-              <div><Link href="/company/pricing">{t("pricing")}</Link></div>
               <div><Link href="/contact">{t("contact")}</Link></div>
+              <div><a href={DONATE_URL} target="_blank" rel="noopener noreferrer">{t("donate")}</a></div>
             </div>
 
             <div className="mt-5 glass p-4">

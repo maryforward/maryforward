@@ -43,9 +43,9 @@
     "company": "الشركة",
     "ourStory": "قصتنا",
     "compliance": "السلامة والخصوصية والامتثال",
-    "pricing": "الأسعار",
     "contact": "اتصل بنا",
-    "resources": "الموارد"
+    "resources": "الموارد",
+    "donate": "تبرّع"
   },
   "userMenu": {
     "myCases": "حالاتي",
@@ -114,8 +114,8 @@
     "ngsIntegration": "تكامل NGS",
     "ourStory": "قصتنا",
     "privacyCompliance": "الخصوصية والامتثال",
-    "pricing": "الأسعار",
     "contact": "اتصل بنا",
+    "donate": "تبرّع",
     "subscribe": "اشترك",
     "subscribeDescription": "ملاحظات شهرية عن المنتج وإحاطات من الخبراء."
   },

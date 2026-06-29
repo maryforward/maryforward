@@ -43,9 +43,9 @@
     "company": "Company",
     "ourStory": "Our Story",
     "compliance": "Safety, Privacy & Compliance",
-    "pricing": "Pricing",
     "contact": "Contact",
-    "resources": "Resources"
+    "resources": "Resources",
+    "donate": "Donate"
   },
   "userMenu": {
     "myCases": "My Cases",
@@ -114,8 +114,8 @@
     "ngsIntegration": "NGS Integration",
     "ourStory": "Our Story",
     "privacyCompliance": "Privacy & Compliance",
-    "pricing": "Pricing",
     "contact": "Contact",
+    "donate": "Donate",
     "subscribe": "Subscribe",
     "subscribeDescription": "Monthly product notes & expert briefings."
   },

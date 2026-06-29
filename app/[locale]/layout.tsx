@@ -10,6 +10,7 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import { FloatingDonate } from "@/components/FloatingDonate";
 import { AuthProvider } from "@/components/providers/AuthProvider";
 import { ToastProvider } from "@/components/providers/ToastProvider";
 import { NavigationProgress } from "@/components/ui/NavigationProgress";
@@ -66,6 +67,7 @@ export default async function LocaleLayout({
               <Nav />
               <main>{children}</main>
               <Footer />
+              <FloatingDonate />
             </ToastProvider>
           </AuthProvider>
         </NextIntlClientProvider>
